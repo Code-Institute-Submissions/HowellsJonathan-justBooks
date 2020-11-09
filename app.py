@@ -5,12 +5,26 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
-    import os
+    import env
 
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
+
 
 @app.route("/")
-def hello():
-    return "Hello World ... again for the second time ... testing 1 . 2 . 3"
+@app.route("/get_books")
+def get_books():
+    books = list(mongo.db.books.find())
+    return render_template("books.html", books=books)
+
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)
