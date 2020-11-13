@@ -133,7 +133,7 @@ def add_book():
             mongo.db.books.insert_one(add_book)
             return redirect(url_for("get_books"))
 
-    return render_template(url_for("add_book.html"))
+    return render_template("add_book.html")
 
 
 if __name__ == "__main__":
