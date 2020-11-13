@@ -16,6 +16,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# Home Page Function
+
 
 @app.route("/")
 @app.route("/get_books")
@@ -23,10 +25,14 @@ def get_books():
     books = list(mongo.db.books.find())
     return render_template("all_books.html", books=books)
 
+# Direct user to login page on function
+
 
 @app.route("/login_page")
 def login_page():
     return render_template("login.html")
+
+# Login form function
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -51,6 +57,8 @@ def login():
             # Username isn't in the database
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login_page"))
+
+# Register form function
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -80,6 +88,8 @@ def register():
 
     return render_template("register.html")
 
+# Log Out button function
+
 
 @app.route("/logout")
 def logout():
@@ -87,11 +97,43 @@ def logout():
     session.pop("user")
     return redirect(url_for("login_page"))
 
+# Individual book details
+
 
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("book_page.html", book=book_data)
+
+
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+    if request.method == "POST":
+        # Check is ISBN or Name already exists in database
+        existing_isbn = mongo.db.books.find_one(
+            {"isbn": request.form.get("isbn").lower()}
+        )
+
+        if existing_isbn:
+            flash("Book Already Exists")
+            return redirect(url_for("add_book"))
+        else:
+            add_book = {
+                "book_name": request.form.get("book_name"),
+                "author": request.form.get("author"),
+                "publisher": request.form.get("publisher"),
+                "genre": request.form.get("genre"),
+                "pages": request.form.get("pages"),
+                "published_date": request.form.get("published_date"),
+                "synopsis": request.form.get("synopsis"),
+                "isbn": request.form.get("isbn"),
+                "reviews": [],
+            }
+            # Inserts book details into database
+            mongo.db.books.insert_one(add_book)
+            return redirect(url_for("get_books"))
+
+    return render_template(url_for("add_book.html"))
 
 
 if __name__ == "__main__":
