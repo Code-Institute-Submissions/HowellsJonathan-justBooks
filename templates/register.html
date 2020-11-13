@@ -6,6 +6,16 @@
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
         <div class="card-panel">
+            <!-- Flash Messages for wrong inputs or taken details -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row flashes">
+                            <h4 class="center-align">{{ message }}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}    
+            {% endwith %}
             <!-- Username -->
             <div class="row">
                 <div class="input-field col s12">
@@ -22,7 +32,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-lock prefix grey-text text-darken-3"></i>
                     <input id="password" name="password" type="password" minlength="8"
-                        maxlength="30" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}" class="validate">
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate">
                     <label for="password">Password</label>
                     <span class="helper-text" data-error="Must contain at least one number, one uppercase, 
                     lowercase letter and have at least 8 or more characters" data-success="Thanks!">
