@@ -24,6 +24,11 @@ def get_books():
     return render_template("all_books.html", books=books)
 
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -35,18 +40,19 @@ def register():
         if existing_user:
             flash("Username Taken")
             return redirect(url_for("register"))
-
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "bookmarked": [],
-            "my_reviews": [],
-            "my_books": [],
-        }
-        mongo.db.users.insert_one(register)
-
-        # Put the user into session variable to pull on other pages
-        session["user"] = request.form.get("username").lower()
+        elif (existing_user is None):
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password")),
+                "bookmarked": [],
+                "my_reviews": [],
+                "my_books": [],
+            }
+            # Inserts registration data to the database
+            mongo.db.users.insert_one(register)
+            # Put the user into session variable to pull on other pages
+            session["user"] = request.form.get("username").lower()
+            return redirect(url_for("get_books"))
 
     return render_template("register.html")
 
