@@ -24,6 +24,11 @@ def get_books():
     return render_template("all_books.html", books=books)
 
 
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
