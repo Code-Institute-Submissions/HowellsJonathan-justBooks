@@ -3,8 +3,44 @@
 
     <section class="container">
         <div class="row">
-            <div class="col s12">{{ book.book_name }}</div>
+            <div class="col s12 center-align">
+                <h4 class="grey-text text-darken-3">{{ book.book_name }}</h4>
+            </div>
         </div>
+        <div class="row">
+            <div class="col s12 m4 l2">
+              <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="/static/images/thewayofkings.jpg">
+                </div>
+                <div class="card-action">
+                  <a href="#">Add to Bookmarks</a>
+                  <a href="#">Leave a review</a>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m8 l6">
+                <div class="card-panel grey lighten-3">
+                    <h6>Synopsis</h6>
+                    <p class="">
+                        {{ book.synopsis }}
+                    </p>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card-panel grey lighten-3">
+                    <h6>Book Information</h6>
+                    <p class="">
+                        ISBN: <br>
+                        Publication Date: <br>
+                        Author(s): {{ book.author }} <br>
+                        Publisher: <br>
+                        Genres: {{ book.genre }} <br>
+                        Pages: {{ book.pages }} <br>
+                    </p>
+                </div>
+            </div>
+          </div>
     </section>
 
 {% endblock %}
