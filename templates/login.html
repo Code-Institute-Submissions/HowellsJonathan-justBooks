@@ -4,7 +4,7 @@
     <h4 class="center-align">Log In</h4>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
         <div class="card-panel">
             <!-- Flash Messages for wrong inputs or taken details -->
             {% with messages = get_flashed_messages() %}

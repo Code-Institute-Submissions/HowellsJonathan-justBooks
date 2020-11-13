@@ -64,7 +64,7 @@ def register():
         if existing_user:
             flash("Username Taken")
             return redirect(url_for("register"))
-        elif (existing_user is None):
+        else:
             register = {
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(request.form.get("password")),
