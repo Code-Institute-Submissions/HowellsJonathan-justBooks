@@ -45,12 +45,12 @@ def login():
             else:
                 # Flash is password is wrong
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("login_page"))
 
         else:
             # Username isn't in the database
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("login_page"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -79,6 +79,13 @@ def register():
             return redirect(url_for("get_books"))
 
     return render_template("register.html")
+
+
+@app.route("/logout")
+def logout():
+    # Remove the user from the session variable and cookies
+    session.pop("user")
+    return redirect(url_for("login_page"))
 
 
 @app.route("/get_book/<book_id>")
