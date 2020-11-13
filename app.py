@@ -24,6 +24,12 @@ def get_books():
     return render_template("all_books.html", books=books)
 
 
+@app.route("/get_book/<book_id>")
+def get_book(book_id):
+    book_data = books.find_one({"_id": ObjectId(book_id)})
+    return render_template("book_page.html", book=book_data)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
