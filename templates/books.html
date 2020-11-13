@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-        {% for book in books %} {{ book.book_name }}<br />
-            {{ book.author }}<br />
-            {{ book.genre }}<br />
-            {{ book.synopsis }}<br />
-            {{ book.pages }}<br />
-        {% endfor %}
+    <section class="container">
+        <div class="row">
+            {% for book in books %}
+            <div class="col s6 m3">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="/static/images/thewayofkings.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
+                        <span>Author: {{ book.author }}</span><br>
+                        <span>Genres: {{ book.genre }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock %}
