@@ -1,6 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h4>Login</h4>
+    <h4 class="center-align">Log In</h4>
+
+    <div class="row">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <div class="card-panel">
+            <!-- Flash Messages for wrong inputs or taken details -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row flashes">
+                            <h4 class="center-align">{{ message }}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}    
+            {% endwith %}
+            <!-- Username -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user prefix grey-text text-darken-3"></i>
+                    <input id="username" name="username" type="text" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"class="validate">
+                    <label for="username">Username</label>
+                </div>
+            <!-- Password -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-lock prefix grey-text text-darken-3"></i>
+                    <input id="password" name="password" type="password" minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- Register Button -->
+            <div class="row">
+                <button type="submit" class="col s12 m6 l4 offset-m3 offset-l4 btn-large blue darken-2">
+                    Log In <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
 
 {% endblock %}
