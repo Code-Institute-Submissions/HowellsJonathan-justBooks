@@ -26,7 +26,7 @@ def get_books():
 
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
-    book_data = books.find_one({"_id": ObjectId(book_id)})
+    book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("book_page.html", book=book_data)
 
 
