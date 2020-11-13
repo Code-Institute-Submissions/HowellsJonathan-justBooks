@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" class="css" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -13,7 +13,28 @@
 </head>
 <body>
 
-    <h1>BookDash</h1>
+    <header>
+        <!-- Main Navbar for Desktop -->
+        <nav>
+            <div class="nav-wrapper container">
+                <a href="{{ url_for('get_books') }}" class="brand-logo">BookDash</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_books') }}">Home</a></li>
+                    <li><a href="#">Manage Books</a></li>
+                    <li><a href="#">Manage Reviews</a></li>
+                    <li><a href="#">Log In / Register</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Navbar -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('get_books') }}">Home</a></li>
+            <li><a href="#">Manage Books</a></li>
+            <li><a href="#">Manage Reviews</a></li>
+            <li><a href="#">Log In / Register</a></li>
+        </ul>
+    </header>
 
     {% block content %}
     {% endblock %}
