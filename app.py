@@ -153,6 +153,7 @@ def add_review(book_id):
         {"$push": {"reviews": {
             "review": request.form.get("review"),
             "rating": request.form.get("rating"),
+            "user": session["user"],
         }}}
     )
 
