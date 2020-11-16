@@ -139,6 +139,13 @@ def add_book():
         return redirect(url_for("get_books"))
 
 
+@app.route("/add_review_page/<book_id>")
+def add_review_page(book_id):
+    book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("add_review.html", book=book_data)
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
