@@ -6,6 +6,7 @@
     <div class="row container">
         <form class="col s12">
             <div class="card-panel">
+                <!-- Upload image of book cover -->
                 <div class="row">
                     <div class="file-field input-field">
                         <div class="btn">
@@ -47,6 +48,7 @@
                         <label for="isbn">ISBN</label>
                     </div>
                 </div>
+                <!-- Datepicker  -->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="published_date" type="text" class="datepicker" required>
@@ -64,6 +66,16 @@
                         <textarea id="synopsis" type="text" class="materialize-textarea" required></textarea>
                         <label for="synopsis">Synopsis</label>
                     </div>
+                </div>
+                <div class="row">
+                    <!-- Submit button -->
+                    <button type="submit" class="col s12 m6 l4 btn-large blue darken-2">
+                        Submit
+                    </button>
+                    <!-- Cancel button -->
+                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large blue darken-2">
+                        Cancel
+                    </a>
                 </div>
             </div>
         </form>
