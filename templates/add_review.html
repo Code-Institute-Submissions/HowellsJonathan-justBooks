@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h4 class="grey-text text-darken-3 center-align">Leave a Review!</h4>
+
+    <div class="row container">
+        <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="review" name="review" type="text" class="materialize-textarea" required></textarea>
+                        <label for="review">Review</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Submit button -->
+                    <button type="submit" class="col s12 m6 l4 btn-large blue darken-2">
+                        Submit
+                    </button>
+                    <!-- Cancel button -->
+                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large blue darken-2">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
