@@ -156,7 +156,7 @@ def add_review(book_id):
         }}}
     )
 
-    return redirect(url_for("get_books"))
+    return redirect(url_for("get_book", book_id=book_id))
 
 
 if __name__ == "__main__":
