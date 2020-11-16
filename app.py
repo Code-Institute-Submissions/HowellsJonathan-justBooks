@@ -132,7 +132,7 @@ def add_book():
             "published_date": request.form.get("published_date"),
             "synopsis": request.form.get("synopsis"),
             "isbn": request.form.get("isbn"),
-            "review_id": [],
+            "reviews": [],
         }
         # Inserts book details into database
         mongo.db.books.insert_one(add_book)
