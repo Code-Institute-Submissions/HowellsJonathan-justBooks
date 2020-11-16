@@ -26,12 +26,14 @@
                         {{ book.synopsis }}
                     </p>
                 </div>
+                {% for user_reviews in book.reviews %}
                 <div class="card-panel grey lighten-3">
-                    <h6>Jon Howell's review on {{ book.book_name }}</h6>
+                    <h6>{{ user_reviews.user }}'s review on {{ book.book_name }}</h6>
                     <p>
-                        {{ book.reviews.0.review }}
+                        {{ user_reviews.review }}
                     </p>
                 </div>
+                {% endfor %}
             </div>
             <div class="col s12 l4">
                 <div class="card-panel grey lighten-3">
