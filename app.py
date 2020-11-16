@@ -114,6 +114,10 @@ def add_book_page():
 # Add book to database function using a form
 @app.route("/add_book", methods=["POST"])
 def add_book():
+
+    # Get current users username
+    user = mongo.db.users.find_one({"username": session["user"]})
+
     # Check is ISBN or Name already exists in database
     existing_isbn = mongo.db.books.find_one(
         {"isbn": request.form.get("isbn").lower()}
@@ -132,11 +136,30 @@ def add_book():
             "published_date": request.form.get("published_date"),
             "synopsis": request.form.get("synopsis"),
             "isbn": request.form.get("isbn"),
+            "user_id": ObjectId(user["_id"]),
             "reviews": [],
         }
+
         # Inserts book details into database
         mongo.db.books.insert_one(add_book)
-        return redirect(url_for("get_books"))
+
+        # Find the newest book this user has just added
+        new_book = mongo.db.books.find(
+            {"user_id": ObjectId(user["_id"])}).sort("_id", -1)
+
+        # Then store the ObjectId in a new variable to get
+        # around cursor objects not being able to be updated
+        new_book_id = ObjectId(new_book[0]["_id"])
+
+        # Push the new _id into the array my_books for session user
+        mongo.db.users.update_one(
+            {"username": user["username"]},
+            {"$push": {"my_books": {
+                "book_id": new_book_id,
+            }}}
+        )
+
+        return redirect(url_for("get_book", book_id=new_book_id))
 
 
 @app.route("/add_review_page/<book_id>")
