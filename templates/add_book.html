@@ -4,66 +4,54 @@
     <h4 class="grey-text text-darken-3 center-align">Add a Book</h4>
 
     <div class="row container">
-        <form class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
             <div class="card-panel">
-                <!-- Upload image of book cover -->
-                <div class="row">
-                    <div class="file-field input-field">
-                        <div class="btn">
-                            <span>File</span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload an image of the ">
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="book_name" type="text" required>
+                        <input id="book_name" name="book_name" type="text" required>
                         <label for="book_name">Book Title</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="author" type="text" required>
+                        <input id="author" name="author" type="text" required>
                         <label for="author">Author(s)</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="publisher" type="text" required>
+                        <input id="publisher" name="publisher" type="text" required>
                         <label for="publisher">Publisher</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="genre" type="text" required>
+                        <input id="genre" name="genre" type="text" required>
                         <label for="genre">Genre(s)</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="isbn" type="number" required>
+                        <input id="isbn" name="isbn" type="number" required>
                         <label for="isbn">ISBN</label>
                     </div>
                 </div>
                 <!-- Datepicker  -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="published_date" type="text" class="datepicker" required>
+                        <input id="published_date" name="published_date" type="text" class="datepicker" required>
                         <label for="published_date">Published Date</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="pages" type="number" required>
+                        <input id="pages" name="pages" type="number" required>
                         <label for="pages">Pages</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="synopsis" type="text" class="materialize-textarea" required></textarea>
+                        <textarea id="synopsis" name="synopsis" type="text" class="materialize-textarea" required></textarea>
                         <label for="synopsis">Synopsis</label>
                     </div>
                 </div>

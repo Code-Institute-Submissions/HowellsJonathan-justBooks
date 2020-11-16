@@ -97,43 +97,38 @@ def logout():
     session.pop("user")
     return redirect(url_for("login_page"))
 
+
 # Individual book details
-
-
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("book_page.html", book=book_data)
 
 
-@app.route("/add_book", methods=["GET", "POST"])
-def add_book():
-    if request.method == "POST":
-        # Check is ISBN or Name already exists in database
-        existing_isbn = mongo.db.books.find_one(
-            {"isbn": request.form.get("isbn").lower()}
-        )
-
-        if existing_isbn:
-            flash("Book Already Exists")
-            return redirect(url_for("add_book"))
-        else:
-            add_book = {
-                "book_name": request.form.get("book_name"),
-                "author": request.form.get("author"),
-                "publisher": request.form.get("publisher"),
-                "genre": request.form.get("genre"),
-                "pages": request.form.get("pages"),
-                "published_date": request.form.get("published_date"),
-                "synopsis": request.form.get("synopsis"),
-                "isbn": request.form.get("isbn"),
-                "reviews": [],
-            }
-            # Inserts book details into database
-            mongo.db.books.insert_one(add_book)
-            return redirect(url_for("get_books"))
-
+# Direct user to add_book.html page
+@app.route("/add_book_page")
+def add_book_page():
     return render_template("add_book.html")
+
+
+# Add book to database function using a form
+@app.route("/add_book", methods=["POST"])
+def add_book():
+
+    add_book = {
+        "book_name": request.form.get("book_name"),
+        "author": request.form.get("author"),
+        "publisher": request.form.get("publisher"),
+        "genre": request.form.get("genre"),
+        "pages": request.form.get("pages"),
+        "published_date": request.form.get("published_date"),
+        "synopsis": request.form.get("synopsis"),
+        "isbn": request.form.get("isbn"),
+        "reviews": [],
+    }
+    # Inserts book details into database
+    mongo.db.books.insert_one(add_book)
+    return redirect(url_for("get_books"))
 
 
 if __name__ == "__main__":
