@@ -68,7 +68,7 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
         )
-
+        # If username already exists alert user they need to pick a new one
         if existing_user:
             flash("Username Taken")
             return redirect(url_for("register"))
@@ -122,11 +122,12 @@ def add_book():
     existing_isbn = mongo.db.books.find_one(
         {"isbn": request.form.get("isbn").lower()}
     )
-
+    # If ISBN exists do not let user add the same book
     if existing_isbn:
         flash("Book Already Exists")
         return redirect(url_for("add_book"))
     else:
+        # Adding book to the database using requests from the form
         add_book = {
             "book_name": request.form.get("book_name"),
             "author": request.form.get("author"),
@@ -159,18 +160,22 @@ def add_book():
             }}}
         )
 
+        # Redirects the user to the book page of their newly added book
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
+# A single function to redirect user to add_review page when clicked on
+# corresponding button
 @app.route("/add_review_page/<book_id>")
 def add_review_page(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("add_review.html", book=book_data)
 
 
+# Functino to allow user to add a new review for the book they are looking at
 @app.route("/add_review/<book_id>", methods=["POST"])
 def add_review(book_id):
-
+    # $push is used to basically append a new object to the array
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$push": {"reviews": {
