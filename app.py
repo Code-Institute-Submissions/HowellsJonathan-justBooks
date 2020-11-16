@@ -145,6 +145,19 @@ def add_review_page(book_id):
     return render_template("add_review.html", book=book_data)
 
 
+@app.route("/add_review/<book_id>", methods=["POST"])
+def add_review(book_id):
+
+    mongo.db.books.update_one(
+        {"_id": ObjectId(book_id)},
+        {"$push": {"reviews": {
+            "review": request.form.get("review"),
+            "rating": request.form.get("rating"),
+        }}}
+    )
+
+    return redirect(url_for("get_books"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
