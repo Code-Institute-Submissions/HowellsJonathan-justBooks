@@ -114,21 +114,29 @@ def add_book_page():
 # Add book to database function using a form
 @app.route("/add_book", methods=["POST"])
 def add_book():
+    # Check is ISBN or Name already exists in database
+    existing_isbn = mongo.db.books.find_one(
+        {"isbn": request.form.get("isbn").lower()}
+    )
 
-    add_book = {
-        "book_name": request.form.get("book_name"),
-        "author": request.form.get("author"),
-        "publisher": request.form.get("publisher"),
-        "genre": request.form.get("genre"),
-        "pages": request.form.get("pages"),
-        "published_date": request.form.get("published_date"),
-        "synopsis": request.form.get("synopsis"),
-        "isbn": request.form.get("isbn"),
-        "reviews": [],
-    }
-    # Inserts book details into database
-    mongo.db.books.insert_one(add_book)
-    return redirect(url_for("get_books"))
+    if existing_isbn:
+        flash("Book Already Exists")
+        return redirect(url_for("add_book"))
+    else:
+        add_book = {
+            "book_name": request.form.get("book_name"),
+            "author": request.form.get("author"),
+            "publisher": request.form.get("publisher"),
+            "genre": request.form.get("genre"),
+            "pages": request.form.get("pages"),
+            "published_date": request.form.get("published_date"),
+            "synopsis": request.form.get("synopsis"),
+            "isbn": request.form.get("isbn"),
+            "reviews": [],
+        }
+        # Inserts book details into database
+        mongo.db.books.insert_one(add_book)
+        return redirect(url_for("get_books"))
 
 
 if __name__ == "__main__":
