@@ -164,6 +164,16 @@ def add_book():
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
+@app.route("/manage_books/<username>")
+def manage_books(username):
+    # Get current users username
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # Get added movies
+    added_movies = movies.find({"_id": {"$in": user["my_books"]}})
+
+    return render_template("manage_books.html", user=user, added_movies=added_movies)
+
+
 # A single function to redirect user to add_review page when clicked on
 # corresponding button
 @app.route("/add_review_page/<book_id>")
