@@ -213,20 +213,21 @@ def bookmarked(username):
 
 
 # Function to add a book to a users bookmarked page
-@app.route("/bookmark/<book_id>/<username>", methods=["GET", "POST"])
+@app.route("/bookmark/<book_id>/<username>", methods=["POST"])
 def bookmark(book_id, username):
 
     # Get current user
     user = mongo.db.users.find_one({"username": session["user"]})
 
-    if request.method == "POST":
-        # Append (push) the current books id to bookmarked array in db
-        mongo.db.users.update_one(
-            {"username": user["username"]},
-            {"$push": {"bookmarked": {
-                "book_id": ObjectId(book_id)
-            }}}
-        )
+    # Append (push) the current books id to bookmarked array in db
+    mongo.db.users.update_one(
+        {"username": user["username"]},
+        {"$push": {"bookmarked": {
+            "book_id": ObjectId(book_id)
+        }}}
+    )
+
+    return make_response("Bookmarked!")
 
 
 # A single function to redirect user to add_review page when clicked on
