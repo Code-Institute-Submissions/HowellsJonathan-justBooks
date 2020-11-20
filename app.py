@@ -180,7 +180,7 @@ def edit_book(book_id):
         mongo.db.books.update({"_id": ObjectId(book_id)}, edit)
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("edit_task.html", book=book)
+    return render_template("edit_book.html", book=book)
 
 
 @app.route("/manage_books/<username>")

@@ -5,7 +5,7 @@
 
     <!-- Check if user hasn't added any books to the db yet -->
     {% if added_books.count() == 0 %}
-    
+
     <div class="row container">
         <h3>Oops... Looks like you haven't added any books yet!</h3>
         <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
@@ -26,6 +26,9 @@
                         <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
                         <span>Author: {{ book.author }}</span><br>
                         <span>Genres: {{ book.genre }}</span>
+                    </div>
+                    <div>
+                        <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
                     </div>
                 </div>
             </div>
