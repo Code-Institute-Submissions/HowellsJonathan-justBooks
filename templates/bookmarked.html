@@ -4,7 +4,7 @@
     <h4 class="grey-text text-darken-3 center-align">Manage your books</h4>
 
     <!-- Check if user hasn't added any books to the db yet -->
-    {% if added_books.count() == 0 %}
+    {% if bookmarked.count() == 0 %}
 
     <div class="row container">
         <h3>Oops... Looks like you haven't added any books yet!</h3>
@@ -14,7 +14,7 @@
     {% else %}
 
         <div class="row container">
-            {% for book in added_books %}
+            {% for book in bookmarked %}
             <div class="col s6 m4 l3">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">

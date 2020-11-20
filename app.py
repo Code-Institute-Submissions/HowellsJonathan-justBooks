@@ -200,19 +200,24 @@ def manage_books(username):
     return render_template("manage_books.html", user=user, added_books=added_books)
 
 
-@app.route("/bookmarked/<book_id>/<username>")
-def bookmarked(book_id, username):
+@app.route("/bookmark/<book_id>/<username>", methods=["GET", "POST"])
+def bookmark(book_id, username):
 
     # Get current user
     user = mongo.db.users.find_one({"username": session["user"]})
 
-    # Append (push) the current books id to bookmarked array in db
-    mongo.db.users.update_one(
-        {"username": user["username"]},
-        {"$push": {"bookmarked": {
-            "book_id": ObjectId(book_id)
-        }}}
-    )
+    if request.method == "POST":
+        # Append (push) the current books id to bookmarked array in db
+        mongo.db.users.update_one(
+            {"username": user["username"]},
+            {"$push": {"bookmarked": {
+                "book_id": ObjectId(book_id)
+            }}}
+        )
+
+    bookmarked = mongo.db.books.find("_id": {"$in": user["bookmarked"]})
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("bookmarked.html", user=user, bookmarked=bookmarked, book=book)
 
 
 # A single function to redirect user to add_review page when clicked on
