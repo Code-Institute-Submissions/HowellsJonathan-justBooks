@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h4 class="grey-text text-darken-3 center-align">Edit {{ book.book_name }}</h4>
+
+    <div class="row container">
+        <form class="col s12" method="POST" action="{{ url_for('edit_book'), book_id=book._id }}">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="book_name" name="book_name" type="text" required>
+                        <label for="book_name">Book Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="author" name="author" type="text" required>
+                        <label for="author">Author(s)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="publisher" name="publisher" type="text" required>
+                        <label for="publisher">Publisher</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="genre" name="genre" type="text" required>
+                        <label for="genre">Genre(s)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="isbn" name="isbn" type="number" required>
+                        <label for="isbn">ISBN</label>
+                    </div>
+                </div>
+                <!-- Datepicker  -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="published_date" name="published_date" type="text" class="datepicker" required>
+                        <label for="published_date">Published Date</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="pages" name="pages" type="number" required>
+                        <label for="pages">Pages</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="synopsis" name="synopsis" type="text" class="materialize-textarea" required></textarea>
+                        <label for="synopsis">Synopsis</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Submit button -->
+                    <button type="submit" class="col s12 m6 l4 btn-large blue darken-2">
+                        Submit
+                    </button>
+                    <!-- Cancel button -->
+                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large blue darken-2">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
