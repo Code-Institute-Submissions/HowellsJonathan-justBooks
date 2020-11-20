@@ -167,9 +167,10 @@ def add_book():
 @app.route("/manage_books/<username>")
 def manage_books(username):
     # Get current users username
-    user = mongo.db.users.find_one({"username": session["user"]})
-    # Get added movies
-    added_books = mongo.db.books.find({"_id": {"$in": user["my_books"]}})
+    user = mongo.db.users.find_one({"username": username})
+    # Find all movies that are added by the user
+    added_books = mongo.db.books.find(
+        {"user_id": ObjectId(user["_id"])})
 
     return render_template("manage_books.html", user=user, added_books=added_books)
 
