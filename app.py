@@ -175,8 +175,7 @@ def edit_book(book_id):
             "pages": request.form.get("pages"),
             "published_date": request.form.get("published_date"),
             "synopsis": request.form.get("synopsis"),
-            "isbn": request.form.get("isbn"),
-            "user_id": ObjectId(user["_id"]),
+            "isbn": request.form.get("isbn")
         }
         mongo.db.books.update({"_id": ObjectId(book_id)}, edit)
 
