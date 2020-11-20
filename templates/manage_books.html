@@ -3,7 +3,30 @@
 
     <h4 class="grey-text text-darken-3 center-align">Manage your books</h4>
 
-    
+    <div class="row container">
+        <h3>Oops... Looks like you haven't added any books yet!</h3>
+        <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
+    </div>
 
+    <div class="row container">
+        {% for book in user.my_books %}
+
+        <div class="col s6 m4 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
+                        <img class="responsive-img" src="/static/images/thewayofkings.jpg">
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
+                    <span>Author: {{ book.author }}</span><br>
+                    <span>Genres: {{ book.genre }}</span>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
 
 {% endblock %}

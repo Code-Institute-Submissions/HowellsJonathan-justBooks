@@ -23,7 +23,7 @@
                     <li><a href="{{ url_for('get_books') }}">Home</a></li>
                     {% if session.user %}
                     <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
-                    <li><a href="#">Manage Books</a></li>
+                    <li><a href="{{ url_for('manage_books') }}">Manage Books</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                     <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
@@ -36,7 +36,7 @@
             <li><a href="{{ url_for('get_books') }}">Home</a></li>
             {% if session.user %}
             <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
-            <li><a href="#">Manage Reviews</a></li>
+            <li><a href="{{ url_for('manage_books') }}">Manage Reviews</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
             <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
