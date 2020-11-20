@@ -215,7 +215,7 @@ def bookmark(book_id, username):
             }}}
         )
 
-    bookmarked = mongo.db.books.find("_id": {"$in": user["bookmarked"]})
+    bookmarked = mongo.db.books.find({"_id": {"$in": user["bookmarked"]}})
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("bookmarked.html", user=user, bookmarked=bookmarked, book=book)
 
