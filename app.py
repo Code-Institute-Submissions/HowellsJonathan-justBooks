@@ -164,6 +164,26 @@ def add_book():
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
+@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
+def edit_book(book_id):
+    if request.method == "POST":
+        edit = {
+            "book_name": request.form.get("book_name"),
+            "author": request.form.get("author"),
+            "publisher": request.form.get("publisher"),
+            "genre": request.form.get("genre"),
+            "pages": request.form.get("pages"),
+            "published_date": request.form.get("published_date"),
+            "synopsis": request.form.get("synopsis"),
+            "isbn": request.form.get("isbn"),
+            "user_id": ObjectId(user["_id"]),
+        }
+        mongo.db.books.update({"_id": ObjectId(book_id)}, edit)
+
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_task.html", book=book)
+
+
 @app.route("/manage_books/<username>")
 def manage_books(username):
     # Get current users username
