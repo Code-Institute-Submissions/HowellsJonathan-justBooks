@@ -169,9 +169,9 @@ def manage_books(username):
     # Get current users username
     user = mongo.db.users.find_one({"username": session["user"]})
     # Get added movies
-    added_movies = movies.find({"_id": {"$in": user["my_books"]}})
+    added_books = books.find({"_id": {"$in": user["my_books"]}})
 
-    return render_template("manage_books.html", user=user, added_movies=added_movies)
+    return render_template("manage_books.html", user=user, added_books=added_books)
 
 
 # A single function to redirect user to add_review page when clicked on
