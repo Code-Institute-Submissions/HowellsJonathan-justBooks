@@ -178,6 +178,7 @@ def edit_book(book_id):
             "isbn": request.form.get("isbn")
         }
         mongo.db.books.update({"_id": ObjectId(book_id)}, edit)
+        return redirect(url_for("get_book", book_id=book_id))
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("edit_book.html", book=book)
