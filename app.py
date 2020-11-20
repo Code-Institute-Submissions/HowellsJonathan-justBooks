@@ -200,6 +200,20 @@ def manage_books(username):
     return render_template("manage_books.html", user=user, added_books=added_books)
 
 
+@app.route("/bookmarked/<username>")
+def bookmarked(username):
+
+    # Get current user
+    user = mongo.db.users.find_one({"username": session["user"]})
+
+    # bookmarked retrieves all of the books within the users bookmarked array
+    # using ObjectId as the parameter
+    bookmarked = mongo.db.books.find({"_id": {"$in": user["bookmarked"]}})
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("bookmarked.html", user=user, bookmarked=bookmarked, book=book)
+
+
+# Function to add a book to a users bookmarked page
 @app.route("/bookmark/<book_id>/<username>", methods=["GET", "POST"])
 def bookmark(book_id, username):
 
@@ -214,10 +228,6 @@ def bookmark(book_id, username):
                 "book_id": ObjectId(book_id)
             }}}
         )
-
-    bookmarked = mongo.db.books.find({"_id": {"$in": user["bookmarked"]}})
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("bookmarked.html", user=user, bookmarked=bookmarked, book=book)
 
 
 # A single function to redirect user to add_review page when clicked on

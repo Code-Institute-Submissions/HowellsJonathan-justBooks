@@ -24,7 +24,7 @@
                     {% if session.user %}
                     <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                     <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
-                    <li><a href="{{ url_for('bookmark', username=session['user'] )}}">Bookmarked</a></li>
+                    <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                     <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
@@ -38,7 +38,7 @@
             {% if session.user %}
             <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
             <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Reviews</a></li>
-            <li><a href="{{ url_for('bookmark', username=session['user'] )}}">Bookmarked</a></li>
+            <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
             <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
