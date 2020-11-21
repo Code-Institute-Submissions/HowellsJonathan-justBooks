@@ -215,16 +215,15 @@ def bookmark(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
-@ app.route("/bookmarked/<username>")
+@app.route("/bookmarked/<username>")
 def bookmarked(username):
 
     # Get current user
     user = mongo.db.users.find_one({"username": username})
 
-    # bookmarked retrieves all of the books within the users bookmarked array
-    # using ObjectId as the parameter
     bookmarked_books = mongo.db.books.find(
-        {"bookmarked_user_id": ObjectId(user["_id"])})
+        {"bookmarked_users": {"bookmarked_user_id": ObjectId(user["_id"])}}
+    )
     return render_template("bookmarked.html", user=user, bookmarked_books=bookmarked_books)
 
 
