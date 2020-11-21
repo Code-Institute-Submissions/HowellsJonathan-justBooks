@@ -208,8 +208,9 @@ def bookmarked(username):
 
     # bookmarked retrieves all of the books within the users bookmarked array
     # using ObjectId as the parameter
-    bookmarked_page = mongo.db.books.find({"_id": {"$in": user["bookmarked"]}})
-    return render_template("bookmarked.html", user=user, bookmarked=bookmarked_page)
+    bookmarked = mongo.db.books.find(
+        {"_id": {"$in": user["bookmarked"]}})
+    return render_template("bookmarked.html", user=user, bookmarked=bookmarked)
 
 
 # Function to add a book to a users bookmarked page

@@ -2,6 +2,16 @@
 
 Major problems and their solutions:
 
+Displaying Embedded ID's on the Bookmarked Page
+
+This issue was present when I couldn't get flask to display the mongodb data in a html page by searching for it on the db. I wanted to be able to "bookmark" a book and store the books ID in the users "bookmarked" array. To later then be called upon when the user traversed to the "bookmarked" html page.
+
+I managed to get the books ID to append to the users array just fine. But I then couldn't retrieve the books data from the db to be able to display all of its information in another function.
+
+I knew there was a work around where I could store the users ID in the books page and have flask traverse the books collection in the db to find every book that had the users ID listed. But this would've possibly caused massive loading times due to the function having to look through every book. Of which there can be endless amounts of.
+
+Editing Books without removing other document references
+
 One of the first big problems I hit was when I added the edit_task function in python.
 
 This function was updating the databases data from a user submitted form. Seems simple enough, apart from
