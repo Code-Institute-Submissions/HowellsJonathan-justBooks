@@ -14,7 +14,7 @@
                     <img class="responsive-img" src="/static/images/thewayofkings.jpg">
                 </div>
                 <div class="card-action">
-                  <a href="{{ url_for('bookmark', book_id=book._id, username=session['user']) }}">Add to Bookmarks</a>
+                  <a href="{{ url_for('bookmark', book_id=book._id) }}">Add to Bookmarks</a>
                   <a href="{{ url_for('add_review_page', book_id=book._id) }}">Leave a review</a>
                 </div>
               </div>

@@ -138,7 +138,8 @@ def add_book():
             "synopsis": request.form.get("synopsis"),
             "isbn": request.form.get("isbn"),
             "user_id": ObjectId(user["_id"]),
-            "reviews": [],
+            "bookmarked_users": [],
+            "reviews": []
         }
 
         # Inserts book details into database
@@ -200,7 +201,21 @@ def manage_books(username):
     return render_template("manage_books.html", user=user, added_books=added_books)
 
 
-@app.route("/bookmarked/<username>")
+@app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
+def bookmark(book_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+
+    mongo.db.books.update_one(
+        {"_id": ObjectId(book_id)},
+        {"$push": {"bookmarked_users": {
+            "bookmarked_user_id": ObjectId(user["_id"])
+        }}}
+    )
+
+    return redirect(url_for("get_book", book_id=book_id))
+
+
+@ app.route("/bookmarked/<username>")
 def bookmarked(username):
 
     # Get current user
@@ -208,39 +223,21 @@ def bookmarked(username):
 
     # bookmarked retrieves all of the books within the users bookmarked array
     # using ObjectId as the parameter
-    bookmarked = mongo.db.books.find(
-        {"_id": {"$in": user["bookmarked"]}})
-    return render_template("bookmarked.html", user=user, bookmarked=bookmarked)
-
-
-# Function to add a book to a users bookmarked page
-@app.route("/bookmark/<book_id>/<username>", methods=["GET", "POST"])
-def bookmark(book_id, username):
-
-    # Get current user
-    user = mongo.db.users.find_one({"username": session["user"]})
-
-    # Append (push) the current books id to bookmarked array in db
-    mongo.db.users.update_one(
-        {"username": user["username"]},
-        {"$push": {"bookmarked": {
-            "book_id": ObjectId(book_id)
-        }}}
-    )
-
-    return redirect(url_for("get_book", book_id=book_id))
+    bookmarked_books = mongo.db.books.find(
+        {"bookmarked_user_id": ObjectId(user["_id"])})
+    return render_template("bookmarked.html", user=user, bookmarked_books=bookmarked_books)
 
 
 # A single function to redirect user to add_review page when clicked on
 # corresponding button
-@app.route("/add_review_page/<book_id>")
+@ app.route("/add_review_page/<book_id>")
 def add_review_page(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("add_review.html", book=book_data)
 
 
 # Function to allow user to add a new review for the book they are looking at
-@app.route("/add_review/<book_id>", methods=["POST"])
+@ app.route("/add_review/<book_id>", methods=["POST"])
 def add_review(book_id):
     # $push is used to basically append a new object to the array
     mongo.db.books.update_one(
