@@ -10,7 +10,11 @@
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
-                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}">
+                            {% if book.cover_img_name == "" %}
+                            <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                            {% else %}
+                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            {% endif %}
                         </a>
                     </div>
                     <div class="card-content">
