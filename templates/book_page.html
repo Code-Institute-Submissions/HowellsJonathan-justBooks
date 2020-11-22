@@ -11,7 +11,11 @@
             <div class="col s12 m4 l2">
               <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="/static/images/thewayofkings.jpg">
+                    {% if book.cover_img_name == "" %}
+                    <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                    {% else %}
+                    <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                    {% endif %}
                 </div>
                 <div class="card-action">
                   <a href="{{ url_for('bookmark', book_id=book._id) }}">Add to Bookmarks</a>

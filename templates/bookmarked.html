@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h4 class="grey-text text-darken-3 center-align">Manage your books</h4>
+    <h4 class="grey-text text-darken-3 center-align">Bookmarked</h4>
 
     <!-- Check if user hasn't added any books to the db yet -->
     {% if bookmarked_books.count() == 0 %}
@@ -19,7 +19,11 @@
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
-                            <img class="responsive-img" src="/static/images/thewayofkings.jpg">
+                            {% if book.cover_img_name == "" %}
+                            <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                            {% else %}
+                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            {% endif %}
                         </a>
                     </div>
                     <div class="card-content">
