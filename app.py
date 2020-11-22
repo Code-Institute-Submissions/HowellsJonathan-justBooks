@@ -118,10 +118,15 @@ def add_book():
     # Get current users username
     user = mongo.db.users.find_one({"username": session["user"]})
 
+    if "cover_img" in request.files:
+        cover_img = request.files["cover_img"]
+        mongo.save_file(cover_img.filename, cover_img)
+
     # Check is ISBN or Name already exists in database
     existing_isbn = mongo.db.books.find_one(
         {"isbn": request.form.get("isbn").lower()}
     )
+
     # If ISBN exists do not let user add the same book
     if existing_isbn:
         flash("Book Already Exists")
@@ -129,6 +134,7 @@ def add_book():
     else:
         # Adding book to the database using requests from the form
         add_book = {
+            "cover_img_name": cover_img.filename,
             "book_name": request.form.get("book_name"),
             "author": request.form.get("author"),
             "publisher": request.form.get("publisher"),
