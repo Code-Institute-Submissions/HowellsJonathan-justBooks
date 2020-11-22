@@ -239,7 +239,7 @@ def add_review_page(book_id):
 @ app.route("/add_review/<book_id>", methods=["POST"])
 def add_review(book_id):
 
-    user = mongo.db.users.find_one({"username": username})
+    user = mongo.db.users.find_one({"username": session["user"]})
     # $push is used to basically append a new object to the array
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
