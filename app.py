@@ -153,14 +153,6 @@ def add_book():
         # around cursor objects not being able to be updated
         new_book_id = ObjectId(new_book[0]["_id"])
 
-        # Push the new _id into the array my_books for session user
-        mongo.db.users.update_one(
-            {"username": user["username"]},
-            {"$push": {"my_books": {
-                "book_id": new_book_id,
-            }}}
-        )
-
         # Redirects the user to the book page of their newly added book
         return redirect(url_for("get_book", book_id=new_book_id))
 
