@@ -189,6 +189,14 @@ def edit_book(book_id):
     return render_template("edit_book.html", book=book)
 
 
+@app.route("/delete_book/<book_id>", methods=["GET", "POST"])
+def delete_book(book_id):
+
+    mongo.db.books.remove({"_id": ObjectId(book_id)})
+
+    return redirect(url_for('manage_books', username=session['user']))
+
+
 # Function to display all books that a user has created
 @app.route("/manage_books/<username>")
 def manage_books(username):
