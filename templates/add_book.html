@@ -7,6 +7,17 @@
         <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
             <div class="card-panel">
                 <div class="row">
+                    <div class="file-field input-field col s12">
+                        <div class="btn">
+                            <span>File</span>
+                            <input id="cover_img" name="cover_img" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input id="cover_img" name="cover_img" class="file-path validate" type="text" placeholder="Upload the books cover image">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="book_name" name="book_name" type="text" class="validate" required>
                         <label for="book_name">Book Title</label>
