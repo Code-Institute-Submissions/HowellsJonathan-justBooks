@@ -163,6 +163,11 @@ def add_book():
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
+@app.route("/get_cover_img/<filename>")
+def get_cover_img(filename):
+    return mongo.send_file(filename)
+
+
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
 
