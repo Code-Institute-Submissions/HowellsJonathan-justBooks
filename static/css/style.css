@@ -53,8 +53,33 @@ nav .sidenav-trigger i {
     line-height: 40px;
 }
 
-.landing-bg {
-    background-image: url(../images/rowofbooks.png);
+.landing-banner {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.landing-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.landing-background img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
 }
 
 .landing-text {
