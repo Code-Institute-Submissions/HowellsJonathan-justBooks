@@ -155,6 +155,11 @@ label {
     font-size: .6rem;
 }
 
+.form-btn {
+    width: 70%;
+    margin-bottom: 1rem;
+}
+
 @media only screen and (min-width: 1024px) {
     .base-container {
         width: 80%
