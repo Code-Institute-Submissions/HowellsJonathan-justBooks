@@ -74,6 +74,7 @@ nav .sidenav-trigger i {
     position: absolute;
     top: 0;
     left: 0;
+    opacity: .4;
 }
 
 img {
@@ -82,11 +83,17 @@ img {
     display: inline-block;
 }
 
+.landing-inner {
+    position: relative;
+    z-index: 1;
+}
+
 .landing-text {
     font-size: 3.052rem;
     font-family: "Oswald", sans-serif;
-    padding: 0 .75rem;
+    padding: 2.8rem .75rem 1rem .75rem;
     line-height: 1.5em;
+    margin: 0;
 }
 
 .landing-btn {
