@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h4 class="grey-text text-darken-3 center-align">Add a Book</h4>
+    <h2 class="white-text center-align">Add a Book</h2>
 
-    <div class="row container">
+    <div class="row base-container">
         <form class="col s12" method="POST" action="{{ url_for('add_book') }}" enctype="multipart/form-data">
             <div class="card-panel">
                 <div class="row">
                     <div class="file-field input-field col s12">
-                        <div class="btn">
+                        <div class="btn-small btn-orange">
                             <span>File</span>
                             <input id="cover_img" name="cover_img" type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input id="cover_img" name="cover_img" class="file-path validate" type="text" placeholder="Upload the books cover image">
+                            <input id="cover_img" name="cover_img" class="file-path validate" type="text" placeholder="Cover Image">
                         </div>
                     </div>
                 </div>
@@ -68,11 +68,11 @@
                 </div>
                 <div class="row">
                     <!-- Submit button -->
-                    <button type="submit" class="col s12 m6 l4 btn-large blue darken-2">
+                    <button type="submit" class="col s12 m6 l4 btn-large btn-orange">
                         Submit
                     </button>
                     <!-- Cancel button -->
-                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large blue darken-2">
+                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large btn-orange">
                         Cancel
                     </a>
                 </div>

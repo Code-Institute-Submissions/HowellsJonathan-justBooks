@@ -17,6 +17,8 @@ main {
     flex: 1 0 auto;
 }
 
+/* Site wide navbar styling */
+
 .page-wrapper {
     overflow: hidden;
     background: #393C4F;
@@ -52,6 +54,8 @@ nav .sidenav-trigger i {
     height: 40px;
     line-height: 40px;
 }
+
+/* Landing page styling */
 
 .landing-banner {
     position: relative;
@@ -97,14 +101,24 @@ img {
 }
 
 .landing-btn {
-    font-family: "Oswald", sans-serif;
-    background-color: #F18F01;
     margin: 0 .75rem 3rem .75rem;
 }
+
+/* Site wide orange button */
+
+.btn-orange {
+    font-family: "Oswald", sans-serif;
+    background-color: #F18F01;
+    letter-spacing: .15em;
+}
+
+/* Site wide heading styling */
 
 h2 {
     font-size: 1.25rem;
 }
+
+/* Site wide card styling */
 
 .card {
     height: 330px;
@@ -123,8 +137,30 @@ h2 {
     padding: .8rem;
 }
 
+/* Add_book form styling */
+
+.card-panel {
+    padding: 12px;
+}
+
+.input-field {
+    margin: 0;
+}
+
+.input-field>label {
+    font-size: .8rem;
+}
+
+label {
+    font-size: .6rem;
+}
+
 @media only screen and (min-width: 1024px) {
     .base-container {
         width: 80%
+    }
+
+    .input-field {
+        margin: 1rem 0 1rem 0;
     }
 }
