@@ -31,7 +31,7 @@ nav {
 }
 
 nav .brand-logo {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .page-footer {
@@ -43,9 +43,35 @@ nav .brand-logo {
     width: 95%;
 }
 
+nav .sidenav-trigger {
+    margin: 0 auto;
+    padding: 0 .75rem;
+}
+
 nav .sidenav-trigger i {
     height: 40px;
     line-height: 40px;
+}
+
+.landing-bg {
+    background-image: url(../images/rowofbooks.png);
+}
+
+.landing-text {
+    font-size: 3.052rem;
+    font-family: "Oswald", sans-serif;
+    padding: 0 .75rem;
+    line-height: 1.5em;
+}
+
+.landing-btn {
+    font-family: "Oswald", sans-serif;
+    background-color: #F18F01;
+    margin: 0 .75rem 3rem .75rem;
+}
+
+h2 {
+    font-size: 1.25rem;
 }
 
 .card {
