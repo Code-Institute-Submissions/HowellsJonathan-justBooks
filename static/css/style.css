@@ -10,10 +10,12 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0px;
+    background: #F5F5F5;
 }
 
+/* Min-height allows the footer to be sticky at the bottom */
 main {
-    min-height: 88vh;
+    min-height: 88.75vh;
     flex: 1 0 auto;
 }
 
@@ -21,12 +23,10 @@ main {
 
 .page-wrapper {
     overflow: hidden;
-    background: #393C4F;
 }
 
 nav {
     background-color: transparent;
-    border-bottom: 1px solid #F18F01;
     box-shadow: none;
     height: 40px;
     line-height: 40px;
@@ -58,7 +58,6 @@ nav .sidenav-trigger i {
 /* Landing page styling */
 
 .landing-banner {
-    position: relative;
     background-position: center;
     background-size: cover;
 }
@@ -69,6 +68,7 @@ nav .sidenav-trigger i {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
 .landing-background img {
@@ -78,7 +78,6 @@ nav .sidenav-trigger i {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .4;
 }
 
 img {
@@ -121,20 +120,16 @@ h2 {
 /* Site wide card styling */
 
 .card {
-    height: 330px;
+    height: 22vh;
 }
 
-.card .card-image {
-    max-height: 240px;
+.card.horizontal .card-image img {
+    height: 100%;
+    max-width: 100%;
 }
 
-.card .card-title {
-    font-size: 1rem;
-    font-family: "Oswald", sans-serif;
-}
-
-.card .card-content {
-    padding: .8rem;
+.card.horizontal .card-image {
+    max-width: 30%;
 }
 
 /* Add_book form styling */
