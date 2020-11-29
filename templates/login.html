@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h4 class="center-align">Log In</h4>
+    <h2 class="center-align">Log In</h2>
 
+    <section class="landing-banner">
+        <div class="landing-background">
+            <img src="../static/images/other_bg.svg" alt="A purple wavey background">
+        </div>
+    </section>
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel">
@@ -17,14 +22,15 @@
                     {% endif %}    
                 {% endwith %}
                 <!-- Username -->
-                <div class="row form-margin">
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="username" name="username" type="text" minlength="5"
                             maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"class="validate">
                         <label for="username">Username</label>
                     </div>
+                </div>
                 <!-- Password -->
-                <div class="row form-margin">
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="password" name="password" type="password" minlength="8"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate">
