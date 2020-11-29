@@ -24,7 +24,11 @@
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
-                                <span class="card-title grey-text text-darken-4">{{ book.book_name }}</span>
+                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                                <p class="card-text">
+                                    Author: {{ book.author }} <br>
+                                    Published: {{ book.published_date }}    
+                                </p>
                             </div>
                         </div>
                     </div>
