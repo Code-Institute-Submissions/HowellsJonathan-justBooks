@@ -1,45 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h4 class="grey-text text-darken-3 center-align">Manage your books</h4>
+    <section class="landing-banner">
+        <div class="landing-background">
+            <img src="../static/images/managebg.svg" alt="A purple wavey background">
+        </div>
+        
+        <div class="base-container landing-inner">
 
-    <!-- Check if user hasn't added any books to the db yet -->
-    {% if added_books.count() == 0 %}
+            <h2 class="white-text center-align">Manage your books</h2>
 
-    <div class="row container">
-        <h3>Oops... Looks like you haven't added any books yet!</h3>
-        <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
-    </div>
+            <!-- Check if user hasn't added any books to the db yet -->
+            {% if added_books.count() == 0 %}
 
-    {% else %}
+            <div class="row">
+                <h3>Oops... Looks like you haven't added any books yet!</h3>
+                <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
+            </div>
 
-        <div class="row container">
-            {% for book in added_books %}
-            <div class="col s6 m4 l3">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
-                            {% if book.cover_img_name == "" %}
-                            <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
-                            {% else %}
-                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
-                        <span>Author: {{ book.author }}</span><br>
-                        <span>Genres: {{ book.genre }}</span>
-                    </div>
-                    <div>
-                        <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
-                        <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+            {% else %}
+
+            <div class="row">
+                {% for book in added_books %}
+                <div class="col s6 m4 l3">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
+                                {% if book.cover_img_name == "" %}
+                                <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                {% else %}
+                                <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
+                            <span>Author: {{ book.author }}</span><br>
+                            <span>Genres: {{ book.genre }}</span>
+                        </div>
+                        <div>
+                            <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
+                            <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
 
-    {% endif %}
+            {% endif %}
+        </div>
+    </section>
 
 {% endblock %}
