@@ -22,8 +22,8 @@
 
             <div class="row">
                 {% for book in added_books %}
-                <div class="col s6 m4 l3">
-                    <div class="card">
+                <div class="col s12 m4 l3">
+                    <div class="card horizontal">
                         <div class="card-image waves-effect waves-block waves-light">
                             <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
                                 {% if book.cover_img_name == "" %}
@@ -33,14 +33,14 @@
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="card-content">
-                            <span class="card-title grey-text text-darken-4">{{ book.book_name }}</i></span>
-                            <span>Author: {{ book.author }}</span><br>
-                            <span>Genres: {{ book.genre }}</span>
-                        </div>
-                        <div>
-                            <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
-                            <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                            </div>
+                            <div class="card-buttons">
+                                <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
+                                <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+                            </div>
                         </div>
                     </div>
                 </div>
