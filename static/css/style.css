@@ -5,6 +5,7 @@ html {
     font-family: "Roboto Slab", sans-serif;
     font-weight: 500;
     font-size: 16px;
+    color: #56587F;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0px;
-    background: #F5F5F5;
+    background: #FCF7F4;
 }
 
 /* Min-height allows the footer to be sticky at the bottom */
@@ -126,7 +127,11 @@ img {
     background-color: #F6AFA7;
     border: 1px solid white;
     padding: .5em 4em;
-    margin: 0 12px;
+    margin-left: 12px;
+}
+
+#all-books {
+    margin-top: 4em;
 }
 
 /* Site wide orange button */
@@ -145,16 +150,23 @@ h2 {
 /* Site wide card styling */
 
 .card, .card-panel {
-    box-shadow: 2px 2px 6px #727272;
+    box-shadow: none;
 }
 
 .card {
     height: 22vh;
 }
 
+.card.horizontal {
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .05);
+}
+
 .card.horizontal .card-image img {
     height: 100%;
     max-width: 100%;
+    border-radius: 10px;
+    padding: .3em;
 }
 
 .card.horizontal .card-image {
@@ -169,7 +181,7 @@ h2 {
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
-    color: black;
+    color: #56587F;
 }
 
 .card-text {

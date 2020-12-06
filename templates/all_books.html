@@ -16,41 +16,38 @@
             </p>
             <a href="#" id="landing-btn">Browse</a>
         </div>
+    </section>
 
+    <div class="base-container landing-inner">
 
-        
+        <h2 id="all-books" class="white-text center-align">All Books</h2>
 
-        <div class="base-container landing-inner">
-
-            <h2 id="all-books" class="white-text center-align">All Books</h2>
-
-            <div class="row">
-                {% for book in books %}
-                <div class="col s12 m4 l4">
-                    <div class="card horizontal">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
-                                {% if book.cover_img_name == "" %}
-                                <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
-                                {% else %}
-                                <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                                {% endif %}
-                            </a>
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
-                                <p class="card-text">
-                                    Author: {{ book.author }} <br>
-                                    Published: {{ book.published_date }}    
-                                </p>
-                            </div>
+        <div class="row">
+            {% for book in books %}
+            <div class="col s12 m4 l4">
+                <div class="card horizontal">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
+                            {% if book.cover_img_name == "" %}
+                            <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                            {% else %}
+                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                            <p class="card-text">
+                                Author: {{ book.author }} <br>
+                                Published: {{ book.published_date }}    
+                            </p>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
 
 {% endblock %}
