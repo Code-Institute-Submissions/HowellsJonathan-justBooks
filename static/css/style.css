@@ -59,10 +59,17 @@ nav .sidenav-trigger i {
 
 /* Landing page styling */
 
+#mobile-bg {
+    visibility: visible;
+}
+
+#desktop-bg {
+    visibility: hidden;
+}
+
 .landing-banner {
     background-position: center;
     background-size: cover;
-    background-repeat: repeat-y;
 }
 
 .landing-background {
@@ -72,7 +79,6 @@ nav .sidenav-trigger i {
     top: 0;
     left: 0;
     z-index: -1;
-    background-repeat: repeat-y;
 }
 
 .landing-background img {
@@ -90,21 +96,37 @@ img {
     display: inline-block;
 }
 
+#landing-header {
+    font-size: 2em;
+    line-height: 1.4em;
+    margin: 3em 0 1.2em 0;
+}
+
+#landing-paragraph {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-bottom: 3em;
+    line-height: 1.6em;
+    max-width: 80%;
+}
+
 .landing-inner {
     position: relative;
     z-index: 1;
 }
 
 .landing-text {
-    font-size: 3.052rem;
-    font-family: "Roboto", sans-serif;
-    padding: 2.8rem .75rem 1rem .75rem;
-    line-height: 1.5em;
-    margin: 0;
+    padding: 0 12px;
 }
 
-.landing-btn {
-    margin: 0 .75rem 3rem .75rem;
+#landing-btn {
+    color: white;
+    font-size: .8em;
+    border-radius: 10px;
+    background-color: #F6AFA7;
+    border: 1px solid white;
+    padding: .5em 4em;
+    margin: 0 12px;
 }
 
 /* Site wide orange button */
@@ -190,6 +212,14 @@ label {
 @media only screen and (min-width: 1024px) {
     .base-container {
         width: 80%
+    }
+
+    #mobile-bg {
+        visibility: hidden;
+    }
+
+    #desktop-bg {
+        visibility: visible;
     }
 
     .input-field {
