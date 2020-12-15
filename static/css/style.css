@@ -221,6 +221,13 @@ label {
     margin: 0 5px 5px 0;
 }
 
+/* Add / Update book styling */
+
+input, select {
+    font-family: "Roboto", sans-serif;
+}
+
+
 @media only screen and (min-width: 1024px) {
     .base-container {
         width: 80%
