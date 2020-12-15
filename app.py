@@ -122,9 +122,15 @@ def add_book():
     # Get current users username
     user = mongo.db.users.find_one({"username": session["user"]})
 
+    # Saves image file to mongo db
     if "cover_img" in request.files:
         cover_img = request.files["cover_img"]
         mongo.save_file(cover_img.filename, cover_img)
+
+    # Append genres selected to genre list for book
+    genre_list = []
+    for genre in request.form.getlist("genre"):
+        genre_list.append(ObjectId(genre))
 
     # Check is ISBN or Name already exists in database
     existing_isbn = mongo.db.books.find_one(
@@ -142,7 +148,7 @@ def add_book():
             "book_name": request.form.get("book_name"),
             "author": request.form.get("author"),
             "publisher": request.form.get("publisher"),
-            "genre": request.form.get("genre"),
+            "genre": genre_list,
             "pages": request.form.get("pages"),
             "published_date": request.form.get("published_date"),
             "synopsis": request.form.get("synopsis"),
