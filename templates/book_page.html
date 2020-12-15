@@ -47,7 +47,13 @@
                         Publication Date: {{ book.published_date }}<br>
                         Author(s): {{ book.author }} <br>
                         Publisher: {{ book.publisher }}<br>
-                        Genres: {{ book.genre }} <br>
+                        Genres: 
+                        {% for genre in genres %}
+                            {% if genre._id in book.genre %}
+                                {{ genre.name }},
+                            {% endif %}
+                        {% endfor %}
+                        <br>
                         Pages: {{ book.pages }} <br>
                     </p>
                 </div>
