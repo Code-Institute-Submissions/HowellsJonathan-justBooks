@@ -111,7 +111,7 @@ def get_book(book_id):
 @app.route("/add_book_page")
 def add_book_page():
     # Get genres from db
-    genres = mongo.db.genres.find()
+    genres = mongo.db.genres.find().sort("name")
     return render_template("add_book.html", genres=genres)
 
 
