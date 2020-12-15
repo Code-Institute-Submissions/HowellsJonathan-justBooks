@@ -37,8 +37,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="genre" name="genre" type="text" class="validate" required>
-                        <label for="genre">Genre(s)</label>
+                        <select multiple>
+                            <option value="" disabled selected>Pick the books Genres</option>
+                            {% for genre in genres %}
+                            <option value="{{ genre._id }}">{{ genre.name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
                 <div class="row">
