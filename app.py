@@ -24,7 +24,7 @@ genres = mongo.db.genres
 @app.route("/")
 @app.route("/get_books")
 def get_books():
-    books = list(mongo.db.books.find())
+    books = list(mongo.db.books.find().limit(12))
     return render_template("all_books.html", books=books)
 
 # Direct user to login page on function
