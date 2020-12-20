@@ -1,8 +1,8 @@
 <!-- @format -->
 
-Major problems and their solutions:
+# Major problems and their solutions:
 
-Displaying Embedded ID's on the Bookmarked Page
+## Displaying Embedded ID's on the Bookmarked Page
 
 This issue was present when I couldn't get flask to display the mongodb data in a html page by searching for it on the db. I wanted to be able to "bookmark" a book and store the books ID in the users "bookmarked" array. To later then be called upon when the user traversed to the "bookmarked" html page.
 
@@ -49,7 +49,13 @@ I selected particular variables within the db (the ones I wanted to iterate over
 This method / code in my opinion is also much cleaner and more consice than creating a variable "edit" and then updating the whole document
 with that single variables form inputted data.
 
-Help:
+## Limiting results from mongodb:
+
+I wanted to limit the amount of documents called from mongodb when displaying them in carousels on mobile view. I didn't want to display possibly hundred of books that no one would ever scroll through. I attempted to use the .limit() variable but to no avail...
+
+This causes a large oversight in bad UX design and could cause unnececary loading times due to the program having to load every single book over and over again...
+
+# Help:
 
 https://www.youtube.com/watch?v=KA9RrZEmUNg <br>
 https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s <br>
@@ -57,6 +63,6 @@ https://www.youtube.com/watch?v=9JZJsChpwKs <br>
 https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s <br>
 https://www.youtube.com/watch?v=t_9fgpsO_vM <br>
 
-Code Help:
+# Code Help:
 
 https://stackoverflow.com/questions/4421207/how-to-get-the-last-n-records-in-mongodb
