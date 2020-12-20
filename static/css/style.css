@@ -16,6 +16,10 @@ body {
     background: #FCF7F4;
 }
 
+.desktop {
+    display: none;
+}
+
 /* Min-height allows the footer to be sticky at the bottom */
 main {
     min-height: 88.75vh;

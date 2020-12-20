@@ -22,7 +22,7 @@
 
         <h2 id="all-books" class="white-text center-align">All Books</h2>
 
-        <div class="carousel">
+        <div class="carousel carousel-slider">
             {% for book in books %}
                 <a class="carousel-item" href="#"><img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}"></a>    
             {% endfor %}
