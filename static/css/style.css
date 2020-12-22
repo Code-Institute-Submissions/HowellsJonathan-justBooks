@@ -5,7 +5,7 @@ html {
     font-family: "Roboto Slab", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: #56587F;
+    color: #000000;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0px;
-    background: #FCF7F4;
+    background: #f7f7f7f7;
 }
 
 .desktop {
@@ -49,12 +49,11 @@ nav .brand-logo {
 
 .base-container {
     margin: 0 auto;
-    width: 95%;
+    width: 90%;
 }
 
 nav .sidenav-trigger {
     margin: 0 auto;
-    padding: 0 .75rem;
 }
 
 nav .sidenav-trigger i {
@@ -95,6 +94,34 @@ nav .sidenav-trigger i {
     left: 0;
 }
 
+.carousel {
+    height: 500px;
+}
+
+.carousel.carousel-slider .carousel-item {
+    background-color: #ffffff;
+}
+
+.carousel .carousel-item {
+    background-color: #ffffff;
+}
+
+.carousel .carousel-item img {
+    width: auto;
+    height: 350px;
+    display: block;
+    margin: 35px auto 20px auto;
+}
+
+.carousel .carousel-item p {
+    color: #000000;
+    margin-left: 1em;
+}
+
+.carousel .carousel-item p:nth-child(3) {
+    font-size: .8em;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -118,10 +145,6 @@ img {
 .landing-inner {
     position: relative;
     z-index: 1;
-}
-
-.landing-text {
-    padding: 0 12px;
 }
 
 #landing-btn {

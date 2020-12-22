@@ -25,7 +25,11 @@ genres = mongo.db.genres
 @app.route("/get_books")
 def get_books():
     books = list(mongo.db.books.find().limit(12))
-    return render_template("all_books.html", books=books)
+    crime = mongo.db.genres.find_one({"name": "Crime"})
+    crimebooks = list(mongo.db.books.find(
+        {"genres": ObjectId(crime["_id"])}
+    ))
+    return render_template("all_books.html", books=books, crimebooks=crimebooks)
 
 # Direct user to login page on function
 
