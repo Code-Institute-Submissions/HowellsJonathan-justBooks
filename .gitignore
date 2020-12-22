@@ -1,3 +1,6 @@
 env/
 __pycache__/
 env.py
+node_modules
+package-lock.json
+.vscode
