@@ -18,7 +18,7 @@
         </div>
     </section>
 
-    <div class="base-container landing-inner mobile">
+    <div class="base-container landing-inner desktop">
 
         <h2 id="all-books" class="">Newest Books</h2>
 
@@ -40,6 +40,23 @@
                     <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
                 </a>
             {% endfor %}
+        </div>
+    </div>
+
+    <div class="base-container landing-inner mobile">
+        
+        <h2 id="all-books" class="">Newest Books</h2>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for book in books %}
+                    <div class="swiper-slide">
+                        <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                        <p class="card-title">{{ book.book_name }}</p>
+                        <p class="card-text">{{ book.author }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
