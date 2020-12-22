@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
 
-
 html {
     font-family: "Roboto Slab", sans-serif;
     font-weight: 500;
@@ -159,6 +158,19 @@ img {
 
 #all-books {
     margin-top: 4em;
+}
+
+/* Swiper carousel styling */
+
+.swiper-container {
+    width: 100%;
+}
+
+.swiper-slide img {
+    width: auto;
+    height: 350px;
+    display: block;
+    margin: 35px auto 20px auto;
 }
 
 /* Site wide orange button */

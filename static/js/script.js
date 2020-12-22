@@ -10,11 +10,9 @@ $(document).ready(function(){
     fullWidth: true
   });
 
-import Swiper from "swiper";
-import Swiper from "swiper/bundle";
-import "swiper/swiper-bundle.css";
 
 var swiper = new Swiper(".swiper-container", {
+  direction: "horizontal",
   loop: true,
 
   // Adds arrows for the user to scroll through if they don't want to swipe
@@ -32,4 +30,18 @@ var swiper = new Swiper(".swiper-container", {
   preloadImages: false,
 
   lazy: true,
+
+  slidesPerView: 1,
+  spaceBetween: 10,
+
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  },
 });

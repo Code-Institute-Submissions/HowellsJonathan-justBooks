@@ -43,23 +43,20 @@
         </div>
     </div>
 
-    <div class="base-container landing-inner mobile">
-        
-        <h2 id="all-books" class="">Newest Books</h2>
-
-        <div class="swiper-container swiper-container-horizontal">
-            <div class="swiper-wrapper">
-                {% for book in books %}
-                    <div class="swiper-slide">
-                        <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                        <p class="card-title">{{ book.book_name }}</p>
-                        <p class="card-text">{{ book.author }}</p>
-                    </div>
-                {% endfor %}
-            </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for book in books %}
+                <div class="swiper-slide">
+                    <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                    <p class="card-title">{{ book.book_name }}</p>
+                    <p class="card-text">{{ book.author }}</p>
+                </div>
+            {% endfor %}
         </div>
+        
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-
 
     <div class="base-container landing-inner desktop">
 

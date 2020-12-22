@@ -7,9 +7,9 @@
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="https://use.typekit.net/agh5rnj.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" class="css" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" class="css" type="text/css">
     {% block styles %}
     {% endblock %}
     <title>JustBooks</title>
@@ -53,8 +53,6 @@
         <main>
             {% block content %}
             {% endblock %}
-        
-            
         </main>
 
         <footer class="page-footer">
@@ -72,6 +70,42 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            direction: "horizontal",
+            loop: true,
+
+            // Adds arrows for the user to scroll through if they don't want to swipe
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            // Autoplay the carousel / swiper 
+            autoplay: {
+                delay: 5000,
+            },
+
+            // Disable preloading of all images to speed up load times
+            preloadImages: false,
+
+            lazy: true,
+
+            slidesPerView: 1,
+            spaceBetween: 10,
+
+            breakpoints: {
+                640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                },
+                1024: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+                },
+            },
+        });
+    </script>
     {% block scripts %}
     {% endblock %}
 </body>
