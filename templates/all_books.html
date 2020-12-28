@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="landing-banner">
+    <section class="landing-banner desktop">
         <div class="landing-background">
             <img id="mobile-bg" src="../static/images/mobile_bg.png" alt="An abstract painted background">
             <img id="desktop-bg" src="../static/images/desktop_bg.png" alt="An abstract painted background">
@@ -18,21 +18,100 @@
         </div>
     </section>
 
-    <div class="base-container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                {% for book in books %}
-                    <div class="swiper-slide">
-                        <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                        <p class="card-title center-align">{{ book.book_name }}</p>
-                        <p class="card-text center-align">{{ book.author }}</p>
-                    </div>
-                {% endfor %}
+    <section class="base-container">
+        <div class="row">
+            <div class="col s12 m4">
+                <div id="action-card-1">
+                    All Books
+                </div>
             </div>
-            
-            <div class="swiper-button-prev swiper-button-black"></div>
-            <div class="swiper-button-next swiper-button-black"></div>
+            <div class="col s12 m4">
+                <div id="action-card-2">
+                    Add a book
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div id="action-card-3">
+                    Genres
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="base-container">
+        <div class="row">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for book in books %}
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            <p class="card-title center-align">{{ book.book_name }}</p>
+                            <p class="card-text center-align">{{ book.author }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="swiper-button-prev swiper-button-black"></div>
+                <div class="swiper-button-next swiper-button-black"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="base-container">
+        <h2>Most Popular</h2>
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/childrens-card.jpg" alt="Children's Books Image">
+                    <h3>Children's Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/biography-card.jpg" alt="Biography Books Image">
+                    <h3>Biography Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/fantasy-card.jpg" alt="Fantasy Books Image">
+                    <h3>Fantasy Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/business-card.jpg" alt="Business Books Image">
+                    <h3>Business/Economics Books</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/cooking-card.jpg" alt="Cooking Books Image">
+                    <h3>Cooking Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/drama-card.jpg" alt="Drama Books Image">
+                    <h3>Drama Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/crime-card.jpg" alt="Crime Books Image">
+                    <h3>Crime Books</h3>
+                </div>
+            </div>
+            <div class="col s12 m4 l3">
+                <div id="childrens-card">
+                    <img src="../static/images/thriller-card.jpg" alt="Thriller Books Image">
+                    <h3>Thriller Books</h3>
+                </div>
+            </div>
+        </div>
+        
+    </section>
 
 {% endblock %}
