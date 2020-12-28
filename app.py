@@ -216,14 +216,22 @@ def delete_book(book_id):
 
 # Function to display all books that a user has created
 @app.route("/manage_books/<username>")
-def manage_books(username):
+@app.route("/manage_books/<username>/page=<page_num>")
+def manage_books(username, page_num=1):
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
     # Find all movies that are added by the user
     added_books = mongo.db.books.find(
-        {"user_id": ObjectId(user["_id"])})
+        {"user_id": ObjectId(user["_id"])}).sort("name")
 
-    return render_template("manage_books.html", user=user, added_books=added_books)
+    pages = int(added_books.count()/12)+1
+
+    index_start = (int(page_num) - 1) * 12
+    index_end = int(page_num) * 12
+
+    return render_template("manage_books.html", user=user,
+                           added_books=added_books[index_start:index_end],
+                           pages=pages, current_page=int(page_num))
 
 
 @app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
