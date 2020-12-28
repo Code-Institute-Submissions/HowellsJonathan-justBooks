@@ -1,13 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="landing-banner">
-        <div class="landing-background">
-            <img src="../static/images/managebg.svg" alt="A purple wavey background">
-        </div>
-        
-        <div class="base-container landing-inner">
-
+    <section class="base-container">
             <h2 class="white-text center-align">Manage your books</h2>
 
             <!-- Check if user hasn't added any books to the db yet -->
@@ -48,7 +42,6 @@
             </div>
 
             {% endif %}
-        </div>
     </section>
 
 {% endblock %}

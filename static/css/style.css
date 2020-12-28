@@ -144,8 +144,13 @@ img {
 
 /* Site wide orange button */
 
-.btn-orange {
-    background-color: #F18F01;
+.btn-custom {
+    background-color: #0FA9A5;
+    letter-spacing: .15em;
+}
+
+.btn-custom-alt {
+    background-color: #ca6356;
     letter-spacing: .15em;
 }
 
