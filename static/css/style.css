@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0px;
-    background: #dddddd;
+    background: #efefef;
 }
 
 .desktop {
@@ -103,6 +103,23 @@ img {
 
 .row .no-padding {
     padding: 0;
+}
+
+.genre-card {
+    background-color: #fff;
+    margin-bottom: 2em;
+    padding-bottom: .5em;
+    text-align: center;
+}
+
+.genre-card img {
+    height: 200px;
+    width: 100%;
+}
+
+.genre-card h3 {
+    font-size: 1em;
+    margin: 5px 0;
 }
 
 /* Swiper carousel styling */
