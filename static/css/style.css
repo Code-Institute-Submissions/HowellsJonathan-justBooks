@@ -60,6 +60,14 @@ nav .sidenav-trigger i {
     line-height: 40px;
 }
 
+nav .brand-logo {
+    color: #000000;
+}
+
+nav a {
+    color: #000000;
+}
+
 /* Landing page styling */
 
 #mobile-bg {
