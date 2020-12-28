@@ -1,8 +1,8 @@
 <!-- @format -->
 
-# Major problems and their solutions:
+## Major problems and their solutions:
 
-## Displaying Embedded ID's on the Bookmarked Page
+### Displaying Embedded ID's on the Bookmarked Page
 
 This issue was present when I couldn't get flask to display the mongodb data in a html page by searching for it on the db. I wanted to be able to "bookmark" a book and store the books ID in the users "bookmarked" array. To later then be called upon when the user traversed to the "bookmarked" html page.
 
@@ -49,7 +49,7 @@ I selected particular variables within the db (the ones I wanted to iterate over
 This method / code in my opinion is also much cleaner and more consice than creating a variable "edit" and then updating the whole document
 with that single variables form inputted data.
 
-## Pagination
+### Pagination
 
 Pagination was a must in this project. While on a small scale there wasn't a lot of books created while I was producing this website, if it was actually a "live" website with possibly thousands of books, having them displayed all on one large scrolling page is incredibly bad UX design.
 
@@ -76,14 +76,10 @@ Here I count how many pages will need to be paginated by counting the total docu
 
 Then by creating an index start and end, the program knows that for each 12 books there is a single "index" collection of books. Allowing me to iterate through each collection with pagination. I am unsure if this is a better solution to using skip and limit as I don't know how I could stress test this effectively.
 
-# Help:
+## Help:
 
-https://www.youtube.com/watch?v=KA9RrZEmUNg <br>
-https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s <br>
-https://www.youtube.com/watch?v=9JZJsChpwKs <br>
-https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s <br>
-https://www.youtube.com/watch?v=t_9fgpsO_vM <br>
-
-# Code Help:
-
-https://stackoverflow.com/questions/4421207/how-to-get-the-last-n-records-in-mongodb
+(https://www.youtube.com/watch?v=KA9RrZEmUNg "One to one relationships (Part 1)") <br>
+(https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s "One to one relationships (Part 2)") <br>
+(https://www.youtube.com/watch?v=9JZJsChpwKs "Relational Data") <br>
+(https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s "Nesting Sub Documents") <br>
+(https://www.youtube.com/watch?v=t_9fgpsO_vM "One to many relationships") <br>
