@@ -42,7 +42,7 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                  <ul class="pagination heading-text center-align">
+                  <ul class="pagination center-align">
 
                         <!-- If page is the first disable user from clicking 
                             previous arrow and make number 1 highlighted -->
@@ -91,7 +91,7 @@
                         <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=pages) }}">{{ pages }}</a></li>
                         <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
                         {% endif %}
-                        
+
                   </ul> 
                 </div>
               </div>

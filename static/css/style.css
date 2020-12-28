@@ -19,13 +19,7 @@ body {
     display: none;
 }
 
-/* Min-height allows the footer to be sticky at the bottom */
-main {
-    min-height: 88.75vh;
-    flex: 1 0 auto;
-}
-
-/* Site wide navbar styling */
+/* ----------------------------------------------- Site wide navbar styling */
 
 .page-wrapper {
     overflow: hidden;
@@ -68,7 +62,7 @@ nav a {
     color: #000000;
 }
 
-/* Landing page styling */
+/* ----------------------------------------------- Landing page styling */
 
 #mobile-bg {
     visibility: visible;
@@ -124,7 +118,7 @@ img {
     margin: 5px 0;
 }
 
-/* Swiper carousel styling */
+/* ----------------------------------------------- Swiper carousel styling */
 
 .swiper-container {
     width: 100%;
@@ -142,7 +136,7 @@ img {
     margin: 35px auto 20px auto;
 }
 
-/* Site wide orange button */
+/* ----------------------------------------------- Site wide buttons */
 
 .btn-custom {
     background-color: #0FA9A5;
@@ -154,13 +148,13 @@ img {
     letter-spacing: .15em;
 }
 
-/* Site wide heading styling */
+/* ----------------------------------------------- Site wide heading styling */
 
 h2 {
     font-size: 1.25rem;
 }
 
-/* Site wide card styling */
+/* ----------------------------------------------- Site wide card styling */
 
 .card, .card-panel {
     box-shadow: none;
@@ -202,7 +196,7 @@ h2 {
     font-size: 13px;
 }
 
-/* Login / Register form styling */
+/* ----------------------------------------------- Login / Register form styling */
 
 .card-panel {
     padding: 12px;
@@ -225,7 +219,7 @@ label {
     margin: 0 0 20px 0;
 }
 
-/* Manage Books styling */
+/* ----------------------------------------------- Manage Books styling */
 
 .card-buttons {
     position: absolute;
@@ -234,12 +228,18 @@ label {
     margin: 0 5px 5px 0;
 }
 
-/* Add / Update book styling */
+.pagination li.active {
+    background-color: #0FA9A5;
+}
+
+/* ----------------------------------------------- Add / Update book styling */
 
 input, select {
     font-family: "Roboto", sans-serif;
 }
 
+
+/* ----------------------------------------------- Desktop view styling */
 
 @media only screen and (min-width: 1024px) {
     .base-container {
