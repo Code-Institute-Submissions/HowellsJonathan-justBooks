@@ -49,11 +49,32 @@ I selected particular variables within the db (the ones I wanted to iterate over
 This method / code in my opinion is also much cleaner and more consice than creating a variable "edit" and then updating the whole document
 with that single variables form inputted data.
 
-## Limiting results from mongodb:
+## Pagination
 
-I wanted to limit the amount of documents called from mongodb when displaying them in carousels on mobile view. I didn't want to display possibly hundred of books that no one would ever scroll through. I attempted to use the .limit() variable but to no avail...
+Pagination was a must in this project. While on a small scale there wasn't a lot of books created while I was producing this website, if it was actually a "live" website with possibly thousands of books, having them displayed all on one large scrolling page is incredibly bad UX design.
 
-This causes a large oversight in bad UX design and could cause unnececary loading times due to the program having to load every single book over and over again...
+To combat this I needed to use pages or pagination to display a set amount of books at a time to the user. But it wasn't something I had ever approached before. I had used limiting previously in this project to limit the number of books displayed in the swiper carousel. After some research and help from these two sources (https://www.youtube.com/watch?v=Lnt6JqtzM7I&t=703sI "1") (https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr "2") learned about "skip".
+
+Skip() is a function provided by mongodb that allows you to skip a certain amount of documents at a time, this allows you to provide only (in my case) 12 books at a time on a single "page". Then using materialize pagination and some extensive jinja allows the user to scroll through different pages of documents. The limitations of skip and limit are that each time you render a new page teh app has to read each of the documents before it to load the next 12. This increases loading times when you had possibly thousands of books. Although for this project it isn't as much of a worry as it will never be populated with so many documents.
+
+This is a massive oversight in my experience and knowledge as for an actual wesbite this would be incredibly bad practise. My only solution to this would be to not use monodb and use a SQL based database that has pagination built in like SQLAlchemy.
+
+For the time being though I have a different solution:
+
+```
+pages = int(added_books.count()/12)+1
+
+index_start = (int(page_num) - 1) * 12
+index_end = int(page_num) * 12
+
+return render_template("manage_books.html", user=user,
+                        added_books=added_books[index_start:index_end],
+                        pages=pages, current_page=int(page_num))
+```
+
+Here I count how many pages will need to be paginated by counting the total documents and dividing them by 12, then adding 1 to allow a non clean division to still display the last few books. Without this a number of books of 13 would only display 1 page and the last book wouldn't be displayed.
+
+Then by creating an index start and end, the program knows that for each 12 books there is a single "index" collection of books. Allowing me to iterate through each collection with pagination. I am unsure if this is a better solution to using skip and limit as I don't know how I could stress test this effectively.
 
 # Help:
 

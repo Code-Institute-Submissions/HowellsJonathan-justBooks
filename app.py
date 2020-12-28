@@ -220,12 +220,14 @@ def delete_book(book_id):
 def manage_books(username, page_num=1):
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
-    # Find all movies that are added by the user
+    # Find all movies that are added by the user and sort in alphabetical order
     added_books = mongo.db.books.find(
         {"user_id": ObjectId(user["_id"])}).sort("name")
 
+    # How many pages are to be rendered (numbers) used for pagination
     pages = int(added_books.count()/12)+1
 
+    # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
     index_end = int(page_num) * 12
 
