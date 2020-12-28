@@ -88,6 +88,23 @@ img {
     margin-top: 4em;
 }
 
+.action-card {
+    background-color: #0FA9A5;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.2em;
+}
+
+.action-card h2 {
+    padding: 30px 0;
+    margin: 0;
+}
+
+.row .no-padding {
+    padding: 0;
+}
+
 /* Swiper carousel styling */
 
 .swiper-container {
