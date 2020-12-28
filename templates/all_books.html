@@ -18,31 +18,6 @@
         </div>
     </section>
 
-    <div class="base-container landing-inner desktop">
-
-        <h2 id="all-books" class="">Newest Books</h2>
-
-        <div class="carousel carousel-slider">
-            {% for book in books %}
-                <a class="carousel-item" href="#">
-                    <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                    <p class="card-title">{{ book.book_name }}</p>
-                    <p class="card-text">{{ book.author }}</p>
-                </a>    
-            {% endfor %}
-        </div>
-
-        <h2 class="white-text center-align">Crime Books</h2>
-        
-        <div class="carousel carousel-slider">
-            {% for book in crimebooks %}
-                <a class="carousel-item">
-                    <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-
     <div class="base-container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -57,39 +32,6 @@
             
             <div class="swiper-button-prev swiper-button-black"></div>
             <div class="swiper-button-next swiper-button-black"></div>
-        </div>
-    </div>
-    
-
-    <div class="base-container landing-inner desktop">
-
-        <h2 id="all-books" class="white-text center-align">Newest Books</h2>
-
-        <div class="row">
-            {% for book in books %}
-            <div class="col s12 m4 l4">
-                <div class="card horizontal">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <a class="card-link" href="{{ url_for('get_book', book_id=book._id) }}">
-                            {% if book.cover_img_name == "" %}
-                            <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
-                            {% else %}
-                            <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
-                            <p class="card-text">
-                                Author: {{ book.author }} <br>
-                                Published: {{ book.published_date }}    
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
         </div>
     </div>
 
