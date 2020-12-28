@@ -29,19 +29,21 @@
 
     <section class="base-container">
         <div class="row">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    {% for book in books %}
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                            <p class="card-title center-align">{{ book.book_name }}</p>
-                            <p class="card-text center-align">{{ book.author }}</p>
-                        </div>
-                    {% endfor %}
+            <div class="col s12">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for book in books %}
+                            <div class="swiper-slide">
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                <p class="card-title center-align">{{ book.book_name }}</p>
+                                <p class="card-text center-align">{{ book.author }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="swiper-button-prev swiper-button-black"></div>
+                    <div class="swiper-button-next swiper-button-black"></div>
                 </div>
-                
-                <div class="swiper-button-prev swiper-button-black"></div>
-                <div class="swiper-button-next swiper-button-black"></div>
             </div>
         </div>
     </section>
