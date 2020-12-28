@@ -99,6 +99,8 @@ img {
 .action-card h2 {
     padding: 30px 0;
     margin: 0;
+    text-decoration: none;
+    color: #000000;
 }
 
 .row .no-padding {
@@ -236,7 +238,7 @@ input, select {
 
 @media only screen and (min-width: 1024px) {
     .base-container {
-        width: 80%
+        width: 60%
     }
 
     #mobile-bg {
