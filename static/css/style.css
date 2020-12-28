@@ -166,6 +166,11 @@ img {
     width: 100%;
 }
 
+.swiper-slide {
+    background-color: #fff;
+    height: 490px;
+}
+
 .swiper-slide img {
     width: auto;
     height: 350px;
