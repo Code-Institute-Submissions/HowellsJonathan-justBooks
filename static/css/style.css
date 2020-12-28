@@ -241,12 +241,8 @@ input, select {
         width: 60%
     }
 
-    #mobile-bg {
-        visibility: hidden;
-    }
-
-    #desktop-bg {
-        visibility: visible;
+    nav .brand-logo {
+        padding: 0 12px 0 12px;
     }
 
     .input-field {
@@ -262,5 +258,13 @@ input, select {
         font-weight: 700;
         font-size: 2em;
         letter-spacing: .1em;
+    }
+
+    .swiper-slide img {
+        height: 300px;
+    }
+
+    .swiper-slide {
+        height: 490px !important;
     }
 }
