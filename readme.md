@@ -22,7 +22,7 @@ other valuable data within the document.
 
 My solution was:
 
-```
+```python
 mongo.db.books.update_one(
             {"_id": ObjectId(book_id)},
             {"$set": {
@@ -53,7 +53,7 @@ with that single variables form inputted data.
 
 Pagination was a must in this project. While on a small scale there wasn't a lot of books created while I was producing this website, if it was actually a "live" website with possibly thousands of books, having them displayed all on one large scrolling page is incredibly bad UX design.
 
-To combat this I needed to use pages or pagination to display a set amount of books at a time to the user. But it wasn't something I had ever approached before. I had used limiting previously in this project to limit the number of books displayed in the swiper carousel. After some research and help from these two sources (https://www.youtube.com/watch?v=Lnt6JqtzM7I&t=703sI "1") (https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr "2") learned about "skip".
+To combat this I needed to use pages or pagination to display a set amount of books at a time to the user. But it wasn't something I had ever approached before. I had used limiting previously in this project to limit the number of books displayed in the swiper carousel. After some research and help from these two sources [1](https://www.youtube.com/watch?v=Lnt6JqtzM7I&t=703sI) [2](https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr) learned about "skip".
 
 Skip() is a function provided by mongodb that allows you to skip a certain amount of documents at a time, this allows you to provide only (in my case) 12 books at a time on a single "page". Then using materialize pagination and some extensive jinja allows the user to scroll through different pages of documents. The limitations of skip and limit are that each time you render a new page teh app has to read each of the documents before it to load the next 12. This increases loading times when you had possibly thousands of books. Although for this project it isn't as much of a worry as it will never be populated with so many documents.
 
@@ -61,7 +61,7 @@ This is a massive oversight in my experience and knowledge as for an actual wesb
 
 For the time being though I have a different solution:
 
-```
+```python
 pages = int(added_books.count()/12)+1
 
 index_start = (int(page_num) - 1) * 12
@@ -78,8 +78,8 @@ Then by creating an index start and end, the program knows that for each 12 book
 
 ## Help:
 
-(https://www.youtube.com/watch?v=KA9RrZEmUNg "One to one relationships (Part 1)") <br>
-(https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s "One to one relationships (Part 2)") <br>
-(https://www.youtube.com/watch?v=9JZJsChpwKs "Relational Data") <br>
-(https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s "Nesting Sub Documents") <br>
-(https://www.youtube.com/watch?v=t_9fgpsO_vM "One to many relationships") <br>
+[One to one relationships (Part 1)](https://www.youtube.com/watch?v=KA9RrZEmUNg) <br>
+[One to one relationships (Part 2)](https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s) <br>
+[Relational Data"](https://www.youtube.com/watch?v=9JZJsChpwKs) <br>
+[Nesting Sub Documents](https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s) <br>
+[One to many relationships](https://www.youtube.com/watch?v=t_9fgpsO_vM) <br>
