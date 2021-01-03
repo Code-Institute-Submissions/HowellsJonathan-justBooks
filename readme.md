@@ -1,5 +1,15 @@
 <!-- @format -->
 
+## Features to be implemented
+
+### UI / UX Design
+
+#### Ellipsis on the end of long titles
+
+I originally wanted to be able to show ellipsis at the end of a long book title to signify to the user that there was more to be read. In simple CSS this is only possible if you just have one line of text using the class `text-overflow: ellipsis` but this same class doesn't work for multiline text.
+
+There are some plugins for JS that can correct this, but I didn't want to flood the application with many different plugins purely beacuse my own knowledge on the subject is limited. This is something at a later date would be important to add for the users UX sake.
+
 ## Major problems and their solutions:
 
 ### Displaying Embedded ID's on the Bookmarked Page
