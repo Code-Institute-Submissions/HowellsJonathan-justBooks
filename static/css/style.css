@@ -200,6 +200,14 @@ h2 {
     color: #56587F;
 }
 
+.card-title {
+    width: 12.5em;
+    height: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+}
+
 .card-text {
     font-weight: 300;
     font-size: 13px;
