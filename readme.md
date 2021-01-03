@@ -41,7 +41,7 @@ mongo.db.books.update_one(
 
 In this new code instead of updating the whole object / document within the database. Using this code:
 
-```
+```python
 mongo.db.books.update({"_id": ObjectId(book_id)}, edit)
 ```
 
