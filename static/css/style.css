@@ -223,6 +223,10 @@ h2 {
 
 /* ----------------------------------------------- Login / Register form styling */
 
+form {
+    margin-bottom: 2em;
+}
+
 .card-panel {
     padding: 12px;
 }
@@ -357,6 +361,7 @@ input, select {
     .genre-card img {
         height: 130px;
     }
+}
 
 /* -----------------------------------------------  Large Desktop view styling */
 

@@ -250,6 +250,20 @@ def bookmark(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
+@app.route("/remove_bookmark/<book_id>", methods=["GET", "POST"])
+def remove_bookmark(book_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+
+    mongo.db.books.update_one(
+        {"_id": ObjectId(book_id)},
+        {"$pull": {"bookmarked_users": {
+            "bookmarked_user_id": ObjectId(user["_id"])
+        }}}
+    )
+
+    return redirect(url_for("bookmarked", user=user))
+
+
 @app.route("/bookmarked/<username>")
 def bookmarked(username):
 
