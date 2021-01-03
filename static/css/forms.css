@@ -1,0 +1,38 @@
+/* ----------------------------------------------- Login / Register form styling */
+
+form {
+    margin-bottom: 2em;
+}
+
+.card-panel {
+    padding: 12px;
+}
+
+.input-field>label {
+    font-size: .8rem;
+}
+
+label {
+    font-size: .6rem;
+}
+
+.form-btn {
+    width: 70%;
+    margin-bottom: 1rem;
+}
+
+.col .row.form-margin {
+    margin: 0 0 20px 0;
+}
+
+input, select {
+    font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (min-width: 1400px) {
+
+    .input-field {
+        margin: 1rem 0 1rem 0;
+    }
+
+}

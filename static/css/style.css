@@ -194,30 +194,11 @@ input, select {
         width: 85%;
     }
 
-    .action-card {
-        margin-top: 1em;
-    }
-
     nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
         height: 40px;
         line-height: 40px;
     }
 
-    /* ------------- Genre cards styling */
-
-    .genre-card img {
-        height: 130px;
-    }
-
-    .genre-card {
-        height: 180px;
-    }
-
-    /* ------------- Swiper styling */
-
-    .swiper-slide img {
-        width: 70%;
-    }
 }
 
 /* ----------------------------------------------- First Desktop / Large Tablet view */
@@ -244,40 +225,6 @@ input, select {
         padding: 0 12px 0 12px;
     }
 
-    /* --------------------------- Main page card styling */
-
-    .action-card {
-        margin-top: 2em;
-    }
-
-    .action-card h2 {
-        padding: 1em 0;
-        font-weight: 700;
-        font-size: 1.5em;
-        letter-spacing: .1em;
-    }
-
-    /* ------------- Swiper Styling */
-
-    .swiper-slide img {
-        height: 300px;
-        width: 100%;
-        margin: 0 auto 20px auto;
-    }
-
-    .swiper-slide {
-        height: 400px !important;
-    }
-
-    /* ------------- Genre cards styling */
-
-    .genre-card img {
-        height: 200px;
-    }
-
-    .genre-card {
-        height: 240px;
-    }
 }
 
 /* -----------------------------------------------  Large Desktop view styling */

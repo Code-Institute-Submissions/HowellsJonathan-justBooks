@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" class="css" type="text/css">
+
+{% endblock %}
+
 {% block content %}
 
     <h2 class="center-align">Add a Book</h2>
