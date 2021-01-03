@@ -24,7 +24,7 @@ footer {
     flex-shrink: 0;
 }
 
-.desktop {
+.desktop-view {
     display: none;
 }
 
@@ -202,7 +202,7 @@ h2 {
 
 .card-title {
     width: 12.5em;
-    height: 6em;
+    height: 4em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: break-spaces;
@@ -238,11 +238,9 @@ label {
 
 /* ----------------------------------------------- Manage Books styling */
 
-.card-buttons {
+.card-stacked .card-action {
     position: absolute;
-    right: 0;
     bottom: 0;
-    margin: 0 5px 5px 0;
 }
 
 .pagination li.active {
@@ -256,20 +254,55 @@ input, select {
 }
 
 
-/* ----------------------------------------------- Desktop view styling */
+/* ----------------------------------------------- First Desktop / Large Tablet view */
 
 @media only screen and (min-width: 1024px) {
-    .base-container {
-        width: 60%
+
+    /* --------------------------- Anything above viewsize styling */
+
+    .desktop-view {
+        display: block;
     }
+
+    .mobile-view {
+        display: none;
+    }
+
+    .base-container {
+        width: 70%;
+    }
+
+/* -----------------------------------------------  Large Desktop view styling */
+
+@media only screen and (min-width: 1400px) {
+
+    /* --------------------------- Base / All pages styling */
+
+    .desktop-view {
+        display: block;
+    }
+
+    .mobile-view {
+        display: none;
+    }
+
+    .base-container {
+        width: 60%;
+    }
+
+    /* --------------------------- Navigation styling for desktop */
 
     nav .brand-logo {
         padding: 0 12px 0 12px;
     }
 
+    /* --------------------------- Form styling */
+
     .input-field {
         margin: 1rem 0 1rem 0;
     }
+
+    /* --------------------------- Main page card styling */
 
     .action-card {
         margin-top: 2em;
@@ -282,6 +315,8 @@ input, select {
         letter-spacing: .1em;
     }
 
+    /* --------------------------- Swiper styling for desktop */
+
     .swiper-slide img {
         height: 300px;
     }
@@ -289,4 +324,12 @@ input, select {
     .swiper-slide {
         height: 490px !important;
     }
+
+    /* --------------------------- Manage books styling */
+
+    .card {
+        height: 48vh;
+    }
+
+
 }
