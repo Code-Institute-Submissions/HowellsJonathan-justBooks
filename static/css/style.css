@@ -275,6 +275,11 @@ input, select {
         margin-top: 1em;
     }
 
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 40px;
+        line-height: 40px;
+    }
+
     /* ------------- Genre cards styling */
 
     .genre-card img {
@@ -283,6 +288,12 @@ input, select {
 
     .genre-card {
         height: 180px;
+    }
+
+    /* ------------- Swiper styling */
+
+    .swiper-slide img {
+        width: 70%;
     }
 }
 
@@ -395,5 +406,4 @@ input, select {
     .card {
         height: 48vh;
     }
-
 }
