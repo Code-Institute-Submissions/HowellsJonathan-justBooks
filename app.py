@@ -261,23 +261,35 @@ def remove_bookmark(book_id):
         }}}
     )
 
-    return redirect(url_for("bookmarked", user=user))
+    return redirect(url_for("bookmarked", username=session['user']))
 
 
 @app.route("/bookmarked/<username>")
-def bookmarked(username):
+@app.route("/bookmarked/<username>/page=<page_num>")
+def bookmarked(username, page_num=1):
 
     # Get current user
     user = mongo.db.users.find_one({"username": username})
 
     bookmarked_books = mongo.db.books.find(
         {"bookmarked_users": {"bookmarked_user_id": ObjectId(user["_id"])}}
-    )
-    return render_template("bookmarked.html", user=user, bookmarked_books=bookmarked_books)
+    ).sort("name")
 
+    # How many pages are to be rendered (numbers) used for pagination
+    pages = int(bookmarked_books.count()/12)+1
+
+    # Index the collection of books into sections of 12
+    index_start = (int(page_num) - 1) * 12
+    index_end = int(page_num) * 12
+
+    return render_template("bookmarked.html", user=user,
+                           bookmarked_books=bookmarked_books[index_start:index_end],
+                           pages=pages, current_page=int(page_num))
 
 # A single function to redirect user to add_review page when clicked on
 # corresponding button
+
+
 @ app.route("/add_review_page/<book_id>")
 def add_review_page(book_id):
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
