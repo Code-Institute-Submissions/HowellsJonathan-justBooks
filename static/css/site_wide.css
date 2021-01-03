@@ -128,7 +128,7 @@ h2 {
     font-weight: 500;
     text-transform: uppercase;
     color: #56587F;
-    width: 12.5em;
+    width: 9em;
     height: 4em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -140,6 +140,10 @@ h2 {
     font-size: 13px;
 }
 
+.card .card-action {
+    padding: 5px 15px;
+}
+
 /* ----------------------------------------------- Manage Books styling */
 
 .card-stacked .card-action {
@@ -149,6 +153,21 @@ h2 {
 
 .pagination li.active {
     background-color: #0FA9A5;
+}
+
+/* ----------------------------------------------- "Average" Sized Mobile Phones */
+
+@media only screen and (min-width: 359px) {
+
+    .card .card-content .card-title {
+        width: 12.5em;
+        white-space: normal;
+    }
+
+    .card .card-action {
+        padding: 16px 24px;
+    }
+    
 }
 
 /* ----------------------------------------------- Tablet Styling */
