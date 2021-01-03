@@ -145,6 +145,13 @@ img {
     margin: 35px auto 20px auto;
 }
 
+.swiper-slide .card-title, .swiper-slide .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 1em 1em 1em;
+}
+
 /* ----------------------------------------------- Site wide buttons */
 
 .btn-custom {
@@ -288,7 +295,7 @@ input, select {
         letter-spacing: .1em;
     }
 
-    /* --------------------------- Swiper Styling */
+    /* ------------- Swiper Styling */
 
     .swiper-slide img {
         height: 300px;
@@ -304,6 +311,12 @@ input, select {
         width: 12.5em;
         height: 4.5em;
         overflow: hidden;
+    }
+
+    /* ------------- Genre cards styling */
+
+    .genre-card img {
+        height: 130px;
     }
 
 /* -----------------------------------------------  Large Desktop view styling */
