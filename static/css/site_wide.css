@@ -140,33 +140,6 @@ h2 {
     font-size: 13px;
 }
 
-/* ----------------------------------------------- Login / Register form styling */
-
-form {
-    margin-bottom: 2em;
-}
-
-.card-panel {
-    padding: 12px;
-}
-
-.input-field>label {
-    font-size: .8rem;
-}
-
-label {
-    font-size: .6rem;
-}
-
-.form-btn {
-    width: 70%;
-    margin-bottom: 1rem;
-}
-
-.col .row.form-margin {
-    margin: 0 0 20px 0;
-}
-
 /* ----------------------------------------------- Manage Books styling */
 
 .card-stacked .card-action {
@@ -176,12 +149,6 @@ label {
 
 .pagination li.active {
     background-color: #0FA9A5;
-}
-
-/* ----------------------------------------------- Add / Update book styling */
-
-input, select {
-    font-family: "Roboto", sans-serif;
 }
 
 /* ----------------------------------------------- Tablet Styling */
@@ -243,12 +210,6 @@ input, select {
 
     .base-container {
         width: 60%;
-    }
-
-    /* --------------------------- Form styling */
-
-    .input-field {
-        margin: 1rem 0 1rem 0;
     }
 
     /* --------------------------- Manage books styling */
