@@ -1,5 +1,11 @@
 <!-- @format -->
 
+## Other Notes
+
+### Git Commits
+
+To start the project I was continuely trying to limit the ammount of characters were in each commit message as this was good practice. After some time and 165 commits I learnt about commiting with a body of text under the commit title. This is even better practise as it allows a better breakdown of the commits reasoning and code that has been changed. After that I implemented both types of commiting for relevant commits. Using just a title incase the change was small, and commits with a body of text for bigger changes.
+
 ## Features to be implemented
 
 ### UI / UX Design
