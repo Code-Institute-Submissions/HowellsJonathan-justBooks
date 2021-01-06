@@ -218,9 +218,19 @@ h2 {
         text-align: center;
     }
 
+    .card .card-action {
+        padding: 16px 0 0 0;
+    }
+
     .btn-small {
         display: inline-block;
     }
+
+    .card .card-content {
+        padding: 10px 0 0 0;
+    }
+
+    
 }
 
 /* ----------------------------------------------- Most Popular Style of Tablet size in the world (approx) */
