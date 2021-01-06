@@ -99,6 +99,10 @@ h2 {
     box-shadow: none;
 }
 
+/* I am using viewport height for mobile styling only as generally a user expects 
+    data to be shown bigger on plus versions of phones. If I kept a hard height 
+    it would mean that even on a especially long phone there will be tiny images 
+    tons of books displayed. It makes the experience slightly better for users. */
 .card {
     height: 22vh;
 }
@@ -211,7 +215,7 @@ h2 {
     }
 
     .card {
-        height: 30vh;
+        height: 300px;
     }
 
     .card-action {
@@ -242,27 +246,42 @@ h2 {
 
     .row .col.m6 {
         width: 33.3333333333%;
-        margin-left: auto;
-        left: auto;
-        right: auto;
+    }
+
+}
+
+/* ----------------------------------------------- Large Grid */
+
+@media only screen and (min-width: 993px) {
+
+    .row .col.m6 {
+        width: 25%;
+    }
+
+    nav .brand-logo {
+        padding: 0 12px 0 12px;
+    }
+
+    .card .card-image img {
+        height: 300px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .card {
+        height: 420px;
     }
 
 }
 
 /* ----------------------------------------------- First Desktop / Large Tablet view */
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1280px) {
 
     /* --------------------------- Anything above viewsize styling */
 
     .base-container {
         width: 70%;
-    }
-
-    /* --------------------------- Navigation styling for desktop */
-
-    nav .brand-logo {
-        padding: 0 12px 0 12px;
     }
 
 }
