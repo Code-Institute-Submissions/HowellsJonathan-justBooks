@@ -90,10 +90,10 @@
                                     {{ continue }}
                                 <!-- Set class "active" to current_page -->
                                 {% elif page == current_page %}
-                                    <li class="active"><a href="{{ url_for('bookmarked', username=session['user'], page_num=page) }}">{{ current_page }}</a></li>
+                                    <li class="active"><a href="{{ url_for('manage_books', username=session['user'], page_num=page) }}">{{ current_page }}</a></li>
                                 <!-- Normal numbers for the rest of the "range" of numbers -->
                                 {% else %}
-                                    <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=page) }}">{{ page }}</a></li>
+                                    <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=page) }}">{{ page }}</a></li>
                                 {% endif %}
                             {% endfor %}
             
@@ -112,8 +112,8 @@
                                 also make the right arrow cycle to the next page in index 
                                 Display (pages) number on the far right of the pagination -->
                             {% else %}
-                            <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=pages) }}">{{ pages }}</a></li>
-                            <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
+                            <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=pages) }}">{{ pages }}</a></li>
+                            <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
                             {% endif %}
                         {% endif %}
 
