@@ -222,15 +222,16 @@ h2 {
         padding: 16px 0 0 0;
     }
 
-    .btn-small {
-        display: inline-block;
-    }
-
     .card .card-content {
         padding: 10px 0 0 0;
     }
 
-    
+    .btn-small {
+        height: 40px;
+        line-height: 40px;
+        width: 45%;
+        display: inline-block;
+    }
 }
 
 /* ----------------------------------------------- Most Popular Style of Tablet size in the world (approx) */
