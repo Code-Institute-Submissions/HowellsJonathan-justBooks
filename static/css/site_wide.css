@@ -288,7 +288,7 @@ h2 {
 
 /* -----------------------------------------------  Large Desktop view styling */
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1440px) {
 
     /* --------------------------- Base / All pages styling */
 
@@ -296,18 +296,15 @@ h2 {
         width: 60%;
     }
 
-    /* --------------------------- Manage books styling */
-
-    .card {
-        height: 48vh;
-    }
 }
+
+
 
 /* -----------------------------------------------  Extra Large Desktop view styling */
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: 1700px) {
 
-    .base-container {
-        width: 55%;
+    .row .col.m6 {
+        width: 20%;
     }
 }
