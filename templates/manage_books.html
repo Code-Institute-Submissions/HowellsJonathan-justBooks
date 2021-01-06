@@ -16,7 +16,7 @@
 
             <div class="row">
                 {% for book in added_books %}
-                <div class="col s12 m4 l3 mobile-view">
+                <div class="col s12 m6 l3 mobile-view">
                     <div class="card horizontal">
                         <div class="card-image waves-effect waves-block waves-light">
                             <a href="{{ url_for('get_book', book_id=book._id) }}">

@@ -187,11 +187,11 @@ h2 {
 
 }
 
-/* ----------------------------------------------- First Desktop / Large Tablet view */
+/* ----------------------------------------------- Most Popular Style of Tablet size in the world (approx) */
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 767px) {
 
-    /* --------------------------- Anything above viewsize styling */
+    /* --------------------------- HTML Switch */
 
     .desktop-view {
         display: block;
@@ -200,6 +200,14 @@ h2 {
     .mobile-view {
         display: none;
     }
+
+}
+
+/* ----------------------------------------------- First Desktop / Large Tablet view */
+
+@media only screen and (min-width: 1024px) {
+
+    /* --------------------------- Anything above viewsize styling */
 
     .base-container {
         width: 70%;
@@ -218,14 +226,6 @@ h2 {
 @media only screen and (min-width: 1400px) {
 
     /* --------------------------- Base / All pages styling */
-
-    .desktop-view {
-        display: block;
-    }
-
-    .mobile-view {
-        display: none;
-    }
 
     .base-container {
         width: 60%;
