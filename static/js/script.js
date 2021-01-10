@@ -4,6 +4,7 @@ $(document).ready(function(){
     M.updateTextFields();
     $('select').formSelect();
     $('.carousel').carousel();
+    $('.tabs').tabs();
   }); 
 
   $('.carousel.carousel-slider').carousel({
