@@ -1,0 +1,11 @@
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    display: block;
+    position: relative;
+    width: auto;
+    height: 240px;
+    margin: auto;
+}
