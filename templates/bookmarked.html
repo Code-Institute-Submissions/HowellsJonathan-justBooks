@@ -39,7 +39,7 @@
                                 <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                             </div>
                             <div class="card-action">
-                                <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="btn-small">Remove</a>
+                                <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="btn-custom-alt btn-small">Remove</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                         </div>
                         <div class="card-action">
-                            <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="btn-small">Remove</a>
+                            <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="btn-custom-alt btn-small">Remove</a>
                         </div>
                     </div>
                 </div>

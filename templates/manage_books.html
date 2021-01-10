@@ -39,8 +39,8 @@
                                 <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                             </div>
                             <div class="card-action">
-                                <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
-                                <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+                                <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-custom btn-small">Edit</a>
+                                <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-custom-alt btn-small">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -60,8 +60,8 @@
                             <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                         </div>
                         <div class="card-action">
-                            <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-small">Edit</a>
-                            <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-small">Delete</a>
+                            <a href="{{ url_for('edit_book', book_id=book._id )}}" class="btn-custom btn-small">Edit</a>
+                            <a href="{{ url_for('delete_book', book_id=book._id )}}" class="btn-custom-alt btn-small">Delete</a>
                         </div>
                     </div>
                 </div>
