@@ -1,5 +1,6 @@
 .image-container {
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .image-container img {
@@ -8,4 +9,19 @@
     width: auto;
     height: 240px;
     margin: auto;
+}
+
+.card .card-content {
+    padding: 12px;
+}
+
+h4 {
+    font-size: 1.8rem;
+    margin: 0 0 1em 0;
+    font-weight: 300;
+    line-height: 1.3em;
+}
+
+.card-title p {
+    font-size: 1rem;
 }
