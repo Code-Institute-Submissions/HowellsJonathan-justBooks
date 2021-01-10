@@ -102,7 +102,30 @@
                     <li class="tab col s6"><a href="#reviews">Reviews</a></li>
                 </ul>
             </div>
-            <div id="description" class="col s12"><p>Test 1</p></div>
+            <div id="description" class="col s12">
+                <div class="col s12">
+                    <p>{{ book.synopsis }}</p>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card-panel">
+                        <h6>Book Information</h6>
+                        <p class="">
+                            ISBN: {{ book.isbn }}<br>
+                            Publication Date: {{ book.published_date }}<br>
+                            Author(s): {{ book.author }} <br>
+                            Publisher: {{ book.publisher }}<br>
+                            Genres: 
+                            {% for genre in genres %}
+                                {% if genre._id in book.genre %}
+                                    {{ genre.name }},
+                                {% endif %}
+                            {% endfor %}
+                            <br>
+                            Pages: {{ book.pages }} <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div id="reviews" class="col s12"><p>Test 2</p></div>
         </div>
     </section>
