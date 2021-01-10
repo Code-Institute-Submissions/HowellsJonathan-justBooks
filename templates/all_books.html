@@ -41,7 +41,9 @@
                     <div class="swiper-wrapper">
                         {% for book in books %}
                             <div class="swiper-slide">
-                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                    <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                </a>
                                 <p class="card-title center-align">{{ book.book_name }}</p>
                                 <p class="card-text center-align">{{ book.author }}</p>
                             </div>
