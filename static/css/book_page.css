@@ -42,6 +42,14 @@ h4 {
     font-weight: 300;
 }
 
+.review-link .btn {
+    display: block;
+    margin: 1em auto;
+    width: fit-content;
+    height: 50px;
+    line-height: 50px;
+}
+
 @media only screen and (min-width: 601px) {
 
     .btn-floating.halfway-fab {
