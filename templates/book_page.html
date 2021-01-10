@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="base-container">
+    <section class="base-container mobile-view">
         <div class="row">
             <div class="col s12 center-align">
                 <h4>{{ book.book_name }}</h4>
@@ -65,7 +65,29 @@
     <section class="base-container">
         <div class="row">
             <div class="col s12 m6">
-                
+                <div class="card">
+                    <div class="card-image">
+                        {% if book.cover_img_name == "" %}
+                        <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                        {% else %}
+                        <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                        {% endif %}
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <h4>{{ book.book_name }}</h4>
+                            <p>By {{ book.author }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="buy-container">
+                    <a href="#" class="buy-link">Buy Now!</a>
+                </div>
             </div>
         </div>
     </section>
