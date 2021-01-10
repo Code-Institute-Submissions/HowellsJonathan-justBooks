@@ -95,83 +95,9 @@ h2 {
 
 /* ----------------------------------------------- Site wide card styling */
 
-.card, .card-panel {
-    box-shadow: none;
-}
-
-/* I am using viewport height for mobile styling only as generally a user expects 
-    data to be shown bigger on plus versions of phones. If I kept a hard height 
-    it would mean that even on a especially long phone there will be tiny images 
-    tons of books displayed. It makes the experience slightly better for users. */
-.card {
-    height: 22vh;
-}
-
-.card.horizontal {
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, .05);
-}
-
-.card.horizontal .card-image img {
-    height: 100%;
-    max-width: 100%;
-    border-radius: 10px;
-    padding: .3em;
-}
-
-.card.horizontal .card-image {
-    max-width: 30%;
-}
-
-.card .card-content {
-    padding: 10px;
-}
-
-.card .card-content .card-title {
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #000000;
-    width: 9em;
-    height: 4em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: break-spaces;
-}
-
 .card-text {
     font-weight: 300;
     font-size: 13px;
-}
-
-.card .card-action {
-    padding: 5px 15px;
-}
-
-/* ----------------------------------------------- Manage Books styling */
-
-.card-stacked .card-action {
-    position: absolute;
-    bottom: 0;
-}
-
-.pagination li.active {
-    background-color: #0FA9A5;
-}
-
-/* ----------------------------------------------- "Average" Sized Mobile Phones */
-
-@media only screen and (min-width: 359px) {
-
-    .card .card-content .card-title {
-        width: 12.5em;
-        white-space: normal;
-    }
-
-    .card .card-action {
-        padding: 16px 24px;
-    }
-    
 }
 
 /* ----------------------------------------------- Tablet Styling */
@@ -199,37 +125,6 @@ h2 {
         line-height: 40px;
     }
 
-    /* Manage Books cards */
-
-    .card .card-image img {
-        height: 180px;
-        width: auto;
-        margin: auto;
-        padding-top: 1em;
-    }
-
-    .card .card-content .card-title {
-        width: auto;
-        height: auto;
-        white-space: nowrap;
-    }
-
-    .card {
-        height: 300px;
-    }
-
-    .card-action {
-        text-align: center;
-    }
-
-    .card .card-action {
-        padding: 16px 0 0 0;
-    }
-
-    .card .card-content {
-        padding: 10px 0 0 0;
-    }
-
     .btn-small {
         height: 40px;
         line-height: 40px;
@@ -238,38 +133,12 @@ h2 {
     }
 }
 
-/* ----------------------------------------------- Most Popular Style of Tablet size in the world (approx) */
-
-@media only screen and (min-width: 767px) {
-
-    /* My own gird breakdown */
-
-    .row .col.m6 {
-        width: 33.3333333333%;
-    }
-
-}
-
 /* ----------------------------------------------- Large Grid */
 
 @media only screen and (min-width: 993px) {
 
-    .row .col.m6 {
-        width: 25%;
-    }
-
     nav .brand-logo {
         padding: 0 12px 0 12px;
-    }
-
-    .card .card-image img {
-        height: 300px;
-        width: 100%;
-        padding: 0;
-    }
-
-    .card {
-        height: 420px;
     }
 
 }
@@ -296,26 +165,4 @@ h2 {
         width: 60%;
     }
 
-}
-
-
-
-/* -----------------------------------------------  Extra Large Desktop view styling */
-
-@media only screen and (min-width: 1919px) {
-
-    .card {
-        height: 470px;
-    }
-
-   .card .card-image img {
-       height: 350px;
-   }
-}
-
-@media only screen and (min-width: 2400px) {
-
-    .row .col.m6 {
-        width: 16.66666667%;
-    }
 }
