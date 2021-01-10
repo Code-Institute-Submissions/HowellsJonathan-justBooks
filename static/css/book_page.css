@@ -25,3 +25,14 @@ h4 {
 .card-title p {
     font-size: 1rem;
 }
+
+.store-link .btn {
+    width: 60%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.store-link.card {
+    background-color: transparent;
+    box-shadow: none;
+}
