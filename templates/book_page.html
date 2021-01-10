@@ -26,11 +26,14 @@
                             <h4>{{ book.book_name }}</h4>
                             <p>By {{ book.author }}</p>
                         </div>
-                        <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">bookmark</i></a>
+                        <a href="{{ url_for('bookmark', book_id=book._id) }}" 
+                            class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">bookmark</i>
+                        </a>
                     </div>
                 </div>
                 <div class="store-link card">
-                    <a href="{{ url_for('bookmark', book_id=book._id) }}" class="btn waves-effect waves"><i class="material-icons right">local_shipping</i>Store Link</a>
+                    <a href="#" class="btn waves-effect waves"><i class="material-icons right">local_shipping</i>Store Link</a>
                 </div>
             </div>
         </div>
@@ -80,5 +83,5 @@
             </div>
         </div>
     </section>
-    
+
 {% endblock %}
