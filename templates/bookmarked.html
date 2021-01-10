@@ -16,14 +16,14 @@
 
             <div class="row">
                 {% for book in bookmarked_books %}
-                <div class="col s12 m4 l3 mobile-view">
+                <div class="col s12 m6 l3 mobile-view">
                     <div class="card horizontal">
                         <div class="card-image waves-effect waves-block waves-light">
                             <a href="{{ url_for('get_book', book_id=book._id) }}">
                                 {% if book.cover_img_name == "" %}
-                                <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
                                 {% else %}
-                                <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
                                 {% endif %}
                             </a>
                         </div>
@@ -37,18 +37,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4 l3 desktop-view">
+                <div class="col s12 m6 l3 desktop-view">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <a href="{{ url_for('get_book', book_id=book._id) }}">
                                 {% if book.cover_img_name == "" %}
-                                <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
                                 {% else %}
-                                <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="card-content">
+                        <div class="card-content center-align">
                             <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                         </div>
                         <div class="card-action">

@@ -21,9 +21,9 @@
                         <div class="card-image waves-effect waves-block waves-light">
                             <a href="{{ url_for('get_book', book_id=book._id) }}">
                                 {% if book.cover_img_name == "" %}
-                                <img class="responsive-img" src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
                                 {% else %}
-                                <img class="responsive-img" src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
                                 {% endif %}
                             </a>
                         </div>
