@@ -46,6 +46,10 @@
     padding: 5px 15px;
 }
 
+.no-margin {
+    margin-right: 0 !important;
+}
+
 /* ----------------------------------------------- Manage Books styling */
 
 .card-stacked .card-action {
@@ -59,10 +63,14 @@
 
 .icon-custom-blue {
     color: #0FA9A5;
+    float: left;
+    padding: 0 1rem 0 1rem;
 }
 
 .icon-custom-red {
     color: #d31900;
+    float: right;
+    padding: 0 1rem 0 1rem;
 }
 
 /* ----------------------------------------------- "Average" Sized Mobile Phones */
@@ -147,6 +155,10 @@
 
     .card {
         height: 420px;
+    }
+
+    .icon-size {
+        font-size: 2.5rem;
     }
 
 }
