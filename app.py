@@ -17,7 +17,10 @@ mongo = PyMongo(app)
 
 genres = mongo.db.genres
 
-# Home Page Function
+
+'''
+Home page route
+'''
 
 
 @app.route("/")
@@ -28,16 +31,25 @@ def get_books():
     crimebooks = list(mongo.db.books.find(
         {"genres": ObjectId(crime["_id"])}
     ))
-    return render_template("all_books.html", books=books, crimebooks=crimebooks)
+    return render_template(
+        "all_books.html",
+        books=books,
+        crimebooks=crimebooks)
 
-# Direct user to login page on function
+
+'''
+Direct user to login page on function
+'''
 
 
 @app.route("/login_page")
 def login_page():
     return render_template("login.html")
 
-# Login form function
+
+'''
+Login form route
+'''
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -63,7 +75,10 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login_page"))
 
-# Register form function
+
+'''
+Register form function
+'''
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -80,7 +95,8 @@ def register():
         else:
             register = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(
+                    request.form.get("password")),
                 "bookmarked": [],
                 "my_reviews": [],
                 "my_books": [],
@@ -93,7 +109,10 @@ def register():
 
     return render_template("register.html")
 
-# Log Out button function
+
+'''
+Log Out button function
+'''
 
 
 @app.route("/logout")
@@ -103,7 +122,11 @@ def logout():
     return redirect(url_for("login_page"))
 
 
-# Individual book details
+'''
+Individual book details
+'''
+
+
 @app.route("/get_book/<book_id>/<isbn>")
 def get_book(book_id, isbn):
 
@@ -114,7 +137,11 @@ def get_book(book_id, isbn):
     return render_template("book_page.html", book=book_data, genres=genres)
 
 
-# Direct user to add_book.html page
+'''
+Direct user to add_book.html page
+'''
+
+
 @app.route("/add_book_page")
 def add_book_page():
     # Get genres from db
@@ -122,7 +149,11 @@ def add_book_page():
     return render_template("add_book.html", genres=genres)
 
 
-# Add book to database function using a form
+'''
+Add book to database function using a form
+'''
+
+
 @app.route("/add_book", methods=["POST"])
 def add_book():
 
@@ -180,9 +211,19 @@ def add_book():
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
+'''
+Retrieves the uploaded file from user and inserts it into monogdb
+'''
+
+
 @app.route("/get_cover_img/<filename>")
 def get_cover_img(filename):
     return mongo.send_file(filename)
+
+
+'''
+Edit a single book route
+'''
 
 
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
@@ -216,6 +257,11 @@ def edit_book(book_id):
     return render_template("edit_book.html", book=book, genres=genres)
 
 
+'''
+Delete book route
+'''
+
+
 @app.route("/delete_book/<book_id>", methods=["GET", "POST"])
 def delete_book(book_id):
 
@@ -224,7 +270,11 @@ def delete_book(book_id):
     return redirect(url_for('manage_books', username=session['user']))
 
 
-# Function to display all books that a user has created
+'''
+Function to display all books that a user has created
+'''
+
+
 @app.route("/manage_books/<username>")
 @app.route("/manage_books/<username>/page=<page_num>")
 def manage_books(username, page_num=1):
@@ -235,7 +285,7 @@ def manage_books(username, page_num=1):
         {"user_id": ObjectId(user["_id"])}).sort("name")
 
     # How many pages are to be rendered (numbers) used for pagination
-    pages = int(added_books.count()/12)+1
+    pages = int(added_books.count() / 12) + 1
 
     # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
@@ -244,6 +294,11 @@ def manage_books(username, page_num=1):
     return render_template("manage_books.html", user=user,
                            added_books=added_books[index_start:index_end],
                            pages=pages, current_page=int(page_num))
+
+
+'''
+Bookmark a book
+'''
 
 
 @app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
@@ -260,6 +315,11 @@ def bookmark(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
+'''
+Remove a book from your bookmarked page
+'''
+
+
 @app.route("/remove_bookmark/<book_id>", methods=["GET", "POST"])
 def remove_bookmark(book_id):
     user = mongo.db.users.find_one({"username": session["user"]})
@@ -274,6 +334,11 @@ def remove_bookmark(book_id):
     return redirect(url_for("bookmarked", username=session['user']))
 
 
+'''
+Bookmarked page route
+'''
+
+
 @app.route("/bookmarked/<username>")
 @app.route("/bookmarked/<username>/page=<page_num>")
 def bookmarked(username, page_num=1):
@@ -286,7 +351,7 @@ def bookmarked(username, page_num=1):
     ).sort("name")
 
     # How many pages are to be rendered (numbers) used for pagination
-    pages = int(bookmarked_books.count()/12)+1
+    pages = int(bookmarked_books.count() / 12) + 1
 
     # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
@@ -296,8 +361,11 @@ def bookmarked(username, page_num=1):
                            bookmarked_books=bookmarked_books[index_start:index_end],
                            pages=pages, current_page=int(page_num))
 
-# A single function to redirect user to add_review page when clicked on
-# corresponding button
+
+'''
+A single function to redirect user to add_review page when clicked on
+corresponding button
+'''
 
 
 @ app.route("/add_review_page/<book_id>")
@@ -306,7 +374,11 @@ def add_review_page(book_id):
     return render_template("add_review.html", book=book_data)
 
 
-# Function to allow user to add a new review for the book they are looking at
+'''
+Function to allow user to add a new review for the book they are looking at
+'''
+
+
 @ app.route("/add_review/<book_id>", methods=["POST"])
 def add_review(book_id):
 
