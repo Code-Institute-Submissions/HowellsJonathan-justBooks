@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="store-link card">
-                    <a href="#" class="btn waves-effect waves"><i class="material-icons right">local_shipping</i>Store Link</a>
+                    <a href="{{ url_for('store_page', isbn=book.isbn) }}" target="_blank" class="btn waves-effect waves"><i class="material-icons right">local_shipping</i>Store Link</a>
                 </div>
             </div>
         </div>

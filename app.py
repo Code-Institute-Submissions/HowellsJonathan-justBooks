@@ -321,6 +321,18 @@ def add_review(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
+'''
+Route to link to exteranl Amazon page
+'''
+
+
+@ app.route("/store_page/<isbn>")
+def store_page(isbn):
+
+    amazon_url = "http://www.amazon.co.uk/dp/" + isbn + "/"
+    return redirect(amazon_url)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
