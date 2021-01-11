@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/manage_bookmarked.css') }}" class="css" type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="base-container">
+            <h2 class="center-align">Manage your books</h2>
+
+            <!-- Check if user hasn't added any books to the db yet -->
+            {% if genre.books.count() == 0 %}
+
+            <div class="row">
+                <h3>Oops... Looks like you haven't added any books yet!</h3>
+                <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
+            </div>
+
+            {% else %}
+
+            <div class="row">
+                {% for book in genre.books %}
+                <div class="col s12 m6 l3 mobile-view">
+                    <div class="card horizontal">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                {% if book.cover_img_name == "" %}
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                {% else %}
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                            </div>
+                            <div class="card-action center-align">
+                                <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3 desktop-view">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                {% if book.cover_img_name == "" %}
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                {% else %}
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-content center-align">
+                            <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                        </div>
+                        <div class="card-action center-align">
+                            <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col s12">
+                  <ul class="pagination center-align">
+
+                        <!-- If page is the first disable user from clicking 
+                            previous arrow and make number 1 highlighted -->
+                        {% if pages == 1 %}
+                            <li class="active"><a href="{{ url_for('manage_books', page_num=1, username=session['user']) }}">{{ current_page }}</a></li>
+                        {% else %}
+                            {% if current_page == 1 %}
+                                <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+                                <li class="active"><a href="{{ url_for('manage_books', page_num=1, username=session['user']) }}">{{ current_page }}</a></li>
+                            <!-- When page isn't 1 allow clicking of prev arrow and un-active page 1 -->
+                            {% else %}
+                                <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=current_page-1) }}"><i class="fas fa-chevron-left"></i></a></li>
+                                <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=1) }}">1</a></li>
+                            {% endif %}
+                                                    <!-- When user is looking at page 5 or higher add elipsis 
+                            between 1 and the next number -->
+                            {% if current_page >= 5 %}
+                            <li class="disabled">...</i></li>
+                            {% endif %}
+                            
+                            <!-- for page in the range of # -2 and +2 (# = 5 - display: 3, 4, 5, 6, 7) -->
+                            {% for page in range(current_page-2, current_page+2) %}
+                                {% if page <= 1 or page >= pages %}
+                                    {{ continue }}
+                                <!-- Set class "active" to current_page -->
+                                {% elif page == current_page %}
+                                    <li class="active"><a href="{{ url_for('bookmarked', username=session['user'], page_num=page) }}">{{ current_page }}</a></li>
+                                <!-- Normal numbers for the rest of the "range" of numbers -->
+                                {% else %}
+                                    <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=page) }}">{{ page }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+            
+                            <!-- When there are 4 or more pages from the end of the 
+                                index display elipsis between last page and number -->
+                            {% if current_page <= pages-4 %}
+                                <li class="disabled">...</li>
+                            {% endif %}
+                
+                            <!-- When on last page apply class "active" to index number
+                                then disable the right arrow as there are no more pages -->
+                            {% if current_page == pages %}
+                            <li class="active"><a href="#">{{ current_page }}</a></li>
+                            <li class="disabled"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                            <!-- If user isn't on the last page make the last index clickable
+                                also make the right arrow cycle to the next page in index 
+                                Display (pages) number on the far right of the pagination -->
+                            {% else %}
+                            <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=pages) }}">{{ pages }}</a></li>
+                            <li class="waves-effect"><a href="{{ url_for('bookmarked', username=session['user'], page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
+                            {% endif %}
+                        {% endif %}
+                        
+                  </ul> 
+                </div>
+              </div>
+            {% endif %}
+    </section>
+
+{% endblock %}

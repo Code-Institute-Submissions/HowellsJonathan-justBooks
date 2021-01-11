@@ -127,8 +127,8 @@ Individual book details
 '''
 
 
-@app.route("/get_book/<book_id>/<isbn>")
-def get_book(book_id, isbn):
+@app.route("/get_book/<book_id>")
+def get_book(book_id):
 
     genres = mongo.db.genres.find()
 
