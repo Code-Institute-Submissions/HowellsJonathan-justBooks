@@ -57,6 +57,14 @@
     background-color: #0FA9A5;
 }
 
+.icon-custom-blue {
+    color: #0FA9A5;
+}
+
+.icon-custom-red {
+    color: #d31900;
+}
+
 /* ----------------------------------------------- "Average" Sized Mobile Phones */
 
 @media only screen and (min-width: 359px) {
@@ -68,6 +76,10 @@
 
     .card .card-action {
         padding: 16px 24px;
+    }
+
+    .icon-size {
+        font-size: 2rem;
     }
     
 }
