@@ -26,15 +26,15 @@ Home page route
 @app.route("/")
 @app.route("/get_books")
 def get_books():
+
     books = list(mongo.db.books.find().limit(12))
-    crime = mongo.db.genres.find_one({"name": "Crime"})
-    crimebooks = list(mongo.db.books.find(
-        {"genres": ObjectId(crime["_id"])}
-    ))
+
+    genres = mongo.db.genres.find().sort("name")
+
     return render_template(
         "all_books.html",
         books=books,
-        crimebooks=crimebooks)
+        genres=genres)
 
 
 '''
@@ -416,9 +416,7 @@ Individual Genre pages
 @ app.route("/genre_page/<genre>", methods=["GET", "POST"])
 def genre_page(genre):
 
-    selected_genre = mongo.db.genres.find_one({"name": genre})
-
-    genres_books = mongo.db.books.find({"genre": ObjectId(selected_genre._id)})
+    genres_books = mongo.db.books.find({"genre": ObjectId(genre)})
 
     return render_template(url_for("genre.html", genres_books=genres_books))
 

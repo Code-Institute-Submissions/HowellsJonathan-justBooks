@@ -20,6 +20,11 @@
     <div class="page-wrapper">
         <header>
             <!-- Main Navbar for Desktop -->
+            <ul id="genre_dropdown" class="dropdown-content">
+                {% for genre in genres %}
+                    <li><a href="{{ url_for('genre_page', genre=genre._id) }}">{{ genre.name }}</a></li>
+                {% endfor %}
+            </ul>
             <nav>
                 <div class="nav-wrapper base-container">
                     <a href="{{ url_for('get_books') }}" class="brand-logo">JustBooks</a>
@@ -31,6 +36,12 @@
                         <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage Books</a></li>
                         <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
                         <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+                                Dropdown
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
                         {% else %}
                         <li><a href="{{ url_for('login_page') }}" class="black-text">Log In / Register</a></li>
                         {% endif %}

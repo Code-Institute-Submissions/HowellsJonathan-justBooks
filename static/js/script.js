@@ -5,6 +5,7 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.carousel').carousel();
     $('.tabs').tabs();
+    $(".dropdown-trigger").dropdown();
   }); 
 
   $('.carousel.carousel-slider').carousel({
