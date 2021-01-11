@@ -185,6 +185,13 @@ def get_cover_img(filename):
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
 
+    genres = mongo.db.genres.find().sort("name")
+
+    # Append genres selected to genre list for book
+    genre_list = []
+    for genre in request.form.getlist("genre"):
+        genre_list.append(ObjectId(genre))
+
     if request.method == "POST":
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)},
@@ -192,7 +199,7 @@ def edit_book(book_id):
                 "book_name": request.form.get("book_name"),
                 "author": request.form.get("author"),
                 "publisher": request.form.get("publisher"),
-                "genre": request.form.get("genre"),
+                "genre": genre_list,
                 "pages": request.form.get("pages"),
                 "published_date": request.form.get("published_date"),
                 "synopsis": request.form.get("synopsis"),
@@ -203,7 +210,7 @@ def edit_book(book_id):
         return redirect(url_for("get_book", book_id=book_id))
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("edit_book.html", book=book)
+    return render_template("edit_book.html", book=book, genres=genres)
 
 
 @app.route("/delete_book/<book_id>", methods=["GET", "POST"])
