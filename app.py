@@ -408,6 +408,21 @@ def store_page(isbn):
     return redirect(amazon_url)
 
 
+'''
+Individual Genre pages
+'''
+
+
+@ app.route("/genre_page/<genre>", methods=["GET", "POST"])
+def genre_page(genre):
+
+    selected_genre = mongo.db.genres.find_one({"name": genre})
+
+    genres_books = mongo.db.books.find({"genre": ObjectId(selected_genre._id)})
+
+    return render_template(url_for("genre.html", genres_books=genres_books))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
