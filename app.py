@@ -412,14 +412,43 @@ def store_page(isbn):
 Individual Genre pages
 '''
 
+'''
+@ app.route("/genre_page/<genre>")
+@ app.route("/genre_page/<genre>/page=<page_num>", methods=["GET", "POST"])
+def genre_page(genre, page_num=1):
 
-@ app.route("/genre_page/<genre>", methods=["GET", "POST"])
+    genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
+
+    # How many pages are to be rendered (numbers) used for pagination
+    pages = int(genres_books.count() / 12) + 1
+
+    # Index the collection of books into sections of 12
+    index_start = (int(page_num) - 1) * 12
+    index_end = int(page_num) * 12
+
+    return render_template("genre.html", books=genres_books[index_start:index_end],
+                           pages=pages, current_page=int(page_num))
+'''
+
+
+@ app.route("/genre_page/<genre>")
 def genre_page(genre):
 
-    genres_books = mongo.db.books.find({"genre": ObjectId(genre)})
+    genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
 
-    return render_template(url_for("genre.html", genres_books=genres_books))
+    return render_template("genre.html", books=genres_books)
 
+
+'''
+def gb(genre):
+
+    genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
+
+    return genres_books
+
+
+print(gb("5fd9040b296b98814da07d6d"))
+'''
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
