@@ -144,6 +144,12 @@ h2 {
         width: 45%;
         display: inline-block;
     }
+
+    .dropdown-content {
+        min-width: 200px;
+        overflow-x: hidden;
+        height: 50vh !important;
+    }
 }
 
 /* ----------------------------------------------- Large Grid */

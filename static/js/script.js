@@ -5,7 +5,10 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.carousel').carousel();
     $('.tabs').tabs();
-    $(".dropdown-trigger").dropdown();
+    $(".dropdown-trigger").dropdown({
+      constrainWidth: false,
+      hover: true,
+    });
   }); 
 
   $('.carousel.carousel-slider').carousel({
