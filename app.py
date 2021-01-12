@@ -3,6 +3,7 @@ from flask import (Flask, flash, render_template,
                    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from pymongo import TEXT
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -450,31 +451,17 @@ def genre_page(genre, page_num=1):
 Search bar 
 '''
 
-mongo.db.books.ensure_index([
-    ("book_name", "text"),
-    ("author", "text"),
-    ("publisher", "text"),
-    ("isbn", "text"),
-    ("genre", "text"),
-],
-    name="search_index",
-    weights={
-        "book_name": 100,
-        "author": 80,
-        "genre": 80,
-        "isbn": 50,
-        "author": 25
-}
-)
+
+mongo.db.books.create_index(
+    [("book_name", TEXT), ("author", TEXT), ("publisher", TEXT), ("isbn", TEXT)])
 
 
-@app.route("/search")
-def search():
-    query = request.form["q"]
-    text_results = db.command(
-        'text', 'posts', search=query, limit=SEARCH_LIMIT)
-    doc_matches = (res['obj'] for res in text_results['results'])
-    return render_template("search.html", results=results)
+@app.route("/search/<query>")
+def search(query):
+
+    result = list(mongo.db.books.find({"$text": {"$search": query}}))
+
+    return render_template("search.html", result=result)
 
 
 if __name__ == "__main__":
