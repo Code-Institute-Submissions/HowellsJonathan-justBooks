@@ -72,7 +72,11 @@ nav .brand-logo {
     color: #000000;
 }
 
-nav a {
+nav a, nav ul a {
+    color: #000000;
+}
+
+.dropdown-content li>a {
     color: #000000;
 }
 

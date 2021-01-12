@@ -276,6 +276,7 @@ Function to display all books that a user has created
 @app.route("/manage_books/<username>")
 @app.route("/manage_books/<username>/page=<page_num>")
 def manage_books(username, page_num=1):
+    genres = list(mongo.db.genres.find().sort("name"))
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
     # Find all movies that are added by the user and sort in alphabetical order
@@ -291,7 +292,7 @@ def manage_books(username, page_num=1):
 
     return render_template("manage_books.html", user=user,
                            added_books=added_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num))
+                           pages=pages, current_page=int(page_num), genres=genres)
 
 
 '''
@@ -340,7 +341,7 @@ Bookmarked page route
 @app.route("/bookmarked/<username>")
 @app.route("/bookmarked/<username>/page=<page_num>")
 def bookmarked(username, page_num=1):
-
+    genres = list(mongo.db.genres.find().sort("name"))
     # Get current user
     user = mongo.db.users.find_one({"username": username})
 
@@ -357,7 +358,7 @@ def bookmarked(username, page_num=1):
 
     return render_template("bookmarked.html", user=user,
                            bookmarked_books=bookmarked_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num))
+                           pages=pages, current_page=int(page_num), genres=genres)
 
 
 '''
