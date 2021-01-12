@@ -15,8 +15,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-genres = mongo.db.genres
-
 
 '''
 Home page route
@@ -428,31 +426,8 @@ def genre_page(genre, page_num=1):
     index_end = int(page_num) * 12
 
     return render_template("genre.html", books=genres_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num))
+                           pages=pages, current_page=int(page_num), genre=genre)
 
-
-'''
-@ app.route("/genre_page/<genre>")
-def genre_page(genre):
-
-    genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
-
-    return render_template("genre.html", books=genres_books)
-'''
-
-'''
-def gb(genre):
-
-    genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
-
-    pages = int(mongo.db.books.count_documents(
-        {"genre": ObjectId(genre)}) / 12) + 1
-
-    return pages
-
-
-print(gb("5fd9040b296b98814da07d6d"))
-'''
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
