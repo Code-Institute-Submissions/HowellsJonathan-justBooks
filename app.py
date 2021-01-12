@@ -415,7 +415,12 @@ Individual Genre pages
 @ app.route("/genre_page/<genre>/page=<page_num>")
 def genre_page(genre, page_num=1):
 
+    genre_doc = mongo.db.genres.find_one({"_id": ObjectId(genre)})
+
     genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
+
+    count_of_books = int(mongo.db.books.count_documents(
+        {"genre": ObjectId(genre)}))
 
     # How many pages are to be rendered (numbers) used for pagination
     pages = int(mongo.db.books.count_documents(
@@ -426,7 +431,7 @@ def genre_page(genre, page_num=1):
     index_end = int(page_num) * 12
 
     return render_template("genre.html", books=genres_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num))
+                           pages=pages, current_page=int(page_num), count=count_of_books, genre_doc=genre_doc)
 
 
 if __name__ == "__main__":
