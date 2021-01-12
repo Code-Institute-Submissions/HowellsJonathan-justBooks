@@ -446,6 +446,37 @@ def genre_page(genre, page_num=1):
                            genres=genres)
 
 
+'''
+Search bar 
+'''
+
+mongo.db.books.ensure_index([
+    ("book_name", "text"),
+    ("author", "text"),
+    ("publisher", "text"),
+    ("isbn", "text"),
+    ("genre", "text"),
+],
+    name="search_index",
+    weights={
+        "book_name": 100,
+        "author": 80,
+        "genre": 80,
+        "isbn": 50,
+        "author": 25
+}
+)
+
+
+@app.route("/search")
+def search():
+    query = request.form["q"]
+    text_results = db.command(
+        'text', 'posts', search=query, limit=SEARCH_LIMIT)
+    doc_matches = (res['obj'] for res in text_results['results'])
+    return render_template("search.html", results=results)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
