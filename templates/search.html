@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}" class="css" type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="base-container">
+            <h2 class="center-align">Search Results</h2>
+
+            <div class="row">
+                {% for book in result %}
+                <div class="col s12 m6 l3 mobile-view">
+                    <div class="card horizontal">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                {% if book.cover_img_name == "" %}
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                {% else %}
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                            </div>
+                            <div class="card-action center-align">
+                                <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3 desktop-view">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                {% if book.cover_img_name == "" %}
+                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                                {% else %}
+                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-content center-align">
+                            <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                        </div>
+                        <div class="card-action center-align">
+                            <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </section>
+
+{% endblock %}
