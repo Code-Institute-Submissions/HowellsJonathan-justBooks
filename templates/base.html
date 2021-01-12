@@ -60,20 +60,8 @@
                 <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                 <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
-                        Dropdown
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% else %}
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
-                        Dropdown
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
                 <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
                 {% endif %}
             </ul>
