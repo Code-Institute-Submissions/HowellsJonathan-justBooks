@@ -31,34 +31,28 @@
                     <a href="{{ url_for('front_page') }}" class="brand-logo">JustBooks</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
-                        <form action="{{ url_for('search') }}" method="POST">
-                            <div class="input-field">
-                                <input id="user-search" name="user-search" type="search" required>
-                                <label class="label-icon" for="search"><i class="search-icon material-icons">search</i></label>
-                                <i class="search-icon material-icons">close</i>
-                            </div>
-                        </form>
-                        {% if session.user %}
-                        <li><a href="{{ url_for('add_book_page') }}" class="black-text">Add Book</a></li>
-                        <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage Books</a></li>
-                        <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
                         <li>
                             <a href="#" class="dropdown-trigger" data-target="desktop_genre_dropdown">
-                                Dropdown
+                                Genres
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
+                        {% if session.user %}
+                        <li><a href="{{ url_for('add_book_page') }}" class="black-text">Add</a></li>
+                        <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage</a></li>
+                        <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
                         <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
                         {% else %}
-                        <li>
-                            <a href="#" class="dropdown-trigger" data-target="desktop_genre_dropdown">
-                                Dropdown
-                                <i class="material-icons right">arrow_drop_down</i>
-                            </a>
-                        </li>
                         <li><a href="{{ url_for('login_page') }}" class="black-text">Log In / Register</a></li>
                         {% endif %}
                     </ul>
+                    <form action="{{ url_for('search') }}" method="POST" id="search-bar" class="hide-on-med-and-down">
+                        <div class="input-field search-bar">
+                            <input id="user-search" name="user-search" type="search" required>
+                            <label class="label-icon" for="search"><i class="black-text search-icon material-icons">search</i></label>
+                            <i class="black-text search-icon material-icons">close</i>
+                        </div>
+                    </form>
                 </div>
             </nav>
             <!-- Mobile Navbar -->
@@ -78,24 +72,18 @@
                         <i class="search-icon material-icons">close</i>
                     </div>
                 </form>
+                <li>
+                    <a href="#" class="dropdown-trigger" data-target="mobile_genre_dropdown">
+                        Genres
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
                 {% if session.user %}
                 <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                 <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="mobile_genre_dropdown">
-                        Dropdown
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% else %}
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="mobile_genre_dropdown">
-                        Dropdown
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
                 <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
                 {% endif %}
             </ul>

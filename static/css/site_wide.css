@@ -176,6 +176,18 @@ h2 {
         padding: 0 12px 0 12px;
     }
 
+    .search-bar {
+        max-width: 400px;
+    }
+
+    #search-bar {
+        margin-left: 100px;
+    }
+
+    .search-icon.material-icons {
+        line-height: 40px;
+    }
+
 }
 
 /* ----------------------------------------------- First Desktop / Large Tablet view */
