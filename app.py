@@ -22,15 +22,15 @@ Home page route
 
 
 @app.route("/")
-@app.route("/get_books")
-def get_books():
+@app.route("/front_page")
+def front_page():
 
     books = list(mongo.db.books.find().limit(12))
 
     genres = list(mongo.db.genres.find().sort("name"))
 
     return render_template(
-        "all_books.html",
+        "front_page.html",
         books=books,
         genres=genres)
 
@@ -62,7 +62,7 @@ def login():
             if check_password_hash(existing_user["password"],
                                    request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                return redirect(url_for("get_books"))
+                return redirect(url_for("front_page"))
             else:
                 # Flash is password is wrong
                 flash("Incorrect Username and/or Password")
@@ -103,7 +103,7 @@ def register():
             mongo.db.users.insert_one(register)
             # Put the user into session variable to pull on other pages
             session["user"] = request.form.get("username").lower()
-            return redirect(url_for("get_books"))
+            return redirect(url_for("front_page"))
 
     return render_template("register.html")
 
