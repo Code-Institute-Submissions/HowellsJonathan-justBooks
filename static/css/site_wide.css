@@ -47,7 +47,8 @@ nav {
 }
 
 nav .brand-logo {
-    font-size: 1rem;
+    font-size: 1.4rem;
+    color: #000000;
 }
 
 .page-footer {
@@ -66,10 +67,6 @@ nav .sidenav-trigger {
 nav .sidenav-trigger i {
     height: 40px;
     line-height: 40px;
-}
-
-nav .brand-logo {
-    color: #000000;
 }
 
 nav a, nav ul a {
@@ -177,22 +174,27 @@ h2 {
     }
 
     .search-bar {
-        max-width: 400px;
+        max-width: 240px;
     }
 
     #search-bar {
-        margin-left: 100px;
+        margin-left: 140px;
     }
 
     .search-icon.material-icons {
         line-height: 40px;
+        font-size: 1.4rem;
+    }
+
+    .input-field input[type=search] ~ .material-icons {
+        font-size: 1.5rem;
     }
 
 }
 
 /* ----------------------------------------------- First Desktop / Large Tablet view */
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1200px) {
 
     /* --------------------------- Anything above viewsize styling */
 
@@ -202,9 +204,17 @@ h2 {
 
 }
 
+@media only screen and (min-width: 1440px) {
+
+    .search-bar {
+        max-width: 400px;
+    }
+
+}
+
 /* -----------------------------------------------  Large Desktop view styling */
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1660px) {
 
     /* --------------------------- Base / All pages styling */
 
