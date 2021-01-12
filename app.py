@@ -27,7 +27,7 @@ def get_books():
 
     books = list(mongo.db.books.find().limit(12))
 
-    genres = mongo.db.genres.find().sort("name")
+    genres = list(mongo.db.genres.find().sort("name"))
 
     return render_template(
         "all_books.html",
@@ -128,7 +128,7 @@ Individual book details
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
 
-    genres = mongo.db.genres.find()
+    genres = list(mongo.db.genres.find().sort("name"))
 
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
@@ -143,7 +143,7 @@ Direct user to add_book.html page
 @app.route("/add_book_page")
 def add_book_page():
     # Get genres from db
-    genres = mongo.db.genres.find().sort("name")
+    genres = list(mongo.db.genres.find().sort("name"))
     return render_template("add_book.html", genres=genres)
 
 
@@ -227,7 +227,7 @@ Edit a single book route
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
 
-    genres = mongo.db.genres.find().sort("name")
+    genres = list(mongo.db.genres.find().sort("name"))
 
     # Append genres selected to genre list for book
     genre_list = []
@@ -426,7 +426,7 @@ def genre_page(genre, page_num=1):
     index_end = int(page_num) * 12
 
     return render_template("genre.html", books=genres_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num), genre=genre)
+                           pages=pages, current_page=int(page_num))
 
 
 if __name__ == "__main__":
