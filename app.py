@@ -276,10 +276,7 @@ Function to display all books that a user has created
 @app.route("/manage_books/<username>")
 @app.route("/manage_books/<username>/page=<page_num>")
 def manage_books(username, page_num=1):
-<<<<<<< HEAD
-=======
 
->>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
     genres = list(mongo.db.genres.find().sort("name"))
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
@@ -306,6 +303,7 @@ Bookmark a book
 
 @app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
 def bookmark(book_id):
+
     user = mongo.db.users.find_one({"username": session["user"]})
 
     mongo.db.books.update_one(
@@ -325,6 +323,7 @@ Remove a book from your bookmarked page
 
 @app.route("/remove_bookmark/<book_id>", methods=["GET", "POST"])
 def remove_bookmark(book_id):
+
     user = mongo.db.users.find_one({"username": session["user"]})
 
     mongo.db.books.update_one(
@@ -345,13 +344,8 @@ Bookmarked page route
 @app.route("/bookmarked/<username>")
 @app.route("/bookmarked/<username>/page=<page_num>")
 def bookmarked(username, page_num=1):
-<<<<<<< HEAD
-    genres = list(mongo.db.genres.find().sort("name"))
-=======
 
     genres = list(mongo.db.genres.find().sort("name"))
-
->>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
     # Get current user
     user = mongo.db.users.find_one({"username": username})
 
