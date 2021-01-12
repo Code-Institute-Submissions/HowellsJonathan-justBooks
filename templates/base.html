@@ -74,8 +74,8 @@
                 <form action="{{ url_for('search') }}" method="POST">
                     <div class="input-field">
                         <input id="user-search" name="user-search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
+                        <label class="label-icon" for="search"><i class="search-icon material-icons">search</i></label>
+                        <i class="search-icon material-icons">close</i>
                     </div>
                 </form>
                 {% if session.user %}
