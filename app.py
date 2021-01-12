@@ -22,15 +22,15 @@ Home page route
 
 
 @app.route("/")
-@app.route("/get_books")
-def get_books():
+@app.route("/front_page")
+def front_page():
 
     books = list(mongo.db.books.find().limit(12))
 
     genres = list(mongo.db.genres.find().sort("name"))
 
     return render_template(
-        "all_books.html",
+        "front_page.html",
         books=books,
         genres=genres)
 
@@ -62,7 +62,7 @@ def login():
             if check_password_hash(existing_user["password"],
                                    request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                return redirect(url_for("get_books"))
+                return redirect(url_for("front_page"))
             else:
                 # Flash is password is wrong
                 flash("Incorrect Username and/or Password")
@@ -103,7 +103,7 @@ def register():
             mongo.db.users.insert_one(register)
             # Put the user into session variable to pull on other pages
             session["user"] = request.form.get("username").lower()
-            return redirect(url_for("get_books"))
+            return redirect(url_for("front_page"))
 
     return render_template("register.html")
 
@@ -276,6 +276,10 @@ Function to display all books that a user has created
 @app.route("/manage_books/<username>")
 @app.route("/manage_books/<username>/page=<page_num>")
 def manage_books(username, page_num=1):
+<<<<<<< HEAD
+=======
+
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
     genres = list(mongo.db.genres.find().sort("name"))
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
@@ -341,7 +345,13 @@ Bookmarked page route
 @app.route("/bookmarked/<username>")
 @app.route("/bookmarked/<username>/page=<page_num>")
 def bookmarked(username, page_num=1):
+<<<<<<< HEAD
     genres = list(mongo.db.genres.find().sort("name"))
+=======
+
+    genres = list(mongo.db.genres.find().sort("name"))
+
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
     # Get current user
     user = mongo.db.users.find_one({"username": username})
 
@@ -416,6 +426,8 @@ Individual Genre pages
 @ app.route("/genre_page/<genre>/page=<page_num>")
 def genre_page(genre, page_num=1):
 
+    genres = list(mongo.db.genres.find().sort("name"))
+
     genre_doc = mongo.db.genres.find_one({"_id": ObjectId(genre)})
 
     genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
@@ -431,8 +443,13 @@ def genre_page(genre, page_num=1):
     index_start = (int(page_num) - 1) * 12
     index_end = int(page_num) * 12
 
-    return render_template("genre.html", books=genres_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num), count=count_of_books, genre_doc=genre_doc)
+    return render_template("genre.html",
+                           books=genres_books[index_start:index_end],
+                           pages=pages,
+                           current_page=int(page_num),
+                           count=count_of_books,
+                           genre_doc=genre_doc,
+                           genres=genres)
 
 
 if __name__ == "__main__":

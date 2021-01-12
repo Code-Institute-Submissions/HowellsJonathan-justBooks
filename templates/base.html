@@ -28,9 +28,16 @@
             </ul>
             <nav>
                 <div class="nav-wrapper base-container">
-                    <a href="{{ url_for('get_books') }}" class="brand-logo">JustBooks</a>
+                    <a href="{{ url_for('front_page') }}" class="brand-logo">JustBooks</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                        <li><a href="{{ url_for('front_page') }}" class="black-text">Home</a></li>
+>>>>>>> 85d72b285f69ad059515ebaedcd8deca6ece8d02
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
                         {% if session.user %}
                         <li><a href="{{ url_for('add_book_page') }}" class="black-text">Add Book</a></li>
                         <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage Books</a></li>
@@ -44,7 +51,11 @@
                         <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
                         {% else %}
                         <li>
+<<<<<<< HEAD
                             <a href="#" class="dropdown-trigger" data-target="desktop_genre_dropdown">
+=======
+                            <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
                                 Dropdown
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>
@@ -62,13 +73,25 @@
                 {% endfor %}
             </ul>
             <ul class="sidenav" id="mobile-demo">
+<<<<<<< HEAD
                 <li><a href="{{ url_for('get_books') }}" class="brand-logo">JustBooks</a></li>
+=======
+<<<<<<< HEAD
+                <li><a href="{{ url_for('front_page') }}" class="brand-logo">JustBooks</a></li>
+=======
+                <li><a href="{{ url_for('front_page') }}">Home</a></li>
+>>>>>>> 85d72b285f69ad059515ebaedcd8deca6ece8d02
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
                 {% if session.user %}
                 <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                 <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
                 <li>
+<<<<<<< HEAD
                     <a href="#" class="dropdown-trigger" data-target="mobile_genre_dropdown">
+=======
+                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
                         Dropdown
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
@@ -76,7 +99,11 @@
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% else %}
                 <li>
+<<<<<<< HEAD
                     <a href="#" class="dropdown-trigger" data-target="mobile_genre_dropdown">
+=======
+                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+>>>>>>> 41e829861e8cd82f9c6f549eeeeb0fc2a3bd9e4c
                         Dropdown
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
