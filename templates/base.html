@@ -30,19 +30,24 @@
                     <a href="{{ url_for('get_books') }}" class="brand-logo">JustBooks</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="{{ url_for('get_books') }}" class="black-text">Home</a></li>
                         {% if session.user %}
                         <li><a href="{{ url_for('add_book_page') }}" class="black-text">Add Book</a></li>
                         <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage Books</a></li>
                         <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
-                        <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
                         <li>
                             <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
                                 Dropdown
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
+                        <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
                         {% else %}
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+                                Dropdown
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
                         <li><a href="{{ url_for('login_page') }}" class="black-text">Log In / Register</a></li>
                         {% endif %}
                     </ul>
@@ -50,13 +55,25 @@
             </nav>
             <!-- Mobile Navbar -->
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="{{ url_for('get_books') }}">Home</a></li>
+                <li><a href="{{ url_for('get_books') }}" class="brand-logo">JustBooks</a></li>
                 {% if session.user %}
                 <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                 <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
+                <li>
+                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+                        Dropdown
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% else %}
+                <li>
+                    <a href="#" class="dropdown-trigger" data-target="genre_dropdown">
+                        Dropdown
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
                 <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
                 {% endif %}
             </ul>
