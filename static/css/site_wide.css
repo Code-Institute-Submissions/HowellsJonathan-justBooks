@@ -80,6 +80,18 @@ nav a, nav ul a {
     color: #000000;
 }
 
+.sidenav li>a {
+    padding: 0 1rem;
+}
+
+.input-field input[type=search] {
+    padding: 0 42px;
+}
+
+.search-icon.material-icons {
+    line-height: 3rem;
+}
+
 /* ----------------------------------------------- Site wide buttons */
 
 .btn-custom {
