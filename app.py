@@ -456,13 +456,26 @@ mongo.db.books.create_index(
     [("book_name", TEXT), ("author", TEXT), ("publisher", TEXT), ("isbn", TEXT)])
 
 
-@app.route("/search/<query>")
-def search(query):
+@app.route("/search")
+def search():
 
-    result = list(mongo.db.books.find({"$text": {"$search": query}}))
+    result = list(mongo.db.books.find(
+        {"$text": {"$search": request.form.get("user-search")}}))
 
     return render_template("search.html", result=result)
 
+
+'''
+def search(query):
+
+    result = list(mongo.db.books.find(
+        {"$text": {"$search": query}}))
+
+    return result
+
+
+print(search("Just"))
+'''
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
