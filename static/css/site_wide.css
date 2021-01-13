@@ -174,7 +174,7 @@ h2 {
     }
 
     .search-bar {
-        max-width: 240px;
+        max-width: 400px;
     }
 
     #search-bar {
@@ -207,7 +207,7 @@ h2 {
 @media only screen and (min-width: 1440px) {
 
     .search-bar {
-        max-width: 400px;
+        max-width: 500px;
     }
 
 }
