@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" class="css" type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+    <h4 class="grey-text text-darken-3 center-align">Edit your review!</h4>
+
+    <div class="row container">
+        <form class="col s12" method="POST" action="{{ url_for('edit_review', book_id=book._id, review_id=book.reviews.review_id) }}">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="review" name="review" type="text" class="materialize-textarea" required></textarea>
+                        <label for="review">Review</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="rating" name="rating" type="number" required>
+                        <label for="rating">Rating out of 10</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Submit button -->
+                    <button type="submit" class="col s12 m6 l4 btn-large blue darken-2">
+                        Submit
+                    </button>
+                    <!-- Cancel button -->
+                    <a href="#" onclick="history.go(-1)" class="col s12 m6 l4 btn-large blue darken-2">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
