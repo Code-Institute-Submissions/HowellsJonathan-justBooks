@@ -9,17 +9,22 @@
 {% block content %}
 
     <section class="base-container">
-            <h2 class="center-align">Manage your books</h2>
 
             <!-- Check if user hasn't added any books to the db yet -->
             {% if added_books.count() == 0 %}
 
-            <div class="row">
-                <h3>Oops... Looks like you haven't added any books yet!</h3>
-                <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
+            <div class="center-align">
+                <object class="svg-styling" type="image/svg+xml" data="/static/images/empty.svg">Your browser does not support SVGs</object>
+                <h3 class="no-results">
+                    You're seeing this message because you haven't added any books yet!<br>
+                    So get to it!
+                </h3>
+                <a href="{{ url_for('add_book_page') }}" class="btn-large">Add a book</a>
             </div>
 
             {% else %}
+
+            <h2 class="center-align">Manage your books</h2>
 
             <div class="row">
                 {% for book in added_books %}
