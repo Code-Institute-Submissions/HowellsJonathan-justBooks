@@ -9,17 +9,21 @@
 {% block content %}
 
     <section class="base-container">
-            <h2 class="center-align">{{ genre_doc.name }} Books</h2>
 
             <!-- Check if user hasn't added any books to the db yet -->
             {% if count == 0 %}
 
+            <div>
+                <object type="image/svg+xml" data="/static/images/empty.svg">Your browser does not support SVGs</object>
+            </div>
             <div class="row">
                 <h3>Oops... Looks like there aren't any book with the genre {{ genre_doc.name }} yet!</h3>
                 <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
             </div>
 
             {% else %}
+
+            <h2 class="center-align">{{ genre_doc.name }} Books</h2>
 
             <div class="row">
                 {% for book in books %}
