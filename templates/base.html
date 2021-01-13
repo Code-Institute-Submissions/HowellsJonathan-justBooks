@@ -20,7 +20,7 @@
     <div class="page-wrapper">
         <header>
             <!-- Main Navbar for Desktop -->
-            <ul id="desktop_genre_dropdown" class="dropdown-content">
+            <ul id="desktop_genre_dropdown" class="genre-dropdown dropdown-content">
                 {% for genre in genres %}
                     <li><a href="{{ url_for('genre_page', genre=genre._id) }}">{{ genre.name }}</a></li>
                     <li class="divider" tabindex="-1"></li>

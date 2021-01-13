@@ -158,7 +158,7 @@ h2 {
         display: inline-block;
     }
 
-    .dropdown-content {
+    .genre-dropdown.dropdown-content {
         min-width: 200px;
         overflow-x: hidden;
         height: 50vh !important;
