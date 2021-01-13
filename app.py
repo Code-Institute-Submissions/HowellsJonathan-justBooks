@@ -404,10 +404,26 @@ def add_review(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
-'''
-@app.route("/edit_review/<book_id>", methods=["GET", "POST"])
-def edit_review(book_id):
-'''
+@app.route("/edit_review/<review_id>/<book_id>", methods=["GET", "POST"])
+def edit_review(review_id, book_id):
+
+    if request.method == "POST":
+        mongo.db.books.update_one(
+            {"_id": ObjectId(book_id)},
+            {"reviews": {
+                "review_id": ObjectId(review_id)
+            }},
+            {"$set": {
+                "review": request.form.get("review"),
+                "rating": request.form.get("review")
+            }}
+        )
+        return redirect(url_for("get_book", book_id=book_id))
+
+    review = mongo.db.books.find_one(
+        {"reviews": {"review_id": ObjectId(review_id)}})
+    return render_template("edit_review.html", review=review)
+
 
 '''
 Route to link to exteranl Amazon page
