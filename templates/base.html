@@ -26,6 +26,17 @@
                     <li class="divider" tabindex="-1"></li>
                 {% endfor %}
             </ul>
+            <ul id="profile_dropdown" class="dropdown-content">
+                <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
+                <li class="divider" tabindex="-1"></li>
+                {% if session.user %}
+                <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login_page') }}" class="black-text">Log In / Register</a></li>
+                {% endif %}
+            </ul>
             <nav>
                 <div class="nav-wrapper base-container">
                     <a href="{{ url_for('front_page') }}" class="brand-logo">JustBooks</a>
@@ -39,12 +50,13 @@
                         </li>
                         {% if session.user %}
                         <li><a href="{{ url_for('add_book_page') }}" class="black-text">Add</a></li>
-                        <li><a href="{{ url_for('manage_books', username=session['user'] )}}" class="black-text">Manage</a></li>
-                        <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
-                        <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
-                        {% else %}
-                        <li><a href="{{ url_for('login_page') }}" class="black-text">Log In / Register</a></li>
                         {% endif %}
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="profile_dropdown">
+                                Profile
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
                     </ul>
                     <form action="{{ url_for('search') }}" method="POST" id="search-bar" class="hide-on-med-and-down">
                         <div class="input-field search-bar">
