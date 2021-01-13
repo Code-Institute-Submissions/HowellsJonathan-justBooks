@@ -129,11 +129,13 @@ Individual book details
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
 
+    user = mongo.db.users.find_one({"username": session["user"]})
+
     genres = list(mongo.db.genres.find().sort("name"))
 
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
-    return render_template("book_page.html", book=book_data, genres=genres)
+    return render_template("book_page.html", book=book_data, genres=genres, user=user)
 
 
 '''
@@ -391,6 +393,7 @@ def add_review(book_id):
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$push": {"reviews": {
+            "review_id": ObjectId(),
             "review": request.form.get("review"),
             "rating": request.form.get("rating"),
             "user": ObjectId(user["_id"]),
@@ -400,6 +403,11 @@ def add_review(book_id):
 
     return redirect(url_for("get_book", book_id=book_id))
 
+
+'''
+@app.route("/edit_review/<book_id>", methods=["GET", "POST"])
+def edit_review(book_id):
+'''
 
 '''
 Route to link to exteranl Amazon page
