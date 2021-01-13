@@ -19,7 +19,7 @@
 
     <div class="page-wrapper">
         <header>
-            <!-- Main Navbar for Desktop -->
+            <!-- Dropdowns -->
             <ul id="desktop_genre_dropdown" class="genre-dropdown dropdown-content">
                 {% for genre in genres %}
                     <li><a href="{{ url_for('genre_page', genre=genre._id) }}">{{ genre.name }}</a></li>
@@ -33,6 +33,7 @@
                 <li class="divider" tabindex="-1"></li>
                 <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
             </ul>
+            <!-- Main Navbar for Desktop -->
             <nav>
                 <div class="nav-wrapper base-container">
                     <a href="{{ url_for('front_page') }}" class="brand-logo">JustBooks</a>
