@@ -163,6 +163,16 @@ h2 {
         overflow-x: hidden;
         height: 50vh !important;
     }
+
+    .svg-styling {
+        width: 400px;
+        height: auto;
+        margin-top: 10vh;
+    }
+
+    .no-results {
+        margin: 5vh 0;
+    }
 }
 
 /* ----------------------------------------------- Large Grid */
