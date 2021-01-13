@@ -74,7 +74,7 @@
                 </div>
                 {% for user_reviews in book.reviews %}
                 <div class="card-panel">
-                    <h6>{{ user_reviews.user }}'s review on {{ book.book_name }}</h6>
+                    <h6>{{ user_reviews.user_handle }}'s review on {{ book.book_name }}</h6>
                     <p>
                         {{ user_reviews.review }}
                     </p>

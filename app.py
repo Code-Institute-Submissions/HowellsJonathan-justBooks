@@ -394,6 +394,7 @@ def add_review(book_id):
             "review": request.form.get("review"),
             "rating": request.form.get("rating"),
             "user": ObjectId(user["_id"]),
+            "user_handle": user["username"]
         }}}
     )
 
