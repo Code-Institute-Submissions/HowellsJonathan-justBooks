@@ -9,17 +9,23 @@
 {% block content %}
 
     <section class="base-container">
-            <h2 class="center-align">Manage your books</h2>
 
             <!-- Check if user hasn't added any books to the db yet -->
             {% if bookmarked_books.count() == 0 %}
 
-            <div class="row">
-                <h3>Oops... Looks like you haven't added any books yet!</h3>
-                <a href="{{ url_for('add_book') }}" class="btn">How about adding one?</a>
+            <div class="center-align">
+                <object class="svg-styling" type="image/svg+xml" data="/static/images/empty.svg">Your browser does not support SVGs</object>
+                <h3 class="no-results">
+                    You haven't bookmarked any books yet!<br>
+                    Bookmarking is as easy as clicking a button.<br>
+                    Just go to any books page and click the button that looks like this: <i class="material-icons">bookmark</i>
+                </h3>
+                <a href="{{ url_for('front_page') }}" class="btn-large">Back to home page</a>
             </div>
 
             {% else %}
+
+            <h2 class="center-align">Bookmarked</h2>
 
             <div class="row">
                 {% for book in bookmarked_books %}
