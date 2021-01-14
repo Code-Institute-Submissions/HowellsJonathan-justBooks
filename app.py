@@ -404,26 +404,66 @@ def add_review(book_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
+'''
+@app.route("/edit_review_page/<review_id>/<book_id>", methods=["GET"])
+def edit_review_page(review_id, book_id):
+
+    review = mongo.db.books.find_one(
+        {"reviews": {"review_id": ObjectId(review_id)}})
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_review.html", review=review, book=book)
+'''
+
+
 @app.route("/edit_review/<review_id>/<book_id>", methods=["GET", "POST"])
 def edit_review(review_id, book_id):
 
+    print(review_id)
+
     if request.method == "POST":
         mongo.db.books.update_one(
-            {"_id": ObjectId(book_id)},
             {"reviews": {
                 "review_id": ObjectId(review_id)
             }},
             {"$set": {
                 "review": request.form.get("review"),
-                "rating": request.form.get("review")
+                "rating": request.form.get("rating")
             }}
         )
         return redirect(url_for("get_book", book_id=book_id))
 
-    review = mongo.db.books.find_one(
-        {"reviews": {"review_id": ObjectId(review_id)}})
-    return render_template("edit_review.html", review=review)
+    selected_review = list(mongo.db.books.find(
+        {"_id": ObjectId(book_id)},
+        {"reviews": {"$elemMatch": {
+            "review_id": ObjectId(review_id)
+        }}}
+    ))
 
+    print(selected_review)
+
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    return render_template("edit_review.html", selected_review=selected_review, book=book)
+
+
+'''
+@app.route("/delete_review/<book_id>/<review_id>")
+def delete_review(book_id, review_id):
+
+    mongo.db.books.update_one(
+        {"_id": ObjectId(book_id)},
+        {"$pull": {"reviews": {
+            ""
+        }}}
+    )
+'''
+'''
+bookmarked_books = list(mongo.db.books.find(
+    {"bookmarked_users": {"bookmarked_user_id": {"$exists": True}}}
+).sort("name"))
+
+print(bookmarked_books)
+'''
 
 '''
 Route to link to exteranl Amazon page
@@ -473,7 +513,7 @@ def genre_page(genre, page_num=1):
 
 
 '''
-Search bar 
+Search bar
 '''
 
 
@@ -481,7 +521,7 @@ mongo.db.books.create_index(
     [("book_name", TEXT), ("author", TEXT), ("publisher", TEXT), ("isbn", TEXT)])
 
 
-@app.route("/search", methods=["POST"])
+@ app.route("/search", methods=["POST"])
 def search():
 
     result = list(mongo.db.books.find(
