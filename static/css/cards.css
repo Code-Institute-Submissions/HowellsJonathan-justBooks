@@ -73,6 +73,10 @@
     padding: 0 1rem 0 1rem;
 }
 
+.icon-custom-red.no-float {
+    float: none;
+}
+
 /* ----------------------------------------------- "Average" Sized Mobile Phones */
 
 @media only screen and (min-width: 359px) {
