@@ -20,7 +20,7 @@
                             <input id="cover_img" name="cover_img" type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input id="cover_img" name="cover_img" class="file-path validate" type="text" placeholder="Cover Image">
+                            <input id="cover_img" name="cover_img" class="file-path validate" type="text" placeholder="Cover Image" required>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="isbn" name="isbn" type="number" class="validate" required>
-                        <label for="isbn">ISBN</label>
+                        <input id="isbn" name="isbn" type="number" class="validate" data-length="10" required>
+                        <label for="isbn">ISBN 10</label>
                     </div>
                 </div>
                 <!-- Datepicker  -->
@@ -74,7 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="synopsis" name="synopsis" type="text" class="materialize-textarea validate" required></textarea>
+                        <textarea id="synopsis" name="synopsis" type="text" class="materialize-textarea validate" maxlength="5000" data-length="5000" required></textarea>
                         <label for="synopsis">Synopsis</label>
                     </div>
                 </div>
