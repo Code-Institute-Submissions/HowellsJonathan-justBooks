@@ -31,7 +31,7 @@
                 <li class="divider" tabindex="-1"></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}" class="black-text">Bookmarked</a></li>
                 <li class="divider" tabindex="-1"></li>
-                <li><a href="{{ url_for('logout') }}" class="black-text">Log Out</a></li>
+                <li><a href="#logout-confirm" class="black-text modal-trigger">Log Out</a></li>
             </ul>
             <!-- Main Navbar for Desktop -->
             <nav>
@@ -93,12 +93,24 @@
                 <li><a href="{{ url_for('add_book_page') }}">Add Book</a></li>
                 <li><a href="{{ url_for('manage_books', username=session['user'] )}}">Manage Books</a></li>
                 <li><a href="{{ url_for('bookmarked', username=session['user'] )}}">Bookmarked</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                <li><a href="#logout-confirm" class="modal-trigger">Log Out</a></li>
                 {% else %}
                 <li><a href="{{ url_for('login_page') }}">Log In / Register</a></li>
                 {% endif %}
             </ul>
         </header>
+
+        <div id="logout-confirm" class="modal">
+            <div class="modal-content center-align">
+                <h4>Are you sure you want to log out?</h4>
+                <a href="{{ url_for('logout') }}" class="btn waves-effect waves btn-custom">
+                    Confirm
+                </a>
+                <button class="btn waves-effect waves btn-custom-red modal-alt">
+                    Cancel
+                </button>
+            </div>
+        </div>
 
         {% with messages = get_flashed_messages() %}
             {% if messages %}
