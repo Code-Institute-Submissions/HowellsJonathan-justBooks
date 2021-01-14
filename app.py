@@ -43,7 +43,9 @@ Direct user to login page on function
 
 @app.route("/login_page")
 def login_page():
-    return render_template("login.html")
+    genres = list(mongo.db.genres.find().sort("name"))
+
+    return render_template("login.html", genres=genres)
 
 
 '''
@@ -82,6 +84,9 @@ Register form function
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
+    genres = list(mongo.db.genres.find().sort("name"))
+
     if request.method == "POST":
         # Check if a username already exists in the database
         existing_user = mongo.db.users.find_one(
@@ -106,7 +111,7 @@ def register():
             session["user"] = request.form.get("username").lower()
             return redirect(url_for("front_page"))
 
-    return render_template("register.html")
+    return render_template("register.html", genres=genres)
 
 
 '''
