@@ -143,6 +143,49 @@ h2 {
     margin: 5vh 0;
 }
 
+/* ----------------------------------------------- Flashes Styling */
+
+#custom-toast {
+    min-width: 100px;
+    margin-left: -50px;
+    background-color: #323232;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 1em;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 60px;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 60px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 60px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+
+
+
+
 /* ----------------------------------------------- Tablet Styling */
 
 @media only screen and (min-width: 601px) {
