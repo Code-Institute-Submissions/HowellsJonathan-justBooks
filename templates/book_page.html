@@ -75,7 +75,7 @@
                 </div>
                 {% else %}
                 <div class="review-link">
-                    <a href="#login-modal" class="btn waves-effect waves">Add a review</a>
+                    <a href="#login-modal" class="btn waves-effect waves modal-trigger">Add a review</a>
                 </div>
                 {% endif %}
                 {% for user_reviews in book.reviews %}
@@ -97,7 +97,7 @@
     </section>
 
     <div id="login-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content center-align">
             <h4>You have to be logged in to use this feature.</h4>
             <a href="{{ url_for('login_page') }}" class="btn waves-effect waves">
                 Please log in or register now
