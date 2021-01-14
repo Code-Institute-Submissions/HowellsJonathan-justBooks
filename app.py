@@ -129,13 +129,11 @@ Individual book details
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
 
-    user = mongo.db.users.find_one({"username": session["user"]})
-
     genres = list(mongo.db.genres.find().sort("name"))
 
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
-    return render_template("book_page.html", book=book_data, genres=genres, user=user)
+    return render_template("book_page.html", book=book_data, genres=genres)
 
 
 '''
@@ -396,7 +394,6 @@ def add_review(book_id):
             "review_id": ObjectId(),
             "review": request.form.get("review"),
             "rating": request.form.get("rating"),
-            "user": ObjectId(user["_id"]),
             "user_handle": user["username"]
         }}}
     )
