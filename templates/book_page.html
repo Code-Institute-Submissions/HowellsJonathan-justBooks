@@ -26,10 +26,17 @@
                             <h4>{{ book.book_name }}</h4>
                             <p>By {{ book.author }}</p>
                         </div>
+                        {% if "user" in session.keys() %}
                         <a href="{{ url_for('bookmark', book_id=book._id) }}" 
                             class="btn-floating btn-large halfway-fab waves-effect waves-light red">
                             <i class="material-icons">bookmark</i>
                         </a>
+                        {% else %}
+                        <a href="#login-modal" 
+                            class="modal-trigger btn-floating btn-large halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">bookmark</i>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="store-link card">
