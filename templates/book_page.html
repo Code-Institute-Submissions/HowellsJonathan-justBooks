@@ -94,7 +94,19 @@
                     {% if user_reviews.user_handle == session["user"] %}
                         <div class="card-action">
                             <a href="{{ url_for('edit_review', book_id=book._id, review_id=user_reviews.review_id) }}" ><i class="icon-size material-icons icon-custom-blue">edit</i></a>
-                            <a href="{{ url_for('delete_review', book_id=book._id, review_id=user_reviews.review_id) }}" ><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                            <a href="#review-del-confirm" class="modal-trigger"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                        </div>
+                        <!-- Modal for confirming delete of review -->
+                        <div id="review-del-confirm" class="modal">
+                            <div class="modal-content center-align">
+                                <h4>Are you sure you want to delete this reivew?</h4>
+                                <a href="{{ url_for('delete_review', book_id=book._id, review_id=user_reviews.review_id) }}" class="btn waves-effect waves btn-custom">
+                                    Confirm
+                                </a>
+                                <a class="btn waves-effect waves btn-custom-alt modal-close">
+                                    Cancel
+                                </a>
+                            </div>
                         </div>
                     {% endif %}
                 </div>

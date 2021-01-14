@@ -125,12 +125,12 @@ h2 {
     width: fit-content;
 }
 
-#logout-confirm a {
-    width: 110px;
+.modal-content a {
+    min-width: 110px;
     margin: 2em;
 }
 
-#logout-confirm h4 {
+.modal-content h4 {
     margin: 1em 0 0 0;
 }
 
