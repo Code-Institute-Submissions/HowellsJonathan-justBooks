@@ -65,6 +65,7 @@ def login():
             if check_password_hash(existing_user["password"],
                                    request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                flash("Logged In Successfully")
                 return redirect(url_for("front_page"))
             else:
                 # Flash is password is wrong
@@ -109,6 +110,7 @@ def register():
             mongo.db.users.insert_one(register)
             # Put the user into session variable to pull on other pages
             session["user"] = request.form.get("username").lower()
+            flash("Registered Successfully")
             return redirect(url_for("front_page"))
 
     return render_template("register.html", genres=genres)
@@ -122,6 +124,7 @@ Log Out button function
 @app.route("/logout")
 def logout():
     # Remove the user from the session variable and cookies
+    flash("Logged Out Successfully")
     session.pop("user")
     return redirect(url_for("login_page"))
 

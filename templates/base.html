@@ -100,6 +100,16 @@
             </ul>
         </header>
 
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="custom-toast" class="flashes">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}    
+        {% endwith %}
+
         <main>
             {% block content %}
             {% endblock %}

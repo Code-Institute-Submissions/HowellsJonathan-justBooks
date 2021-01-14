@@ -6,16 +6,6 @@
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
         <div class="card-panel">
-            <!-- Flash Messages for wrong inputs or taken details -->
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div id="custom-toast" class="flashes">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}    
-            {% endwith %}
             <!-- Username -->
             <div class="row">
                 <div class="input-field col s12">
