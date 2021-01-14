@@ -215,6 +215,8 @@ def add_book():
         # around cursor objects not being able to be updated
         new_book_id = ObjectId(new_book[0]["_id"])
 
+        flash("Added Book Successfully")
+
         # Redirects the user to the book page of their newly added book
         return redirect(url_for("get_book", book_id=new_book_id))
 
@@ -262,6 +264,9 @@ def edit_book(book_id):
         return redirect(url_for("get_book", book_id=book_id))
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    flash("Updated Book")
+
     return render_template("edit_book.html", book=book, genres=genres)
 
 
@@ -274,6 +279,8 @@ Delete book route
 def delete_book(book_id):
 
     mongo.db.books.remove({"_id": ObjectId(book_id)})
+
+    flash("Book Delted")
 
     return redirect(url_for('manage_books', username=session['user']))
 
@@ -323,6 +330,8 @@ def bookmark(book_id):
         }}}
     )
 
+    flash("Bookmarked")
+
     return redirect(url_for("get_book", book_id=book_id))
 
 
@@ -342,6 +351,8 @@ def remove_bookmark(book_id):
             "bookmarked_user_id": ObjectId(user["_id"])
         }}}
     )
+
+    flash("Bookmark Removed")
 
     return redirect(url_for("bookmarked", username=session['user']))
 
@@ -407,6 +418,8 @@ def add_review(book_id):
         }}}
     )
 
+    flash("Review Added")
+
     return redirect(url_for("get_book", book_id=book_id))
 
 
@@ -443,6 +456,8 @@ def edit_review(review_id, book_id):
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
+    flash("Review Edited")
+
     return render_template("edit_review.html", selected_review=selected_review, book=book, review_id=review_id)
 
 
@@ -459,6 +474,8 @@ def delete_review(book_id, review_id):
         {"$pull": {"reviews":
                    {"review_id": ObjectId(review_id)}}}
     )
+
+    flash("Review Deleted")
 
     return redirect(url_for("get_book", book_id=book_id))
 
