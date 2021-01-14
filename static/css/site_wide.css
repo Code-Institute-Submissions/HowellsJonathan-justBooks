@@ -95,6 +95,10 @@ nav a, nav ul a {
 
 /* ----------------------------------------------- Site wide buttons */
 
+.custom-blue {
+    color: #0FA9A5;
+}
+
 .btn-custom {
     background-color: #0FA9A5;
     letter-spacing: .15em;

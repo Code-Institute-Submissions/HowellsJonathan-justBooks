@@ -1,13 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2 class="center-align white-text">Log In</h2>
+    <h2 class="center-align">Log In</h2>
 
-    <section class="landing-banner">
-        <div class="landing-background">
-            <img src="../static/images/other_bg.svg" alt="A purple wavey background">
-        </div>
-    </section>
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel">
@@ -39,13 +34,13 @@
                 </div>
                 <!-- Log In Button -->
                 <div class="row form-margin">
-                    <button type="submit" class="col s12 m6 l4 offset-m3 offset-l4 btn-large blue darken-2">
+                    <button type="submit" class="col s12 m6 l4 offset-m3 offset-l4 btn-large btn-custom">
                         Log In
                     </button>
                 </div>
                 <!-- Go to Register Page Button -->
                 <div class="row center-align">
-                    <a href="{{ url_for('register') }}" class="blue-text text-darken-2">
+                    <a href="{{ url_for('register') }}" class="custom-blue">
                         Not Registered Yet?
                     </a>
                 </div>
