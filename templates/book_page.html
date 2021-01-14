@@ -69,9 +69,15 @@
                 </div>
             </div>
             <div id="reviews" class="col s12">
+                {% if "user" in session.keys() %}
                 <div class="review-link">
                     <a href="{{ url_for('add_review_page', book_id=book._id) }}" class="btn waves-effect waves">Add a review</a>
                 </div>
+                {% else %}
+                <div class="review-link">
+                    <a href="#login-modal" class="btn waves-effect waves">Add a review</a>
+                </div>
+                {% endif %}
                 {% for user_reviews in book.reviews %}
                 <div class="card-panel">
                     <h6>{{ user_reviews.user_handle }}'s review on {{ book.book_name }}</h6>
@@ -89,5 +95,14 @@
             </div>
         </div>
     </section>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h4>You have to be logged in to use this feature.</h4>
+            <a href="{{ url_for('login_page') }}" class="btn waves-effect waves">
+                Please log in or register now
+            </a>
+        </div>
+    </div>
 
 {% endblock %}

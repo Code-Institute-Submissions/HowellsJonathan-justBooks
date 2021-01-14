@@ -143,6 +143,7 @@ Direct user to add_book.html page
 
 @app.route("/add_book_page")
 def add_book_page():
+
     # Get genres from db
     genres = list(mongo.db.genres.find().sort("name"))
     return render_template("add_book.html", genres=genres)
