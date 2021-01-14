@@ -405,18 +405,21 @@ def add_review(book_id):
 
 
 '''
-@app.route("/edit_review_page/<review_id>/<book_id>", methods=["GET"])
-def edit_review_page(review_id, book_id):
-
-    review = mongo.db.books.find_one(
-        {"reviews": {"review_id": ObjectId(review_id)}})
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("edit_review.html", review=review, book=book)
+Edit Review 
 '''
 
 
-@app.route("/edit_review_page/<review_id>/<book_id>")
-def edit_review_page(review_id, book_id):
+@app.route("/edit_review/<review_id>/<book_id>", methods=["GET", "POST"])
+def edit_review(review_id, book_id):
+
+    if request.method == "POST":
+        mongo.db.books.update_one(
+            {"_id": ObjectId(book_id),
+             "reviews.review_id": ObjectId(review_id)},
+            {"$set": {"reviews.$.review": request.form.get("review"),
+                      "reviews.$.rating": request.form.get("rating")}}
+        )
+        return redirect(url_for("get_book", book_id=book_id))
 
     selected_review = list(mongo.db.books.find(
         {"_id": ObjectId(book_id)},
@@ -430,18 +433,6 @@ def edit_review_page(review_id, book_id):
     return render_template("edit_review.html", selected_review=selected_review, book=book, review_id=review_id)
 
 
-@app.route("/edit_review/<review_id>/<book_id>", methods=["POST"])
-def edit_review(review_id, book_id):
-
-    mongo.db.books.update_one(
-        {"_id": ObjectId(book_id), "reviews.review_id": ObjectId(review_id)},
-        {"$set": {"reviews.$.review": request.form.get("review"),
-                  "reviews.$.rating": request.form.get("rating")}}
-    )
-
-    return redirect(url_for("get_book", book_id=book_id))
-
-
 '''
 @app.route("/delete_review/<book_id>/<review_id>")
 def delete_review(book_id, review_id):
@@ -453,13 +444,7 @@ def delete_review(book_id, review_id):
         }}}
     )
 '''
-'''
-bookmarked_books = list(mongo.db.books.find(
-    {"bookmarked_users": {"bookmarked_user_id": {"$exists": True}}}
-).sort("name"))
 
-print(bookmarked_books)
-'''
 
 '''
 Route to link to exteranl Amazon page
