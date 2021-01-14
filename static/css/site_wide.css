@@ -81,8 +81,10 @@ nav a, nav ul a {
     padding: 0 1rem;
 }
 
-.input-field input[type=search] {
+
+.nav-wrapper .input-field input[type=search] {
     padding: 0 42px;
+    width: 70%;
 }
 
 .search-icon.material-icons {
@@ -93,7 +95,7 @@ nav a, nav ul a {
     margin: 0 0 0 0;
 }
 
-/* ----------------------------------------------- Site wide buttons */
+/* ----------------------------------------------- Site wide buttons / colours */
 
 .custom-blue {
     color: #0FA9A5;
