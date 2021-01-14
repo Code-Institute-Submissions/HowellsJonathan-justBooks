@@ -125,7 +125,7 @@ h2 {
     width: fit-content;
 }
 
-#logout-confirm button {
+#logout-confirm a {
     width: 110px;
     margin: 2em;
 }
