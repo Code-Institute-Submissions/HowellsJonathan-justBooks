@@ -414,6 +414,9 @@ def edit_review(review_id, book_id):
 
     if request.method == "POST":
         mongo.db.books.update_one(
+            # As I am only updating one particluar element of an
+            # array I have to call two _id's or query parameters
+            # by seperating them with a comma
             {"_id": ObjectId(book_id),
              "reviews.review_id": ObjectId(review_id)},
             {"$set": {"reviews.$.review": request.form.get("review"),
@@ -421,6 +424,10 @@ def edit_review(review_id, book_id):
         )
         return redirect(url_for("get_book", book_id=book_id))
 
+    # To get just the ID and the correct review I first
+    # find the correct book then match the review_id
+    # using $elemMatch to the review_id
+    # This outputs to console book_id and review data
     selected_review = list(mongo.db.books.find(
         {"_id": ObjectId(book_id)},
         {"reviews": {"$elemMatch": {
@@ -448,19 +455,6 @@ def delete_review(book_id, review_id):
     )
 
     return redirect(url_for("get_book", book_id=book_id))
-
-
-'''
-@app.route("/delete_review/<book_id>/<review_id>")
-def delete_review(book_id, review_id):
-
-    mongo.db.books.update_one(
-        {"_id": ObjectId(book_id)},
-        {"$pull": {"reviews": {
-            ""
-        }}}
-    )
-'''
 
 
 '''
