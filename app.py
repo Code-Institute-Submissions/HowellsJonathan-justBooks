@@ -280,7 +280,7 @@ def delete_book(book_id):
 
     mongo.db.books.remove({"_id": ObjectId(book_id)})
 
-    flash("Book Delted")
+    flash("Book Deleted")
 
     return redirect(url_for('manage_books', username=session['user']))
 
