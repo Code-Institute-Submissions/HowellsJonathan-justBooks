@@ -127,6 +127,10 @@ img {
 
 /* ----------------------------------------------- Swiper carousel styling */
 
+.swiper-slide .row {
+    text-align: center;
+}
+
 .swiper-container {
     width: 100%;
 }
@@ -175,6 +179,29 @@ img {
         height: 270px;
     }
     
+    .swiper-banner .swiper-slide img {
+        width: auto;
+        height: 30vh;
+        display: block;
+        margin: 0 auto;
+        position: static;
+        transform: unset;
+    }
+
+    .swiper-slide .row {
+        margin: 60px 0;
+        text-align: left;
+    }
+
+    .swiper-banner {
+        height: auto;
+    }
+
+    .swiper-banner .card-title, .swiper-banner .card-text {
+        margin: 1rem 1rem 1rem 0;
+    }
+
+
 
 }
 
