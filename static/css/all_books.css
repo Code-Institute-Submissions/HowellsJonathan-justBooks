@@ -10,40 +10,18 @@ img {
     margin-top: 4em;
 }
 
-.action-card {
-    background-color: #0FA9A5;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 1.2em;
-}
-
-.action-card h2 {
-    padding: 30px 0;
-    margin: 0;
-    text-decoration: none;
-    color: #ffffff;
-}
-
 .row .no-padding {
     padding: 0;
 }
 
-.genre-card {
-    background-color: #fff;
-    margin-bottom: 2em;
-    padding-bottom: .5em;
-    text-align: center;
-}
+/* ----------------------------------------------- About JustBooks */
 
-.genre-card img {
-    height: 200px;
-    width: 100%;
-}
-
-.genre-card h3 {
-    font-size: 1em;
-    margin: 5px 0;
+.connect-container-img {
+    background-image: url(../images/about-img.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* ----------------------------------------------- Swiper banner styling */
@@ -109,23 +87,12 @@ img {
     text-transform: uppercase;
 }
 
+
+
+
 /* ----------------------------------------------- Media Queries */
 
 @media only screen and (min-width: 601px) {
-
-    .action-card {
-        margin-top: 1em;
-    }
-
-    /* ------------- Genre cards styling */
-
-    .genre-card img {
-        height: 130px;
-    }
-
-    .genre-card {
-        height: 180px;
-    }
 
     /* ------------- Swiper styling */
 
@@ -137,19 +104,6 @@ img {
 
 @media only screen and (min-width: 1024px) {
 
-    /* --------------------------- Main page card styling */
-
-    .action-card {
-        margin-top: 2em;
-    }
-
-    .action-card h2 {
-        padding: 1em 0;
-        font-weight: 700;
-        font-size: 1.5em;
-        letter-spacing: .1em;
-    }
-
     /* ------------- Swiper Styling */
 
     .swiper-carousel .swiper-slide img {
@@ -160,16 +114,6 @@ img {
 
     .swiper-carousel .swiper-slide {
         height: 400px !important;
-    }
-
-    /* ------------- Genre cards styling */
-
-    .genre-card img {
-        height: 200px;
-    }
-
-    .genre-card {
-        height: 240px;
     }
 
 }

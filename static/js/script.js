@@ -11,6 +11,7 @@ $(document).ready(function(){
     $('.modal').modal();
     $("input#isbn, textarea#synopsis").characterCounter();
     $('.collapsible').collapsible();
+    $('.parallax').parallax();
   }); 
 
   $('.carousel.carousel-slider').carousel({

@@ -54,65 +54,38 @@
         </div>
     </section>
 
-    <section class="base-container">
-        <h2 class="center-align">Most Popular</h2>
-        <div class="row">
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/childrens-card.jpg" alt="Children's Books Image"></a>
-                    <h3>Children's</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/biography-card.jpg" alt="Biography Books Image"></a>
-                    <h3>Biography's</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/fantasy-card.jpg" alt="Fantasy Books Image"></a>
-                    <h3>Fantasy</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/business-card.jpg" alt="Business Books Image"></a>
-                    <h3>Business</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/cooking-card.jpg" alt="Cooking Books Image"></a>
-                    <h3>Cooking</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/drama-card.jpg" alt="Drama Books Image"></a>
-                    <h3>Drama</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/crime-card.jpg" alt="Crime Books Image"></a>
-                    <h3>Crime</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/thriller-card.jpg" alt="Thriller Books Image"></a>
-                    <h3>Thriller</h3>
-                </div>
-            </div>
-            <div class="col s12 m4 xl3 hide-on-extra-large-only">
-                <div class="genre-card hoverable">
-                    <a href="#"><img src="../static/images/adventure.jpg" alt="Adventure Books Image"></a>
-                    <h3>Adventure</h3>
-                </div>
+    <section id="about-justbooks-container">
+        <div class="connect-container-img">
+            <div class="connect-container">
+                <h2>join the justbooks community</h2>
+                <h3>Add books, review them and discover what other people have been reading</h3>
+                <a href="{{ url_for('login_page') }}" class="btn white black-text">
+                    join now
+                </a>
             </div>
         </div>
-        
+        <div class="row white">
+            <div class="col s12 m4">
+                <img src="/static/images/about-img.jpg" alt="A book, plant and mug of coffe at center">
+            </div>
+            <div class="col s12 m8">
+                <h2 id="about-books-title">About JustBooks</h2>
+                <p id="about-books-text">
+                    JustBooks is a new book review website aimed at allowing 
+                    people to share their favourite books and experiences. 
+                    Our goal is to grow a community of book lovers to promote 
+                    their love for books and to give people a fair insight into 
+                    different styles or genres they possibly would have overlooked. 
+                    <br>
+                    Our tools allow those that join to add books they have read, 
+                    enjoyed or hated for others to be able to explore and choose a 
+                    perfect book to read next. You can save your favourite books to 
+                    the bookmarked page and buy them from amazon through a quick click 
+                    of a button. So get sharing, start exploring and help us create 
+                    something great here!
+                </p>
+            </div>
+        </div>
     </section>
 
 {% endblock %}
@@ -137,7 +110,7 @@
         lazy: true,
         slidesPerView: 1,
         simulateTouch: false,
-        noSwiping: false,
+        noSwiping: true,
     })
 
     var swiper_carousel = new Swiper(".swiper-carousel", {
