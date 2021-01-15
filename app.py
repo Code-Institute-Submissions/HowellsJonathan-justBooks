@@ -427,17 +427,33 @@ def genre_page(genre, page_num=1):
 
 
 @ app.route("/search", methods=["POST"])
-def search():
+@ app.route("/search/page=<page_num>")
+def search(page_num=1):
     '''
     Search bar
     '''
     result = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("user-search")}}))
+    # A list cannot be counted so I have to count a cursor
+    # from mpymongo instead
     result_for_count = mongo.db.books.find(
         {"$text": {"$search": request.form.get("user-search")}})
     count = int(result_for_count.count())
+    # How many pages are to be rendered (numbers) used for pagination
+    pages = int(count / 12) + 1
+
+    print(pages)
+    # Index the collection of books into sections of 12
+    index_start = (int(page_num) - 1) * 12
+    index_end = int(page_num) * 12
+    # Find genres for genre dropdown
     genres = list(mongo.db.genres.find().sort("name"))
-    return render_template("search.html", result=result, genres=genres, count=count)
+    return render_template("search.html",
+                           result=result[index_start:index_end],
+                           genres=genres,
+                           count=count,
+                           pages=pages,
+                           current_page=int(page_num))
 
 
 if __name__ == "__main__":
