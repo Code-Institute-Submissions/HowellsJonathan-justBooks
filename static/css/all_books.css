@@ -49,6 +49,43 @@ img {
     margin: 1.5rem 0 2.5em 0;
 }
 
+.about-container {
+    padding-bottom: 1rem;
+}
+
+.about-container .row .col {
+    padding: 0;
+}
+
+.about-container img {
+    width: 100%;
+    height: auto;
+}
+
+.about-container h2 {
+    margin: 1rem 0 1.5rem 0;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: #666666;
+}
+
+.divider-line {
+    width: 150px;
+    height: 1px;
+    background-color: #666666;
+    margin: 0 auto 1.5rem auto;
+}
+
+.about-container p {
+    font-size: .9rem;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-bottom: 10px;
+    padding: 0 .5em;
+    line-height: 1.5rem;
+}
+
 /* ----------------------------------------------- Swiper banner styling */
 
 #banner {
