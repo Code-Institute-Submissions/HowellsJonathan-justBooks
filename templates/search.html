@@ -78,15 +78,15 @@
                     <!-- If page is the first disable user from clicking 
                         previous arrow and make number 1 highlighted -->
                     {% if pages == 1 %}
-                        <li class="active"><a href="{{ url_for('manage_books', page_num=1, username=session['user']) }}">{{ current_page }}</a></li>
+                        <li class="active"><a href="{{ url_for('search', page_num=1) }}">{{ current_page }}</a></li>
                     {% else %}
                         {% if current_page == 1 %}
                             <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
-                            <li class="active"><a href="{{ url_for('manage_books', page_num=1, username=session['user']) }}">{{ current_page }}</a></li>
+                            <li class="active"><a href="{{ url_for('search', page_num=1) }}">{{ current_page }}</a></li>
                         <!-- When page isn't 1 allow clicking of prev arrow and un-active page 1 -->
                         {% else %}
-                            <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=current_page-1) }}"><i class="fas fa-chevron-left"></i></a></li>
-                            <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=1) }}">1</a></li>
+                            <li class="waves-effect"><a href="{{ url_for('search', page_num=current_page-1) }}"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="waves-effect"><a href="{{ url_for('search', page_num=1) }}">1</a></li>
                         {% endif %}
                                                 <!-- When user is looking at page 5 or higher add elipsis 
                         between 1 and the next number -->
@@ -100,10 +100,10 @@
                                 {{ continue }}
                             <!-- Set class "active" to current_page -->
                             {% elif page == current_page %}
-                                <li class="active"><a href="{{ url_for('manage_books', username=session['user'], page_num=page) }}">{{ current_page }}</a></li>
+                                <li class="active"><a href="{{ url_for('search', page_num=page) }}">{{ current_page }}</a></li>
                             <!-- Normal numbers for the rest of the "range" of numbers -->
                             {% else %}
-                                <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=page) }}">{{ page }}</a></li>
+                                <li class="waves-effect"><a href="{{ url_for('search', page_num=page) }}">{{ page }}</a></li>
                             {% endif %}
                         {% endfor %}
         
@@ -122,11 +122,10 @@
                             also make the right arrow cycle to the next page in index 
                             Display (pages) number on the far right of the pagination -->
                         {% else %}
-                        <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=pages) }}">{{ pages }}</a></li>
-                        <li class="waves-effect"><a href="{{ url_for('manage_books', username=session['user'], page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
+                        <li class="waves-effect"><a href="{{ url_for('search', page_num=pages) }}">{{ pages }}</a></li>
+                        <li class="waves-effect"><a href="{{ url_for('search', page_num=current_page+1) }}"><i class="fas fa-chevron-right"></i></a></li>
                         {% endif %}
                     {% endif %}
-
               </ul> 
             </div>
           </div>

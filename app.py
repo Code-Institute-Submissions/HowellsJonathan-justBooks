@@ -385,9 +385,7 @@ def delete_review(book_id, review_id):
         {"$pull": {"reviews":
                    {"review_id": ObjectId(review_id)}}}
     )
-
     flash("Review Deleted")
-
     return redirect(url_for("get_book", book_id=book_id))
 
 
@@ -432,6 +430,8 @@ def search(page_num=1):
     '''
     Search bar
     '''
+    # Search and text function is allowed due to having made an index
+    # in mongodb for certain keys
     result = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("user-search")}}))
     # A list cannot be counted so I have to count a cursor
