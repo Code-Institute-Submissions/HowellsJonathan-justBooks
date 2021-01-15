@@ -46,6 +46,23 @@ img {
     margin: 5px 0;
 }
 
+/* ----------------------------------------------- Swiper banner styling */
+
+#banner {
+    background-color: #535353;
+}
+
+.swiper-banner {
+    height: 70vh;
+}
+
+.swiper-banner .swiper-slide img {
+    width: auto;
+    height: 30vh;
+    display: block;
+    margin: 0 auto;
+}
+
 /* ----------------------------------------------- Swiper carousel styling */
 
 .swiper-container {
