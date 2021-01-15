@@ -24,7 +24,7 @@ img {
     background-attachment: fixed;
 }
 
-.connect-container {
+.connect-container, .bottom-page-container {
     background: linear-gradient(to right, 
     rgba(12, 135, 132, 0.85),
     rgba(15, 169, 165, 0.85));
@@ -84,6 +84,10 @@ img {
     margin-bottom: 10px;
     padding: 0 .5em;
     line-height: 1.5rem;
+}
+
+.bottom-page-container {
+    height: 360px;
 }
 
 /* ----------------------------------------------- Swiper banner styling */
