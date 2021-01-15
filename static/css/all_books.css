@@ -167,6 +167,15 @@ img {
         width: 70%;
     }
 
+    .about-container p {
+        padding: 0 1.5rem;
+    }
+
+    .bottom-page-container {
+        height: 270px;
+    }
+    
+
 }
 
 @media only screen and (min-width: 1024px) {
