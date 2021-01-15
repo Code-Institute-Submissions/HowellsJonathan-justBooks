@@ -101,6 +101,10 @@ nav a, nav ul a {
     color: #0FA9A5;
 }
 
+.custom-red {
+    color: #d31900;
+}
+
 .btn-custom {
     background-color: #0FA9A5;
     letter-spacing: .15em;

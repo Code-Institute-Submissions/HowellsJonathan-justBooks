@@ -50,6 +50,27 @@ h4 {
     line-height: 50px;
 }
 
+.collapsible-header h6 {
+    font-size: 1rem;
+    width: 95%;
+}
+
+.collapsible-body {
+    padding: 1rem;
+}
+
+.review-btn-container {
+    text-align: center;
+}
+
+.review-btn-container a i {
+    margin: 0;
+}
+
+.review-btn-container a:nth-child(2) i {
+    margin: 1.5rem 0 0 0;
+}
+
 @media only screen and (min-width: 601px) {
 
     .btn-floating.halfway-fab {
@@ -62,6 +83,18 @@ h4 {
 
     .book-container {
         margin-top: 2rem;
+    }
+
+    .collapsible-body {
+        padding: 2rem;
+    }
+
+    .review-btn-container a i {
+        margin: 0;
+    }
+    
+    .review-btn-container a:nth-child(2) i {
+        margin: 1.5rem 0 0 0;
     }
 }
 

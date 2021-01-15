@@ -90,12 +90,13 @@
                     <li>
                         <div class="collapsible-header">
                             <h6>
-                                {{ user_reviews.user_handle }}'s review on {{ book.book_name }} <br>
-                                This is the reviews title
+                                {{ user_reviews.user_handle }}'s review on {{ book.book_name }}
                             </h6>
                             {% if user_reviews.user_handle == session["user"] %}
-                                <a href="{{ url_for('edit_review', book_id=book._id, review_id=user_reviews.review_id) }}" ><i class="icon-size material-icons icon-custom-blue right">edit</i></a>
-                                <a href="#review-del-confirm" class="modal-trigger"><i class="icon-size material-icons icon-custom-red right">delete</i></a>
+                                <div class="review-btn-container">
+                                    <a href="{{ url_for('edit_review', book_id=book._id, review_id=user_reviews.review_id) }}" ><i class="icon-size material-icons custom-blue">edit</i></a>
+                                    <a href="#review-del-confirm" class="modal-trigger"><i class="icon-size material-icons custom-red">delete</i></a>    
+                                </div>
                                 <!-- Modal for confirming delete of review -->
                                 <div id="review-del-confirm" class="modal">
                                     <div class="modal-content center-align">
