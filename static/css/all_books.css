@@ -52,19 +52,19 @@ img {
     width: 100%;
 }
 
-.swiper-slide {
+.swiper-carousel .swiper-slide {
     background-color: #fff;
     height: 490px;
 }
 
-.swiper-slide img {
+.swiper-carousel .swiper-slide img {
     width: auto;
     height: 350px;
     display: block;
     margin: 35px auto 20px auto;
 }
 
-.swiper-slide .card-title, .swiper-slide .card-text {
+.swiper-carousel .swiper-slide .card-title, .swiper-slide .card-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
