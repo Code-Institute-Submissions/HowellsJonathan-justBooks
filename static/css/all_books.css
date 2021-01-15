@@ -61,6 +61,23 @@ img {
     height: 30vh;
     display: block;
     margin: 0 auto;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.swiper-banner .btn {
+    margin: 1rem 0;
+}
+
+.swiper-banner .swiper-slide .card-title {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.swiper-banner .swiper-slide .card-title, .swiper-banner .swiper-slide .card-text {
+    margin-top: 2rem;
 }
 
 /* ----------------------------------------------- Swiper carousel styling */
@@ -81,7 +98,7 @@ img {
     margin: 35px auto 20px auto;
 }
 
-.swiper-carousel .swiper-slide .card-title, .swiper-slide .card-text {
+.swiper-slide .card-title, .swiper-slide .card-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -108,7 +125,7 @@ img {
 
     /* ------------- Swiper styling */
 
-    .swiper-slide img {
+    .swiper-carousel .swiper-slide img {
         width: 70%;
     }
 
@@ -131,13 +148,13 @@ img {
 
     /* ------------- Swiper Styling */
 
-    .swiper-slide img {
+    .swiper-carousel .swiper-slide img {
         height: 300px;
         width: 100%;
         margin: 0 auto 20px auto;
     }
 
-    .swiper-slide {
+    .swiper-carousel .swiper-slide {
         height: 400px !important;
     }
 
