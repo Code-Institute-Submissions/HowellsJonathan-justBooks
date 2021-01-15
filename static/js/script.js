@@ -10,6 +10,7 @@ $(document).ready(function(){
     });
     $('.modal').modal();
     $("input#isbn, textarea#synopsis").characterCounter();
+    $('.collapsible').collapsible();
   }); 
 
   $('.carousel.carousel-slider').carousel({
