@@ -24,6 +24,14 @@ img {
     background-attachment: fixed;
 }
 
+.connect-container {
+    background: linear-gradient(to right, 
+    rgba(12, 135, 132, 0.85),
+    rgba(15, 169, 165, 0.85));
+    color: #fff;
+    line-height: 1.5rem;
+}
+
 /* ----------------------------------------------- Swiper banner styling */
 
 #banner {
