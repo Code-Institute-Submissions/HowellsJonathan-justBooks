@@ -88,12 +88,12 @@ img {
 
 .swiper-carousel .swiper-slide {
     background-color: #fff;
-    height: 490px;
 }
 
 .swiper-carousel .swiper-slide img {
     width: auto;
-    height: 350px;
+    max-width: 170px;
+    height: 250px;
     display: block;
     margin: 35px auto 20px auto;
 }
@@ -103,6 +103,10 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0 1em 1em 1em;
+}
+
+.swiper-carousel .swiper-slide .card-title {
+    text-transform: uppercase;
 }
 
 /* ----------------------------------------------- Media Queries */
