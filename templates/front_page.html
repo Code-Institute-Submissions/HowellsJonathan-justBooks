@@ -15,14 +15,20 @@
                     <div class="swiper-wrapper">
                         {% for book in books %}
                             <div class="swiper-slide">
-                                <p class="card-title center-align white-text">{{ book.book_name }}</p>
-                                <p class="card-text center-align white-text">{{ book.author }}</p>
-                                <a href="{{ url_for('get_book', book_id=book._id) }}" class="btn white black-text">
-                                    view book
-                                </a>
-                                <a href="{{ url_for('get_book', book_id=book._id) }}">
-                                    <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                                </a>
+                                <div class="row">
+                                    <div class="col s12 m8">
+                                        <p class="card-title center-align white-text">{{ book.book_name }}</p>
+                                        <p class="card-text center-align white-text">{{ book.author }}</p>
+                                        <a href="{{ url_for('get_book', book_id=book._id) }}" class="btn white black-text">
+                                            view book
+                                        </a>
+                                    </div>
+                                    <div class="col s12 m4">
+                                        <a href="{{ url_for('get_book', book_id=book._id) }}">
+                                            <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
