@@ -29,7 +29,20 @@ img {
     rgba(12, 135, 132, 0.85),
     rgba(15, 169, 165, 0.85));
     color: #fff;
-    line-height: 1.5rem;
+    text-align: center;
+}
+
+.connect-container h2 {
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 2rem;
+    line-height: 2.5rem;
+}
+
+.connect-container h3 {
+    
 }
 
 /* ----------------------------------------------- Swiper banner styling */
