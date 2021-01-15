@@ -23,10 +23,6 @@ body {
     min-height: 100vh;
 }
 
-main {
-    margin-bottom: 5rem;
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -52,7 +48,12 @@ nav .brand-logo {
 }
 
 .page-footer {
-    background-color: #0FA9A5;
+    background-color: #535353;
+    color: #858585;
+    text-transform: uppercase;
+    font-size: .8rem;
+    text-align: center;
+    padding: 10px 0;
 }
 
 .base-container {
@@ -212,6 +213,10 @@ h2 {
 /* ----------------------------------------------- Tablet Styling */
 
 @media only screen and (min-width: 601px) {
+
+    .page-footer {
+        text-align: left;
+    }
 
     /* --------------------------- HTML Switch */
 
