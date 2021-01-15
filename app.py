@@ -426,12 +426,6 @@ def genre_page(genre, page_num=1):
                            genres=genres)
 
 
-# Creates index within mongodb to be able to search the documents for specified
-# keys
-mongo.db.books.create_index(
-    [("book_name", TEXT), ("author", TEXT), ("publisher", TEXT), ("isbn", TEXT)])
-
-
 @ app.route("/search", methods=["POST"])
 def search():
     '''
