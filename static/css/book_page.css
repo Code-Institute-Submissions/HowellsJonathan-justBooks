@@ -56,14 +56,18 @@ h4 {
 
 .review-btn-container {
     text-align: center;
+    position: relative;
+    padding-right: 2rem;
 }
 
-.review-btn-container a i {
-    margin: 0;
+.review-btn-container a:nth-child(1) i {
+    position: absolute;
+    top: 0;
 }
 
 .review-btn-container a:nth-child(2) i {
-    margin: 1.5rem 0 0 0;
+    position: absolute;
+    bottom: 0;
 }
 
 .flex-container {
