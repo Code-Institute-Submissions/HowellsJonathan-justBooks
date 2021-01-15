@@ -9,43 +9,40 @@
 {% block content %}
 
     <section class="base-container">
-            <h2 class="center-align">Search Results</h2>
 
-            <div class="row">
-                {% for book in result %}
-                <div class="col s12 m6 l3 mobile-view">
-                    <div class="card horizontal">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <a href="{{ url_for('get_book', book_id=book._id) }}">
-                                {% if book.cover_img_name == "" %}
-                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
-                                {% else %}
-                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                                {% endif %}
-                            </a>
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
-                            </div>
-                            <div class="card-action center-align">
-                                <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
-                            </div>
-                        </div>
+        <!-- Check if user hasn't added any books to the db yet -->
+        {% if count == 0 %}
+
+        <div class="center-align">
+            <object class="svg-styling" type="image/svg+xml" data="/static/images/empty.svg">Your browser does not support SVGs</object>
+            <h3 class="no-results">You searched for something that doesn't exist yet...</h3>
+            {% if "user" in session.keys() %}
+                <a href="{{ url_for('add_book_page') }}" class="btn-large">How about creating it?</a>
+            {% else %}
+                <h3 class="no-results">If you would like to add it, please log in!</h3>
+                <a href="{{ url_for('login_page') }}" class="btn-large">log in</a>
+            {% endif %}
+        </div>
+
+        {% else %}
+
+        <h2 class="center-align">Search Results</h2>
+
+        <div class="row">
+            {% for book in result %}
+            <div class="col s12 m6 l3 mobile-view">
+                <div class="card horizontal">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <a href="{{ url_for('get_book', book_id=book._id) }}">
+                            {% if book.cover_img_name == "" %}
+                            <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                            {% else %}
+                            <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            {% endif %}
+                        </a>
                     </div>
-                </div>
-                <div class="col s12 m6 l3 desktop-view">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <a href="{{ url_for('get_book', book_id=book._id) }}">
-                                {% if book.cover_img_name == "" %}
-                                <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
-                                {% else %}
-                                <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
-                                {% endif %}
-                            </a>
-                        </div>
-                        <div class="card-content center-align">
+                    <div class="card-stacked">
+                        <div class="card-content">
                             <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
                         </div>
                         <div class="card-action center-align">
@@ -53,8 +50,29 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            <div class="col s12 m6 l3 desktop-view">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <a href="{{ url_for('get_book', book_id=book._id) }}">
+                            {% if book.cover_img_name == "" %}
+                            <img src="/static/images/nobookcover.jpg" alt="{{ book.book_name }}">
+                            {% else %}
+                            <img src="{{ url_for('get_cover_img', filename=book['cover_img_name'])}}" alt="{{ book.book_name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="card-content center-align">
+                        <a class="card-title" href="{{ url_for('get_book', book_id=book._id) }}">{{ book.book_name }}</a>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="{{ url_for('remove_bookmark', book_id=book._id )}}" class="no-margin"><i class="icon-size material-icons icon-custom-red">delete</i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </section>
 
 {% endblock %}

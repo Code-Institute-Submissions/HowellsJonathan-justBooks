@@ -439,8 +439,11 @@ def search():
     '''
     result = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("user-search")}}))
+    result_for_count = mongo.db.books.find(
+        {"$text": {"$search": request.form.get("user-search")}})
+    count = int(result_for_count.count())
     genres = list(mongo.db.genres.find().sort("name"))
-    return render_template("search.html", result=result, genres=genres)
+    return render_template("search.html", result=result, genres=genres, count=count)
 
 
 if __name__ == "__main__":
