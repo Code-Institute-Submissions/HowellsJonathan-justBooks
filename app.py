@@ -412,8 +412,8 @@ def add_review(book_id):
         {"_id": ObjectId(book_id)},
         {"$push": {"reviews": {
             "review_id": ObjectId(),
+            "review_title": request.form.get("review_title"),
             "review": request.form.get("review"),
-            "rating": request.form.get("rating"),
             "user_handle": user["username"]
         }}}
     )
@@ -439,7 +439,7 @@ def edit_review(review_id, book_id):
             {"_id": ObjectId(book_id),
              "reviews.review_id": ObjectId(review_id)},
             {"$set": {"reviews.$.review": request.form.get("review"),
-                      "reviews.$.rating": request.form.get("rating")}}
+                      "reviews.$.review_title": request.form.get("review_title")}}
         )
         return redirect(url_for("get_book", book_id=book_id))
 

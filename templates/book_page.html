@@ -89,9 +89,14 @@
                 <ul class="collapsible expandable">
                     <li>
                         <div class="collapsible-header">
-                            <h6>
-                                {{ user_reviews.user_handle }}'s review on {{ book.book_name }}
-                            </h6>
+                            <div class="flex-container">
+                                <h5>
+                                    "{{ user_reviews.review_title }}"
+                                </h5>
+                                <h6>
+                                    by {{ user_reviews.user_handle }}
+                                </h6>
+                            </div>
                             {% if user_reviews.user_handle == session["user"] %}
                                 <div class="review-btn-container">
                                     <a href="{{ url_for('edit_review', book_id=book._id, review_id=user_reviews.review_id) }}" ><i class="icon-size material-icons custom-blue">edit</i></a>
