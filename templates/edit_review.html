@@ -15,16 +15,16 @@
             <div class="card-panel">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="review" name="review" type="text" class="materialize-textarea validate" required>
-                            {{- selected_review.review -}}
-                        </textarea>
-                        <label for="review">Review</label>
+                        <input value="{{ selected_review.title }}" id="review_title" name="review_title" type="text" class="validate" required></input>
+                        <label for="review_title">Title</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input value="{{ selected_review.rating }}" id="rating" name="rating" type="number" required>
-                        <label for="rating">Rating out of 10</label>
+                        <textarea id="review" name="review" type="text" class="materialize-textarea validate" required>
+                            {{- selected_review.review -}}
+                        </textarea>
+                        <label for="review">Review</label>
                     </div>
                 </div>
                 <div class="row">
