@@ -9,7 +9,7 @@ $(document).ready(function(){
       constrainWidth: false,
     });
     $('.modal').modal();
-    $("input#isbn, textarea#synopsis").characterCounter();
+    $("input#isbn, textarea#synopsis, textarea#review, input#review_title").characterCounter();
     $('.collapsible').collapsible();
     $('.parallax').parallax();
   }); 
