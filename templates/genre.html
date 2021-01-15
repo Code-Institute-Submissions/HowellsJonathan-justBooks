@@ -16,7 +16,12 @@
             <div class="center-align">
                 <object class="svg-styling" type="image/svg+xml" data="/static/images/empty.svg">Your browser does not support SVGs</object>
                 <h3 class="no-results">Oops... Looks like there aren't any books with the genre {{ genre_doc.name }} yet!</h3>
-                <a href="{{ url_for('add_book_page') }}" class="btn-large">How about adding one?</a>
+                {% if "user" in session.keys() %}
+                    <a href="{{ url_for('add_book_page') }}" class="btn-large">How about adding one?</a>
+                {% else %}
+                    <h3 class="no-results">If you would like to add a book, please log in!</h3>
+                    <a href="{{ url_for('login_page') }}" class="btn-large">log in</a>
+                {% endif %}
             </div>
 
             {% else %}
