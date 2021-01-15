@@ -201,7 +201,23 @@ img {
         margin: 1rem 1rem 1rem 0;
     }
 
+    .about-container .row {
+        margin-bottom: 0;
+    }
 
+    .about-container {
+        padding-bottom: 0;
+    }
+
+    .img-container {
+        height: 300px;
+    }
+
+    .about-container img {
+        width: auto;
+        height: 100%;
+        float: left;
+    }
 
 }
 
