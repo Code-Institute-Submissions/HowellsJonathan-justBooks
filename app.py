@@ -17,49 +17,38 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-'''
-Home page route
-'''
-
-
 @app.route("/")
 @app.route("/front_page")
 def front_page():
-
+    '''
+    Home page route
+    '''
     books = list(mongo.db.books.find().limit(12))
-
     genres = list(mongo.db.genres.find().sort("name"))
-
     return render_template(
         "front_page.html",
         books=books,
         genres=genres)
 
 
-'''
-Direct user to login page on function
-'''
-
-
 @app.route("/login_page")
 def login_page():
+    '''
+    Direct user to login page on function
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
-
     return render_template("login.html", genres=genres)
-
-
-'''
-Login form route
-'''
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    '''
+    Login form route
+    '''
     if request.method == "POST":
         # Check if a username already exists in the database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
         if existing_user:
             # Check if the hashed password mathes input from user
             if check_password_hash(existing_user["password"],
@@ -71,23 +60,18 @@ def login():
                 # Flash is password is wrong
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login_page"))
-
         else:
             # Username isn't in the database
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login_page"))
 
 
-'''
-Register form function
-'''
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
-
+    '''
+    Register form function
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
-
     if request.method == "POST":
         # Check if a username already exists in the database
         existing_user = mongo.db.users.find_one(
@@ -116,73 +100,56 @@ def register():
     return render_template("register.html", genres=genres)
 
 
-'''
-Log Out button function
-'''
-
-
 @app.route("/logout")
 def logout():
+    '''
+    Log Out button function
+    '''
     # Remove the user from the session variable and cookies
     flash("Logged Out Successfully")
     session.pop("user")
     return redirect(url_for("login_page"))
 
 
-'''
-Individual book details
-'''
-
-
 @app.route("/get_book/<book_id>")
 def get_book(book_id):
-
+    '''
+    Individual book details
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
-
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-
     return render_template("book_page.html", book=book_data, genres=genres)
-
-
-'''
-Direct user to add_book.html page
-'''
 
 
 @app.route("/add_book_page")
 def add_book_page():
-
+    '''
+    Direct user to add_book.html page
+    '''
     # Get genres from db
     genres = list(mongo.db.genres.find().sort("name"))
     return render_template("add_book.html", genres=genres)
 
 
-'''
-Add book to database function using a form
-'''
-
-
 @app.route("/add_book", methods=["POST"])
 def add_book():
-
+    '''
+    Add book to database function using a form
+    '''
     # Get current users username
     user = mongo.db.users.find_one({"username": session["user"]})
-
     # Saves image file to mongo db
     if "cover_img" in request.files:
         cover_img = request.files["cover_img"]
         mongo.save_file(cover_img.filename, cover_img)
-
     # Append genres selected to genre list for book
     genre_list = []
     for genre in request.form.getlist("genre"):
         genre_list.append(ObjectId(genre))
-
     # Check is ISBN or Name already exists in database
     existing_isbn = mongo.db.books.find_one(
         {"isbn": request.form.get("isbn").lower()}
     )
-
     # If ISBN exists do not let user add the same book
     if existing_isbn:
         flash("Book Already Exists")
@@ -203,44 +170,33 @@ def add_book():
             "bookmarked_users": [],
             "reviews": []
         }
-
         # Inserts book details into database
         mongo.db.books.insert_one(add_book)
-
         # Find the newest book this user has just added
         new_book = mongo.db.books.find(
             {"user_id": ObjectId(user["_id"])}).sort("_id", -1)
-
         # Then store the ObjectId in a new variable to get
         # around cursor objects not being able to be updated
         new_book_id = ObjectId(new_book[0]["_id"])
-
         flash("Added Book Successfully")
-
         # Redirects the user to the book page of their newly added book
         return redirect(url_for("get_book", book_id=new_book_id))
 
 
-'''
-Retrieves the uploaded file from user and inserts it into monogdb
-'''
-
-
 @app.route("/get_cover_img/<filename>")
 def get_cover_img(filename):
+    '''
+    Retrieves the uploaded file from user and inserts it into monogdb
+    '''
     return mongo.send_file(filename)
-
-
-'''
-Edit a single book route
-'''
 
 
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
-
+    '''
+    Edit a single book route
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
-
     # Append genres selected to genre list for book
     genre_list = []
     for genre in request.form.getlist("genre"):
@@ -261,151 +217,114 @@ def edit_book(book_id):
             }
             }
         )
+        flash("Updated Book")
         return redirect(url_for("get_book", book_id=book_id))
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-
-    flash("Updated Book")
-
     return render_template("edit_book.html", book=book, genres=genres)
-
-
-'''
-Delete book route
-'''
 
 
 @app.route("/delete_book/<book_id>", methods=["GET", "POST"])
 def delete_book(book_id):
-
+    '''
+    Delete book route
+    '''
     mongo.db.books.remove({"_id": ObjectId(book_id)})
-
     flash("Book Deleted")
-
     return redirect(url_for('manage_books', username=session['user']))
-
-
-'''
-Function to display all books that a user has created
-'''
 
 
 @app.route("/manage_books/<username>")
 @app.route("/manage_books/<username>/page=<page_num>")
 def manage_books(username, page_num=1):
-
+    '''
+    Function to display all books that a user has created
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
     # Get current users username
     user = mongo.db.users.find_one({"username": username})
     # Find all movies that are added by the user and sort in alphabetical order
     added_books = mongo.db.books.find(
         {"user_id": ObjectId(user["_id"])}).sort("name")
-
     # How many pages are to be rendered (numbers) used for pagination
     pages = int(added_books.count() / 12) + 1
-
     # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
     index_end = int(page_num) * 12
-
     return render_template("manage_books.html", user=user,
                            added_books=added_books[index_start:index_end],
                            pages=pages, current_page=int(page_num), genres=genres)
 
 
-'''
-Bookmark a book
-'''
-
-
 @app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
 def bookmark(book_id):
-
+    '''
+    Bookmark a book
+    '''
     user = mongo.db.users.find_one({"username": session["user"]})
-
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$push": {"bookmarked_users": {
             "bookmarked_user_id": ObjectId(user["_id"])
         }}}
     )
-
     flash("Bookmarked")
-
     return redirect(url_for("get_book", book_id=book_id))
-
-
-'''
-Remove a book from your bookmarked page
-'''
 
 
 @app.route("/remove_bookmark/<book_id>", methods=["GET", "POST"])
 def remove_bookmark(book_id):
-
+    '''
+    Remove a book from your bookmarked page
+    '''
     user = mongo.db.users.find_one({"username": session["user"]})
-
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$pull": {"bookmarked_users": {
             "bookmarked_user_id": ObjectId(user["_id"])
         }}}
     )
-
     flash("Bookmark Removed")
-
     return redirect(url_for("bookmarked", username=session['user']))
-
-
-'''
-Bookmarked page route
-'''
 
 
 @app.route("/bookmarked/<username>")
 @app.route("/bookmarked/<username>/page=<page_num>")
 def bookmarked(username, page_num=1):
-
+    '''
+    Bookmarked page route
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
     # Get current user
     user = mongo.db.users.find_one({"username": username})
-
     bookmarked_books = mongo.db.books.find(
         {"bookmarked_users": {"bookmarked_user_id": ObjectId(user["_id"])}}
     ).sort("name")
-
     # How many pages are to be rendered (numbers) used for pagination
     pages = int(bookmarked_books.count() / 12) + 1
-
     # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
     index_end = int(page_num) * 12
-
     return render_template("bookmarked.html", user=user,
                            bookmarked_books=bookmarked_books[index_start:index_end],
                            pages=pages, current_page=int(page_num), genres=genres)
 
 
-'''
-A single function to redirect user to add_review page when clicked on
-corresponding button
-'''
-
-
 @ app.route("/add_review_page/<book_id>")
 def add_review_page(book_id):
+    '''
+    A single function to redirect user to add_review page when clicked on
+    corresponding button
+    '''
     book_data = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("add_review.html", book=book_data)
 
 
-'''
-Function to allow user to add a new review for the book they are looking at
-'''
-
-
 @ app.route("/add_review/<book_id>", methods=["POST"])
 def add_review(book_id):
-
+    '''
+    Function to allow user to add a new review for the book they are looking at
+    '''
     user = mongo.db.users.find_one({"username": session["user"]})
     # $push is used to basically append a new object to the array
     mongo.db.books.update_one(
@@ -417,20 +336,15 @@ def add_review(book_id):
             "user_handle": user["username"]
         }}}
     )
-
     flash("Review Added")
-
     return redirect(url_for("get_book", book_id=book_id))
-
-
-'''
-Edit Review 
-'''
 
 
 @app.route("/edit_review/<review_id>/<book_id>", methods=["GET", "POST"])
 def edit_review(review_id, book_id):
-
+    '''
+    Edit Review
+    '''
     if request.method == "POST":
         mongo.db.books.update_one(
             # As I am only updating one particluar element of an
@@ -441,8 +355,8 @@ def edit_review(review_id, book_id):
             {"$set": {"reviews.$.review": request.form.get("review"),
                       "reviews.$.review_title": request.form.get("review_title")}}
         )
+        flash("Review Edited")
         return redirect(url_for("get_book", book_id=book_id))
-
     # To get just the ID and the correct review I first
     # find the correct book then match the review_id
     # using $elemMatch to the review_id
@@ -453,22 +367,19 @@ def edit_review(review_id, book_id):
             "review_id": ObjectId(review_id)
         }}}
     ))
-
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-
-    flash("Review Edited")
-
-    return render_template("edit_review.html", selected_review=selected_review, book=book, review_id=review_id)
-
-
-'''
-Delete Review
-'''
+    return render_template(
+        "edit_review.html",
+        selected_review=selected_review,
+        book=book,
+        review_id=review_id)
 
 
 @app.route("/delete_review/<book_id>/<review_id>")
 def delete_review(book_id, review_id):
-
+    '''
+    Delete Review
+    '''
     mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$pull": {"reviews":
@@ -480,44 +391,32 @@ def delete_review(book_id, review_id):
     return redirect(url_for("get_book", book_id=book_id))
 
 
-'''
-Route to link to exteranl Amazon page
-'''
-
-
 @ app.route("/store_page/<isbn>")
 def store_page(isbn):
-
+    '''
+    Route to link to exteranl Amazon page
+    '''
     amazon_url = "http://www.amazon.co.uk/dp/" + isbn + "/"
     return redirect(amazon_url)
-
-
-'''
-Individual Genre pages
-'''
 
 
 @ app.route("/genre_page/<genre>")
 @ app.route("/genre_page/<genre>/page=<page_num>")
 def genre_page(genre, page_num=1):
-
+    '''
+    Individual Genre pages
+    '''
     genres = list(mongo.db.genres.find().sort("name"))
-
     genre_doc = mongo.db.genres.find_one({"_id": ObjectId(genre)})
-
     genres_books = list(mongo.db.books.find({"genre": ObjectId(genre)}))
-
     count_of_books = int(mongo.db.books.count_documents(
         {"genre": ObjectId(genre)}))
-
     # How many pages are to be rendered (numbers) used for pagination
     pages = int(mongo.db.books.count_documents(
         {"genre": ObjectId(genre)}) / 12) + 1
-
     # Index the collection of books into sections of 12
     index_start = (int(page_num) - 1) * 12
     index_end = int(page_num) * 12
-
     return render_template("genre.html",
                            books=genres_books[index_start:index_end],
                            pages=pages,
@@ -527,21 +426,19 @@ def genre_page(genre, page_num=1):
                            genres=genres)
 
 
-'''
-Search bar
-'''
-
-
+# Creates index within mongodb to be able to search the documents for specified
+# keys
 mongo.db.books.create_index(
     [("book_name", TEXT), ("author", TEXT), ("publisher", TEXT), ("isbn", TEXT)])
 
 
 @ app.route("/search", methods=["POST"])
 def search():
-
+    '''
+    Search bar
+    '''
     result = list(mongo.db.books.find(
         {"$text": {"$search": request.form.get("user-search")}}))
-
     return render_template("search.html", result=result)
 
 
