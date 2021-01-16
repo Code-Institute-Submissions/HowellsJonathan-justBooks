@@ -86,6 +86,14 @@ h4 {
     font-family: "Roboto Slab", sans-serif;
 }
 
+.tabs .tab a {
+    color: #F6AFA6;
+}
+
+.tabs .indicator {
+    background-color: #F6AFA6;
+}
+
 @media only screen and (min-width: 601px) {
 
     .btn-floating.halfway-fab {
