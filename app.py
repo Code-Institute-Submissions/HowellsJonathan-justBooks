@@ -17,8 +17,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
 @app.route("/front_page")
+@app.route("/")
 def front_page():
     '''
     Home page route
