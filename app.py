@@ -86,9 +86,6 @@ def register():
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(
                     request.form.get("password")),
-                "bookmarked": [],
-                "my_reviews": [],
-                "my_books": [],
             }
             # Inserts registration data to the database
             mongo.db.users.insert_one(register)

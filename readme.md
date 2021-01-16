@@ -147,6 +147,43 @@ This is my project for my third milestone at Code Institute. It is designed with
     -   [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
     -   [VS Code](https://code.visualstudio.com/)
 
+## Database Structure
+
+Within my MongoDB database there are technically 4 different collections.
+
+1. Books
+    - "\_id" Used for identifying the book with a unqiue ID
+    - "cover_img_name" The name of the file they have uploaded, this is then called by the file collection for displaying
+    - "book_name" User input of the books name
+    - "author" User input of the books author or authors
+    - "publisher" User input of the books publisher
+    - "genre" [ An array of genres picked by the user converted into the genres ObjectId
+      "ObjectId" The identifier of a genre, allows app to call on when displaying a particular genre of book
+      ]
+    - "pages" User input of pages in book
+    - "published_date" User input of published date
+    - "synopsis" User input of synopsis
+    - "isbn" ISBN of book used for the store link function
+    - "user_id" User's ID who created the book, to allow user to view what books they have added on manage page
+    - "bookmarked_users" [ An array of users that have bookmarked this book
+      "bookmarked_user_id" The ID associated with a user to be able to be pulled to show books on bookmarked page
+      ]
+    - "reviews" [ An array of keys relating to individual reviews
+      "review_id" Identifier of specific ID, used to edit and delete particular review
+      "review_title" User input of users desired title for their reivew
+      "review" User input of their review
+      "user_handle" Username of user to be displayed on review page and to also identify if a user has created it or not. Username is unique as two users cannot have the same
+      ]
+2. Genres
+    - "\_id" Used for identifying a genre with a unique ID
+    - "name" The name of the genre
+3. Users
+    - "\_id" Used for identifying a user with a unique ID
+    - "username" The usename the user logs in with
+    - "password" Protected with a hash this is what the user logs in with and is used to check when logging in if the user has gotten it wrong etc.
+4. Files (Chunks)
+    - This contains all of the information relevant to uploading and storing a file in mongodb. More information [here](https://www.freecodecamp.org/news/gridfs-making-file-uploading-to-mongodb/)
+
 ## Testing
 
 I tried to use the W3C Markup Validators for CSS and HTML although due to the implementation of jinja the html validator will never pass. But the CSS test came up clean, no errors on all 5 of my css files.
@@ -227,7 +264,8 @@ I tried to use the W3C Markup Validators for CSS and HTML although due to the im
 
 ### Further Testing
 
--   The website was tested on Chrome, Edge, Firefox, Safari, Android Internet and IE.
+-   The website was tested on Chrome, Edge, Firefox, Safari and Android Internet
+    -   As I have not set a background colour to the main site. On firefox in dark mode all white is changed to black and black text visa-versa, this was an unintended feature but the site still works and is readable in dark mode. Therefore I didn't change any of the code to correct this action.
 -   The website was created with mobile design first, styling it for smaller devices first and scaling up after. It was tested when deployed on various models of phones and desktop screens.
 -   Throughout the production fase countless amounts of manual tests were completed making sure that every time I created a new function or changed old code, everything on the website still worked. This included scraping the whole site after every big commit to check every button, page or link.
 -   A few friends tested the website who are also programmers to see if they could break or find obvious flaws. Family also viewed the site once deployed to check for styling issues and to give feedback regarding the experience on the site.
@@ -243,7 +281,13 @@ I tried to use the W3C Markup Validators for CSS and HTML although due to the im
 
 To start the project I was continuely trying to limit the ammount of characters were in each commit message as this was good practice. After some time and 165 commits I learnt about commiting with a body of text under the commit title. This is even better practise as it allows a better breakdown of the commits reasoning and code that has been changed. After that I implemented both types of commiting for relevant commits. Using just a title incase the change was small, and commits with a body of text for bigger changes.
 
-## Features to be implemented
+## Features to be implemented detailed
+
+### Amazon Store Link
+
+Making the user input a valid 10 digit ISBN it is more than likely that many of the books will not return a valid amazon page on clicking the store button.
+
+Due to my limited knowledge I didn't know how to handle this. In theory I would have the app check if the ISBN and link doesn't return an error, then proceed. If it returns an error notify the user that the link is broken, or altogether diable the link to the store. I could also have another feature that if the ISBN returns an error instead the books name is searched. This would return just to a amazon search but still would be usefull.
 
 ### UI / UX Design
 
@@ -325,7 +369,75 @@ Here I count how many pages will need to be paginated by counting the total docu
 
 Then by creating an index start and end, the program knows that for each 12 books there is a single "index" collection of books. Allowing me to iterate through each collection with pagination. I am unsure if this is a better solution to using skip and limit as I don't know how I could stress test this effectively.
 
-## Help:
+## Deployment
+
+### Deploying Website To Heroku
+
+Deploying your website to heroku is vital in that a website this complex is best hosted with a service that can handle all of the languages. This is also a shareable website but not findable on the web.
+
+1. Create requirements.txt and a Procfile for Heroku using:
+    ```
+    pip3 freeze -local > requirements.txt
+    ```
+    This adds all of the packages and services you have installed update to a single file that others can download if they wanted to depoly this site locally. Heroku also needs this to serve the website.
+    ```
+    echo web:python.app.py > Procfile
+    ```
+    The Procfile is where you define what commands heroku will run when deploying the site
+2. Add and commit new files to github (create a new git repository if not already)
+3. Create a Heroku account if you don't already have one
+4. Make sure Heroku is installed using command
+    ```
+    pip install heroku
+    ```
+5. Create a new heroku app
+    ```
+    heroku create
+    ```
+    You will be prompted to log in to Heroku if not already
+6. Deploy code to heroku
+    ```
+    git push heroku master
+    ```
+    You can also turn on automatic-deployment in the settings on Heroku CLI website, which will deploy every master commit to the website. This is only reccomended if you are working in a test branch on git and a production pipline on Heroku. Pushing possibly buggy or malicious code isn't advised to a live site
+7. To complete the deployment go to the Heroku website, log in and navigate to your app
+8. Click on settings then in the Config vars fill out the variables with the following information that you would have set up when creating your mongodb collection link
+
+| Key          | Input      |
+| ------------ | ---------- |
+| IP           | user input |
+| PORT         | user input |
+| SECRET_KEY   | user input |
+| MONGO_URI    | user input |
+| MONGO_DBNAME | user input |
+
+9. After following all of this you can either go to the deploy page and manually cause a depoly from your github code, or you can come back to your code editor and repeat instruction 6 which will deploy your code
+10. Then on the Heroku website there will be a "open app" button which will open your website
+
+### Cloning This Repository
+
+Cloning is the process of downloading all the code still in format and run it locally on your own code editor.
+
+To make a clone follow these steps:
+
+1. Visit the repository [here](https://github.com/HowellsJonathan/justBooks)
+2. On the top of the file layout there will be a dropdown called "code", in the drop down there will be a clone option, navigate there
+3. With the HTTPS method selected copy the URL.
+4. Go to your desired code editor, make sure GIT is installed and in the terminal run
+    ```
+    git clone https://example-user.github.io/example-repository/
+    ```
+5. All the files will then have been cloned to your workspace
+6. Don't forget to add your own mongodb collection link and env.py file containing the config vars as seen above
+7. To download the required packages run in the terminal
+    ```
+    pip install -r requirements.txt
+    ```
+    This will download every package that is in the file, allowing you to run the code without errors
+
+## Credit
+
+### Code Tutorials / Help
 
 [One to one relationships (Part 1)](https://www.youtube.com/watch?v=KA9RrZEmUNg) <br>
 [One to one relationships (Part 2)](https://www.youtube.com/watch?v=-UmHaYpNJFM&t=368s) <br>
@@ -333,6 +445,12 @@ Then by creating an index start and end, the program knows that for each 12 book
 [Nesting Sub Documents](https://www.youtube.com/watch?v=1ANDrQrP0uQ&t=1s) <br>
 [One to many relationships](https://www.youtube.com/watch?v=t_9fgpsO_vM) <br>
 
-## Code Used
+### Code Used
 
 [Snackbar for flash messages](https://www.w3schools.com/howto/howto_js_snackbar.asp)
+
+### Images
+
+All images used on this site for the books are not owened by me, the site or the users. The website does not gain me any monetary value from using these images.
+
+The image used at the bottom of the front page is from [Unsplash](https://unsplash.com/) a website that has thousands of free high quality images for use. [The particular photo in use.](https://unsplash.com/photos/qcfWJG9uU5Y)
