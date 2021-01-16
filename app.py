@@ -253,7 +253,9 @@ def manage_books(username, page_num=1):
     index_end = int(page_num) * 12
     return render_template("manage_books.html", user=user,
                            added_books=added_books[index_start:index_end],
-                           pages=pages, current_page=int(page_num), genres=genres)
+                           pages=pages,
+                           current_page=int(page_num),
+                           genres=genres)
 
 
 @app.route("/bookmark/<book_id>/", methods=["GET", "POST"])
