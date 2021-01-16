@@ -9,25 +9,34 @@ This is my project for my third milestone at Code Institute. It is designed with
 
 ## Contents
 
-1. [**UX**](#UX)
+1. [**Aim**](#aim)
+2. [**UX**](#UX)
     - [**User Stories**](#user-stories)
     - [**Design**](#Design)
     - [**Information Architecture**](#information-architecture)
     - [**Wireframes**](#wireframes)
-2. [**Feature**](#features)
-3. [**Possible Features to be implemented**](#Possible-Features-to-be-implemented)
-4. [**Technologies Used**](#technologies-used)
-5. [**Database Structure**](#database-structure)
-6. [**Testing**](#testing)
+3. [**Feature**](#features)
+4. [**Possible Features to be implemented**](#Possible-Features-to-be-implemented)
+5. [**Technologies Used**](#technologies-used)
+6. [**Database Structure**](#database-structure)
+7. [**Testing**](#testing)
     - [**Testing User Stories from UX Section**](#Testing-User-Stories-from-UX-Section)
         - [**First Time Visitors**](#first-time-visitors)
         - [**Returning Visitors**](#Returning-Visitors)
         - [**Frequest Visitors**](#Frequest-Visitors)
     - [**Further Testing**](#further-testing)
         - [**Caught and dealt with major bugs after deployment**](#Caught-and-dealt-with-major-bugs-after-deployment)
-7. [**Other Notes**](#other-notes)
-8. [**Deployment**](#deployment)
-9. [**Credit**](#credit)
+8. [**Other Notes**](#other-notes)
+9. [**Deployment**](#deployment)
+10. [**Credit**](#credit)
+
+## Aim
+
+The aim of this site is to provide a space for people who are book lovers or are just starting out reading books to come and discuss their favourites. It is aimed at people that are willing to have massive input into a community and website. Something they can directly influence themselves.
+
+The audience for this is all ages, although due to complexity of adding certain fields only those who are proficent with computers and know how to upload files etc. Those that cannot will still be able to use the site, just not contribute as much as others.
+
+As the owner of the site, in theory I could profit from the Amazon link on each books page if I had a valid referal code and the site was monetized and live.
 
 ## UX
 
