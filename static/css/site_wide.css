@@ -37,7 +37,6 @@ footer {
 
 nav {
     background-color: #fff;
-    box-shadow: none;
     height: 40px;
     line-height: 40px;
 }
@@ -124,6 +123,10 @@ nav a, nav ul a {
 
 h2 {
     font-size: 1.25rem;
+}
+
+.page-title {
+    text-transform: uppercase;
 }
 
 /* ----------------------------------------------- Modal Styling */
