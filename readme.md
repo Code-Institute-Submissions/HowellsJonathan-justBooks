@@ -7,6 +7,28 @@ This is my project for my third milestone at Code Institute. It is designed with
 
 <h2 align="center"><img src="https://i.ibb.co/kHhr73W/responsive-design.png"></h2>
 
+## Contents
+
+1. [**UX**](#UX)
+    - [**User Stories**](#user-stories)
+    - [**Design**](#Design)
+    - [**Information Architecture**](#information-architecture)
+    - [**Wireframes**](#wireframes)
+2. [**Feature**](#features)
+3. [**Possible Features to be implemented**](#Possible-Features-to-be-implemented)
+4. [**Technologies Used**](#technologies-used)
+5. [**Database Structure**](#database-structure)
+6. [**Testing**](#testing)
+    - [**Testing User Stories from UX Section**](#Testing-User-Stories-from-UX-Section)
+        - [**First Time Visitors**](#first-time-visitors)
+        - [**Returning Visitors**](#Returning-Visitors)
+        - [**Frequest Visitors**](#Frequest-Visitors)
+    - [**Further Testing**](#further-testing)
+        - [**Caught and dealt with major bugs after deployment**](#Caught-and-dealt-with-major-bugs-after-deployment)
+7. [**Other Notes**](#other-notes)
+8. [**Deployment**](#deployment)
+9. [**Credit**](#credit)
+
 ## UX
 
 -   ### User Stories
@@ -98,7 +120,7 @@ This is my project for my third milestone at Code Institute. It is designed with
 
 -   ### The site is responsive all on devices and viewports
 
-## Possible Features to be implemented / drawback of my coding
+## Possible Features to be implemented
 
 -   ### Commenting on reviews
 
@@ -133,19 +155,19 @@ This is my project for my third milestone at Code Institute. It is designed with
 
 ## Technologies Used
 
-    -   [HTML5](https://html.spec.whatwg.org/multipage/)
-    -   [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
-    -   [Materialize v0.100.2/](http://archives.materializecss.com/0.100.2/) - The framework of the site
-    -   [JavaScript](https://www.javascript.com/)
-    -   [jQuery](https://jquery.com/)
-    -   [Python (v3.8)](https://www.python.org/)
-    -   [Flask (v1.1.2)](https://flask.palletsprojects.com/en/1.1.x/)
-    -   [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
-    -   [MongoDB](https://docs.mongodb.com/)
-    -   [Git](https://git-scm.com/)
-    -   [Google Fonts](https://fonts.google.com/)
-    -   [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
-    -   [VS Code](https://code.visualstudio.com/)
+[HTML5](https://html.spec.whatwg.org/multipage/)
+[CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+[Materialize v0.100.2/](http://archives.materializecss.com/0.100.2/) - The framework of the site
+[JavaScript](https://www.javascript.com/)
+[jQuery](https://jquery.com/)
+[Python (v3.8)](https://www.python.org/)
+[Flask (v1.1.2)](https://flask.palletsprojects.com/en/1.1.x/)
+[Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+[MongoDB](https://docs.mongodb.com/)
+[Git](https://git-scm.com/)
+[Google Fonts](https://fonts.google.com/)
+[Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
+[VS Code](https://code.visualstudio.com/)
 
 ## Database Structure
 
